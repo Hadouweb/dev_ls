@@ -10,7 +10,12 @@ HEADER = -I $(LIBFT)/includes -I $(INCPATH)
 
 LIB = -L$(LIBFT) -lft
 
-SRC = $(SRCPATH)/main.c\
+SRC = 	$(SRCPATH)/main.c\
+		$(SRCPATH)/ls_dir.c\
+		$(SRCPATH)/ls_error.c\
+		$(SRCPATH)/ls_stat.c\
+		$(SRCPATH)/ls_user.c\
+		$(SRCPATH)/ls_group.c\
 
 OBJ = $(SRC:.c=.o)
 

@@ -1,31 +1,15 @@
 #include "ft_ls.h"
 
-DIR		*ft_opendir(char *file)
-{
-	DIR 	*dir;
-
-	errno = 0;
-	dir = opendir(file);
-	if (errno != 0)
-		perror("Error in ft_opendir ");
-	return (dir);
-}
-
-void	ft_readdir(DIR *dir)
-{
-	struct dirent *dp;
-
-	dp = readdir(dir);
-}
-
 int		main(int ac, char **av)
 {
-	DIR		*dir;
+	struct stat file;
+	struct group *group;
 
 	if (ac > 1)
 	{
-		dir = ft_opendir(av[1]);
-		ft_readdir(dir);
+		file = ls_get_data_file(av[1]);
+		group = ls_get_group_data(file.st_gid);
+		ls_print_group_data(group);
 	}
 	return (0);
 }
