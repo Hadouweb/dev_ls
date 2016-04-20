@@ -9,7 +9,7 @@ void	ls_print_stat(struct stat file)
 	printf("%d\n", file.st_uid);      /* UID propriétaire */
 	printf("%d\n", file.st_gid);      /* GID propriétaire */
 	printf("%d\n", file.st_rdev);     /* ID périphérique (si fichier spécial) */
-	printf("%lld\n", file.st_size);     /* Taille totale en octets */
+	printf("st_size : %lld\n", file.st_size);     /* Taille totale en octets */
 	printf("%d\n", file.st_blksize);  /* Taille de bloc pour E/S */
 	printf("%lld\n", file.st_blocks);   /* Nombre de blocs alloués */
 	printf("%ld\n", file.st_atime);    /* Heure dernier accès */

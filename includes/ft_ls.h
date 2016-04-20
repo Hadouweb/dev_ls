@@ -9,6 +9,7 @@
 # include <unistd.h>
 # include <pwd.h>
 # include <grp.h>
+# include <time.h>
 # include <stdio.h>
 
 void	ls_print_folder(char *name);
