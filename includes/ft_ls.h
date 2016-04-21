@@ -19,7 +19,7 @@ struct group	*ls_get_group_data(int gid);
 
 struct stat 	ls_get_data_file(char *name);
 void			ls_print_mode(int st_mode);
-void			ls_print_option_l(struct stat file);
+void			ls_print_option_l(char *name);
 
 void			ls_print_stat_debug(struct stat file);
 void			ls_print_dirent_debug(struct dirent *dp); 
