@@ -1,6 +1,7 @@
 CC = clang -Werror -Wextra -Wall -g
 
 SRCPATH = ./srcs
+OPTION_L = $(SRCPATH)/option_l
 
 INCPATH = ./includes
 
@@ -13,9 +14,11 @@ LIB = -L$(LIBFT) -lft
 SRC = 	$(SRCPATH)/main.c\
 		$(SRCPATH)/ls_dir.c\
 		$(SRCPATH)/ls_error.c\
-		$(SRCPATH)/ls_stat.c\
 		$(SRCPATH)/ls_user.c\
 		$(SRCPATH)/ls_group.c\
+		$(SRCPATH)/ls_debug.c\
+		$(OPTION_L)/ls_option_l.c\
+		$(OPTION_L)/ls_mode.c\
 
 OBJ = $(SRC:.c=.o)
 

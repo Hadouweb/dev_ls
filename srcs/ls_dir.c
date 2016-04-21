@@ -11,14 +11,6 @@ DIR		*ls_opendir(char *file)
 	return (dir);
 }
 
-void	ls_print_dirent(struct dirent *dp) 
-{
-	printf("%llu\n", dp->d_ino);
-	printf("%d\n", dp->d_reclen);
-	printf("%hhu\n", dp->d_type);
-	printf("%s\n", dp->d_name);
-}
-
 void	ls_readdir(DIR *dir)
 {
 	struct dirent *dp;
