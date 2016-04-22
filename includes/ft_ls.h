@@ -23,8 +23,11 @@ void			ls_print_option_l(char *name);
 
 void			ls_print_physical_link(int st_nlink);
 void			ls_print_user_group(int st_uid, int st_gid);
-void			ls_print_size(int st_size);
+void			ls_print_size(int st_size, int st_mode, int st_rdev);
 void			ls_print_time(const time_t t);
+
+int 			ls_major(int st_rdev);
+int 			ls_minor(int st_rdev);
 
 void			ls_print_stat_debug(struct stat file);
 void			ls_print_dirent_debug(struct dirent *dp); 

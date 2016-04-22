@@ -1,15 +1,5 @@
 #include "ft_ls.h"
 
-int 	ls_major(int st_rdev)
-{
-	return (int)(((int)st_rdev >> 24) & 0xff);
-}
-
-int 	ls_minor(int st_rdev)
-{
-	return (int)((st_rdev) & 0xffffff);
-}
-
 void	ls_print_option_l(char *name)
 {
 	struct stat file;
@@ -18,13 +8,12 @@ void	ls_print_option_l(char *name)
 	ls_print_mode(file.st_mode);
 	ls_print_physical_link(file.st_nlink);
 	ls_print_user_group(file.st_uid, file.st_gid);
-	ls_print_size(file.st_size);
+	ls_print_size(file.st_size, file.st_mode, file.st_rdev);
 	ls_print_time(file.st_mtime);
 	ft_putchar(' ');
 	ft_putstr(name);
 	ft_putchar('\n');
-	ls_print_stat_debug(file);
-	printf("Major %d %d\n", ls_major(file.st_rdev), ls_minor(file.st_rdev));
+	//ls_print_stat_debug(file);
 }
 
 struct stat ls_get_data_file(char *name)

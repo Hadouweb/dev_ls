@@ -21,11 +21,39 @@ void		ls_print_user_group(int st_uid, int st_gid)
 	ft_putchar(' ');
 }
 
-void		ls_print_size(int st_size)
+void		ls_adjust_space(int max)
 {
-	ft_putchar(' ');
-	ft_putnbr(st_size);
-	ft_putchar(' ');
+	int		i;
+
+	i = 0;
+	while (i++ < max)
+		ft_putchar(' ');
+}
+
+void		ls_print_size(int st_size, int st_mode, int st_rdev)
+{
+	int		nbr;
+	int		size;
+
+	nbr = 0;
+	size = 0;
+	if (S_ISCHR(st_mode) || S_ISBLK(st_mode))
+	{
+		nbr = ls_major(st_rdev);
+		ls_adjust_space(4 - ft_intlen(nbr));
+		ft_putnbr(nbr);
+		ft_putchar(',');
+		nbr = ls_minor(st_rdev);
+		ls_adjust_space(4 - ft_intlen(nbr));
+		ft_putnbr(nbr);
+		ft_putchar(' ');
+	}
+	else
+	{
+		ft_putchar(' ');
+		ft_putnbr(st_size);
+		ft_putchar(' ');
+	}
 }
 
 static void	ls_print_month(char *m)
