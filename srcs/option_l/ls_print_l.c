@@ -95,15 +95,26 @@ void		ls_print_time(const time_t t)
 	char			*str_time;
 	char			**split;
 	int				i;
+	int 			dm;
 
+	dm = ls_diff_six_month(t);
 	str_time = ctime(&t);
 	split = ft_strsplit(str_time, ' ');
 	i = 0;
+	if (ft_strlen(split[2]) == 1)
+		ft_putchar(' ');
 	ft_putstr(split[2]);
 	ft_putchar(' ');
 	ls_print_month(split[1]);
 	ft_putchar(' ');
 	split[3][5] = '\0';
-	ft_putstr(split[3]);
+	split[4][4] = '\0';
+	if (dm)
+	{
+		ft_putchar(' ');
+		ft_putstr(split[4]);
+	}
+	else
+		ft_putstr(split[3]);
 	ft_free_tab(split);
 }

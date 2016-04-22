@@ -40,6 +40,7 @@ void			ls_print_time(const time_t t);
 int 			ls_major(int st_rdev);
 int 			ls_minor(int st_rdev);
 char			*ls_get_link(char *name);
+int				ls_diff_six_month(time_t t);
 
 void			ls_print_stat_debug(struct stat file);
 void			ls_print_dirent_debug(struct dirent *dp); 

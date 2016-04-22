@@ -20,3 +20,15 @@ char	*ls_get_link(char *name)
 		return (NULL);
 	return (ft_strdup(buf));
 }
+
+int			ls_diff_six_month(time_t t)
+{
+	time_t		diff;
+
+	diff = time(0) - t;
+	if (diff > 15552000)
+		return (1);
+	else if (diff < 0)
+		return (1);
+	return (0);
+}
