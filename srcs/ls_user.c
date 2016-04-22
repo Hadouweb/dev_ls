@@ -7,6 +7,6 @@ struct passwd	*ls_get_user_data(int uid)
 	errno = 0;
 	user = getpwuid(uid);
 	if (errno != 0 || user == NULL)
-		ls_error_errno("Error in print_user_data ");
+		;//ls_error_errno("Error in ls_get_user_data ");
 	return (user);
 }

@@ -6,7 +6,7 @@ void		ls_print_physical_link(int st_nlink)
 	ft_putnbr(st_nlink);
 }
 
-void	ls_print_path(char *path, char *link)
+void		ls_print_path(char *path, char *link)
 {
 	ft_putchar(' ');
 	ft_putstr(path);
@@ -24,11 +24,17 @@ void		ls_print_user_group(int st_uid, int st_gid)
 
 	user = ls_get_user_data(st_uid);
 	ft_putchar(' ');
-	ft_putstr(user->pw_name);
+	if (user == NULL)
+		ft_putnbr(st_uid);
+	else
+		ft_putstr(user->pw_name);
 	ft_putchar(' ');
 	group = ls_get_group_data(st_gid);
 	ft_putchar(' ');
-	ft_putstr(group->gr_name);
+	if (group == NULL)
+		ft_putnbr(st_gid);
+	else
+		ft_putstr(group->gr_name);
 	ft_putchar(' ');
 }
 
