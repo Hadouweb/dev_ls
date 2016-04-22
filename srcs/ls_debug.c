@@ -18,6 +18,16 @@ void	ls_print_stat_debug(struct stat file)
 	printf("__%d\n", S_IFMT);
 }
 
+void	ls_debug_path(void *content)
+{
+	t_path	*path;
+
+	path = (t_path*)content;
+	printf("\nname : %s\n", path->name);
+	printf("link : %s\n", path->link);
+	//ls_print_stat_debug(path->file);
+}
+
 void	ls_print_dirent_debug(struct dirent *dp) 
 {
 	printf("%llu\n", dp->d_ino);

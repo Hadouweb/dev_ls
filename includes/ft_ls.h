@@ -18,9 +18,18 @@
 # define OPT_t 0x08
 # define OPT_r 0x10
 
+typedef struct 		s_path
+{
+	char			*name;
+	struct stat 	file;
+	char			*link;
+
+}					t_path;
+
 typedef struct  	s_app
 {
 	unsigned char	opt;
+	t_list			*lst;
 }					t_app;
 
 void			ls_print_folder(char *name);
@@ -47,9 +56,12 @@ void			ls_print_dirent_debug(struct dirent *dp);
 void			ls_print_group_debug(struct group *group);
 void			ls_print_user_debug(struct passwd *user);
 void			ls_print_path(char *path, char *link);
+void			ls_debug_path(void *content);
 
 void			ls_error(char *str);
 
 void			ls_option(char *opt, t_app *app);
+
+void			ls_lstsort(t_list **lst);
 
 #endif

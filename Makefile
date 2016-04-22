@@ -18,6 +18,7 @@ SRC = 	$(SRCPATH)/main.c\
 		$(SRCPATH)/ls_group.c\
 		$(SRCPATH)/ls_debug.c\
 		$(SRCPATH)/ls_option.c\
+		$(SRCPATH)/ls_sort.c\
 		$(OPTION_L)/ls_option_l.c\
 		$(OPTION_L)/ls_mode.c\
 		$(OPTION_L)/ls_print_l.c\

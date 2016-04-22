@@ -21,7 +21,7 @@ char	*ls_get_link(char *name)
 	return (ft_strdup(buf));
 }
 
-int			ls_diff_six_month(time_t t)
+int		ls_diff_six_month(time_t t)
 {
 	time_t		diff;
 
