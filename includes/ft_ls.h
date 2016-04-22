@@ -12,6 +12,17 @@
 # include <time.h>
 # include <stdio.h>
 
+# define OPT_l 0x01
+# define OPT_R 0x02
+# define OPT_a 0x04
+# define OPT_t 0x08
+# define OPT_r 0x10
+
+typedef struct  	s_app
+{
+	unsigned char	opt;
+}					t_app;
+
 void			ls_print_folder(char *name);
 void			ls_error_errno(char *str);
 struct passwd	*ls_get_user_data(int uid);
@@ -33,5 +44,9 @@ void			ls_print_stat_debug(struct stat file);
 void			ls_print_dirent_debug(struct dirent *dp); 
 void			ls_print_group_debug(struct group *group);
 void			ls_print_user_debug(struct passwd *user);
+
+void			ls_error(char *str);
+
+void			ls_option(char *opt, t_app *app);
 
 #endif
