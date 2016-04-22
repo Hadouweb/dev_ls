@@ -13,11 +13,10 @@ int		main(int ac, char **av)
 		{
 			if (av[i][0] == '-')
 				ls_option(av[i], &app);
+			ls_print_option_l(av[i]);
 			i++;
 		}
-		//ls_print_option_l(av[1]);
-		//ls_print_stat_debug(file);
 	}
-	ft_printbit(app.opt);
+	//ft_printbit(app.opt);
 	return (0);
 }

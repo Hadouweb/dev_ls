@@ -6,6 +6,17 @@ void		ls_print_physical_link(int st_nlink)
 	ft_putnbr(st_nlink);
 }
 
+void	ls_print_path(char *path, char *link)
+{
+	ft_putchar(' ');
+	ft_putstr(path);
+	if (link != NULL)
+	{
+		ft_putstr(" -> ");
+		ft_putstr(link);
+	}
+}
+
 void		ls_print_user_group(int st_uid, int st_gid)
 {
 	struct passwd *user;

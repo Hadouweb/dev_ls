@@ -28,7 +28,7 @@ void			ls_error_errno(char *str);
 struct passwd	*ls_get_user_data(int uid);
 struct group	*ls_get_group_data(int gid);
 
-struct stat 	ls_get_data_file(char *name);
+struct stat 	ls_get_data_file(char *name, int is_link);
 void			ls_print_mode(int st_mode);
 void			ls_print_option_l(char *name);
 
@@ -39,11 +39,13 @@ void			ls_print_time(const time_t t);
 
 int 			ls_major(int st_rdev);
 int 			ls_minor(int st_rdev);
+char			*ls_get_link(char *name);
 
 void			ls_print_stat_debug(struct stat file);
 void			ls_print_dirent_debug(struct dirent *dp); 
 void			ls_print_group_debug(struct group *group);
 void			ls_print_user_debug(struct passwd *user);
+void			ls_print_path(char *path, char *link);
 
 void			ls_error(char *str);
 
