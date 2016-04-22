@@ -88,4 +88,5 @@ void		ls_print_time(const time_t t)
 	ft_putchar(' ');
 	split[3][5] = '\0';
 	ft_putstr(split[3]);
+	ft_free_tab(split);
 }
