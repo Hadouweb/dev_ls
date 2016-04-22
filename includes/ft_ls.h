@@ -64,4 +64,5 @@ void			ls_option(char *opt, t_app *app);
 
 void			ls_lstsort(t_list **lst);
 
+void	ls_prepare_to_push(char *name, t_list **lst);
 #endif

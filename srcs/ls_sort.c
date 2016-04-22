@@ -49,9 +49,9 @@ void	ls_lstsort(t_list **lst)
 		while (l->next)
 		{
 			is_dir = ls_cmp_file_type(l, l->next);
-			if (is_dir > 0)
-				swap = ls_swap(l, l->next);
-			else if (ls_lstcmp(l, l->next) > 0 && is_dir == 0)
+			//if (is_dir > 0)
+			//	swap = ls_swap(l, l->next);
+			if (ls_lstcmp(l, l->next) > 0)
 				swap = ls_swap(l, l->next);
 			l = l->next;
 		}

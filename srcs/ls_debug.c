@@ -30,10 +30,10 @@ void	ls_debug_path(void *content)
 
 void	ls_print_dirent_debug(struct dirent *dp) 
 {
-	printf("%llu\n", dp->d_ino);
-	printf("%d\n", dp->d_reclen);
-	printf("%hhu\n", dp->d_type);
-	printf("%s\n", dp->d_name);
+	printf("d_ino : %llu\n", dp->d_ino);
+	printf("d_reclen : %d\n", dp->d_reclen);
+	printf("d_type : %hhu\n", dp->d_type);
+	printf("d_name : %s\n", dp->d_name);
 }
 
 void	ls_print_group_debug(struct group *group)
