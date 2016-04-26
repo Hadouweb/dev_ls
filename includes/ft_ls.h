@@ -33,7 +33,7 @@ typedef struct  	s_app
 	int 			size_lst;
 }					t_app;
 
-void			ls_print_folder(t_app *app, char *name, int opt);
+void			ls_print_folder(t_app *app, char *name);
 void			ls_error_errno(char *str);
 struct passwd	*ls_get_user_data(int uid);
 struct group	*ls_get_group_data(int gid);

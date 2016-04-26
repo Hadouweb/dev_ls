@@ -22,9 +22,26 @@ static void	ls_print_without_option(t_app *app)
 	{
 		path = (t_path*)l->content;
 		if (S_ISDIR(path->file.st_mode))
-			ls_print_folder(app, path->name, 0);
+			ls_print_folder(app, path->name);
 		else
 			ft_putendl(path->name);
+		l = l->next;
+	}
+}
+
+static void	ls_print_with_option_l(t_app *app)
+{
+	t_list	*l;
+	t_path	*path;
+
+	l = app->lst;
+	while (l)
+	{
+		path = (t_path*)l->content;
+		if (S_ISDIR(path->file.st_mode))
+			ls_print_folder(app, path->name);
+		else
+			ls_print_option_l(path->name);
 		l = l->next;
 	}
 }
@@ -32,7 +49,7 @@ static void	ls_print_without_option(t_app *app)
 void		ls_print_result(t_app *app)
 {
 	if (app->opt & OPT_l)
-		printf("option l\n");
+		ls_print_with_option_l(app);
 	else if (app->opt & OPT_R)
 		printf("option R\n");
 	else if (app->opt & OPT_a)

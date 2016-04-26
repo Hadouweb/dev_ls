@@ -59,7 +59,7 @@ void		ls_print_size(int st_size, int st_mode, int st_rdev)
 	}
 }
 
-static void	ls_print_month(char *m)
+/*static void	ls_print_month(char *m)
 {
 	m = (ft_strcmp(m, "Jan") == 0) ? ft_memmove(m, "jan", 3) : m;
 	m = (ft_strcmp(m, "Feb") == 0) ? ft_memmove(m, "fév", 4) : m;
@@ -74,7 +74,7 @@ static void	ls_print_month(char *m)
 	m = (ft_strcmp(m, "Nov") == 0) ? ft_memmove(m, "nov", 3) : m;
 	m = (ft_strcmp(m, "Dec") == 0) ? ft_memmove(m, "déc", 4) : m;
 	ft_putstr(m);
-}
+}*/
 
 void		ls_print_time(const time_t t)
 {
@@ -89,9 +89,9 @@ void		ls_print_time(const time_t t)
 	i = 0;
 	if (ft_strlen(split[2]) == 1)
 		ft_putchar(' ');
-	ft_putstr(split[2]);
+	ft_putstr(split[1]);
 	ft_putchar(' ');
-	ls_print_month(split[1]);
+	ft_putstr(split[2]);
 	ft_putchar(' ');
 	split[3][5] = '\0';
 	split[4][4] = '\0';

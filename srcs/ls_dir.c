@@ -48,7 +48,29 @@ void	ls_closedir(DIR *dir)
 		ls_error_errno("Error in ls_closedir ");
 }
 
-void	ls_print_folder_way(t_app *app, t_list **lst, char *dir, int opt)
+void		ls_print_option_l_folder(t_path *path)
+{
+	struct stat file;
+
+	file = path->file;
+	ls_print_mode(file.st_mode);
+	ls_print_physical_link(file.st_nlink);
+	ls_print_user_group(file.st_uid, file.st_gid);
+	ls_print_size(file.st_size, file.st_mode, file.st_rdev);
+	ls_print_time(file.st_mtime);
+	ls_print_path(path->name, path->link);
+	ft_putchar('\n');
+}
+
+void	ls_final_output(t_app *app, t_path *path)
+{
+	if (app->opt == 0)
+		ft_putendl(path->name);
+	else if (app->opt & OPT_l)
+		ls_print_option_l_folder(path);
+}
+
+void	ls_print_folder_way(t_app *app, t_list **lst, char *dir)
 {
 	t_list	*l;
 	t_list	*tmp;
@@ -65,7 +87,7 @@ void	ls_print_folder_way(t_app *app, t_list **lst, char *dir, int opt)
 	while (l)
 	{
 		path = (t_path*)l->content;
-		ft_putendl(path->name);
+		ls_final_output(app, path);
 		tmp = l;
 		l = l->next;
 		ft_strdel(&path->name);
@@ -76,7 +98,7 @@ void	ls_print_folder_way(t_app *app, t_list **lst, char *dir, int opt)
 	}
 }
 
-void	ls_print_folder(t_app *app, char *name, int opt)
+void	ls_print_folder(t_app *app, char *name)
 {
 	DIR		*dir;
 	char	*dir_path;
@@ -90,6 +112,6 @@ void	ls_print_folder(t_app *app, char *name, int opt)
 	dir = ls_opendir(dir_path);
 	ls_readdir(dir, &lst, dir_path);
 	ls_closedir(dir);
-	ls_print_folder_way(app, &lst, name, opt);
+	ls_print_folder_way(app, &lst, name);
 	ft_strdel(&dir_path);
 }
