@@ -15,4 +15,5 @@ void	ls_prepare_to_push(char *relativ_path, char *name, t_list **lst)
 	else
 		path->file = ls_get_data_file(relativ_path, 1);
 	ft_lstpush_back(lst, (void*)path, sizeof(t_path));
+	free(path);
 }

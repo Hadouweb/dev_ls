@@ -22,5 +22,6 @@ int		main(int ac, char **av)
 		ls_prepare_to_push(NULL, ".", &app.lst);
 	ls_lstsort(&app.lst);
 	ls_print_result(&app);
+	sleep(5);
 	return (0);
 }
