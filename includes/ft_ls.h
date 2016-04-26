@@ -26,10 +26,16 @@ typedef struct 		s_path
 
 }					t_path;
 
+typedef struct 		s_col
+{
+	int 			nbr_link;
+}					t_col;
+
 typedef struct  	s_app
 {
 	unsigned char	opt;
 	t_list			*lst;
+	t_col			col;
 	int 			size_lst;
 }					t_app;
 
