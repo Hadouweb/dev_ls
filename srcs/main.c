@@ -11,7 +11,7 @@ void	ls_print_without_option(t_app *app)
 	{
 		path = (t_path*)l->content;
 		if (S_ISDIR(path->file.st_mode))
-			ls_print_folder(path->name);
+			ls_print_folder(path->name, 0);
 		else
 			ft_putendl(path->name);
 		l = l->next;
@@ -48,13 +48,14 @@ int		main(int ac, char **av)
 		{
 			if (av[i][0] == '-')
 				ls_option(av[i], &app);
-			ls_prepare_to_push(av[i], &app.lst);
+			else
+				ls_prepare_to_push(NULL, av[i], &app.lst);
 			//ls_print_option_l(av[i]);
 			i++;
 		}
 	}
 	if (app.lst == NULL)
-		ls_prepare_to_push(".", &app.lst);
+		ls_prepare_to_push(NULL, ".", &app.lst);
 	ls_lstsort(&app.lst);
 	/*ft_lstprint(app.lst, ls_debug_path);
 	ls_lstsort(&app.lst);
