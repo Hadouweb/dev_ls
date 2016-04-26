@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls_dir.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:22:34 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/04/26 17:22:36 by nle-bret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 DIR		*ls_opendir(char *file)
 {
-	DIR 	*dir;
+	DIR		*dir;
 
 	errno = 0;
 	dir = opendir(file);
@@ -13,7 +25,7 @@ DIR		*ls_opendir(char *file)
 
 void	ls_readdir(DIR *dir, t_list **lst, char *origin)
 {
-	struct dirent 	*dp;
+	struct dirent	*dp;
 	char			*relativ_path;
 
 	errno = 0;
@@ -42,7 +54,7 @@ void	ls_print_folder_way(t_list **lst, char *dir, int opt)
 	t_list	*tmp;
 	t_path	*path;
 
-	l  = *lst;
+	l = *lst;
 	ls_lstsort(lst);
 	if (ft_strcmp(dir, ".") != 0)
 	{
@@ -62,13 +74,12 @@ void	ls_print_folder_way(t_list **lst, char *dir, int opt)
 		free(path);
 		free(tmp);
 	}
-	//ft_lstprint(*lst, ls_debug_path);
 }
 
 void	ls_print_folder(char *name, int opt)
 {
 	DIR		*dir;
-	char 	*dir_path;
+	char	*dir_path;
 	t_list	*lst;
 
 	lst = NULL;

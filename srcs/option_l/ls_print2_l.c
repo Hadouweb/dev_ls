@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ls_error.c                                         :+:      :+:    :+:   */
+/*   ls_print2_l.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/26 17:22:09 by nle-bret          #+#    #+#             */
-/*   Updated: 2016/04/26 17:22:10 by nle-bret         ###   ########.fr       */
+/*   Created: 2016/04/26 17:28:20 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/04/26 17:28:21 by nle-bret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ls_error_errno(char *str)
+void		ls_print_physical_link(int st_nlink)
 {
-	if (str != NULL)
-		perror(str);
-	else
-		perror("");
-	exit(1);
+	ft_putchar(' ');
+	ft_putnbr(st_nlink);
 }
 
-void	ls_error(char *str)
+void		ls_print_path(char *path, char *link)
 {
-	if (str != NULL)
-		ft_putendl_fd(str, 2);
-	else
-		ft_putendl_fd("Error", 2);
-	exit(1);
+	ft_putchar(' ');
+	ft_putstr(path);
+	if (link != NULL)
+	{
+		ft_putstr(" -> ");
+		ft_putstr(link);
+	}
 }

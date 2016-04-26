@@ -68,4 +68,6 @@ void	ls_prepare_to_push(char *relativ_path, char *name, t_list **lst);
 
 void	ls_print_result(t_app *app);
 
+void	ls_adjust_space(int max);
+
 #endif

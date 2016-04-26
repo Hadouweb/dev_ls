@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls_option_l.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:24:03 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/04/26 17:24:05 by nle-bret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
-void	ls_print_option_l(char *name)
+void		ls_print_option_l(char *name)
 {
 	struct stat file;
 	char		*link;
@@ -16,13 +28,12 @@ void	ls_print_option_l(char *name)
 	ls_print_time(file.st_mtime);
 	ls_print_path(name, link);
 	ft_putchar('\n');
-	//ls_print_stat_debug(file);
 }
 
-struct stat ls_get_data_file(char *name, int is_link)
+struct stat	ls_get_data_file(char *name, int is_link)
 {
-	struct stat file;
-	
+	struct stat	file;
+
 	errno = 0;
 	if (is_link)
 		lstat(name, &file);

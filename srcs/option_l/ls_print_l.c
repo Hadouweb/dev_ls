@@ -1,26 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls_print_l.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:24:10 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/04/26 17:24:11 by nle-bret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
-
-void		ls_print_physical_link(int st_nlink)
-{
-	ft_putchar(' ');
-	ft_putnbr(st_nlink);
-}
-
-void		ls_print_path(char *path, char *link)
-{
-	ft_putchar(' ');
-	ft_putstr(path);
-	if (link != NULL)
-	{
-		ft_putstr(" -> ");
-		ft_putstr(link);
-	}
-}
 
 void		ls_print_user_group(int st_uid, int st_gid)
 {
-	struct passwd *user;
-	struct group *group;
+	struct passwd	*user;
+	struct group	*group;
 
 	user = ls_get_user_data(st_uid);
 	ft_putchar(' ');
@@ -36,15 +31,6 @@ void		ls_print_user_group(int st_uid, int st_gid)
 	else
 		ft_putstr(group->gr_name);
 	ft_putchar(' ');
-}
-
-void		ls_adjust_space(int max)
-{
-	int		i;
-
-	i = 0;
-	while (i++ < max)
-		ft_putchar(' ');
 }
 
 void		ls_print_size(int st_size, int st_mode, int st_rdev)
@@ -95,7 +81,7 @@ void		ls_print_time(const time_t t)
 	char			*str_time;
 	char			**split;
 	int				i;
-	int 			dm;
+	int				dm;
 
 	dm = ls_diff_six_month(t);
 	str_time = ctime(&t);

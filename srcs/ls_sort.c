@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls_sort.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:19:51 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/04/26 17:19:52 by nle-bret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 int		ls_swap(t_list *a, t_list *b)
 {
 	char	*tmp;
-	
+
 	tmp = a->content;
 	a->content = b->content;
 	b->content = tmp;
@@ -49,8 +61,6 @@ void	ls_lstsort(t_list **lst)
 		while (l->next)
 		{
 			is_dir = ls_cmp_file_type(l, l->next);
-			//if (is_dir > 0)
-			//	swap = ls_swap(l, l->next);
 			if (ls_lstcmp(l, l->next) > 0)
 				swap = ls_swap(l, l->next);
 			l = l->next;

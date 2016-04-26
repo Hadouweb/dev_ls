@@ -23,6 +23,7 @@ SRC = 	$(SRCPATH)/main.c\
 		$(OPTION_L)/ls_option_l.c\
 		$(OPTION_L)/ls_mode.c\
 		$(OPTION_L)/ls_print_l.c\
+		$(OPTION_L)/ls_print2_l.c\
 		$(OPTION_L)/ls_util_l.c\
 
 OBJ = $(SRC:.c=.o)
