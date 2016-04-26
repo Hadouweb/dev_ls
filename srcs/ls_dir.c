@@ -48,26 +48,12 @@ void	ls_closedir(DIR *dir)
 		ls_error_errno("Error in ls_closedir ");
 }
 
-void		ls_print_option_l_folder(t_path *path)
-{
-	struct stat file;
-
-	file = path->file;
-	ls_print_mode(file.st_mode);
-	ls_print_physical_link(file.st_nlink);
-	ls_print_user_group(file.st_uid, file.st_gid);
-	ls_print_size(file.st_size, file.st_mode, file.st_rdev);
-	ls_print_time(file.st_mtime);
-	ls_print_path(path->name, path->link);
-	ft_putchar('\n');
-}
-
 void	ls_final_output(t_app *app, t_path *path)
 {
 	if (app->opt == 0)
 		ft_putendl(path->name);
 	else if (app->opt & OPT_l)
-		ls_print_option_l_folder(path);
+		ls_print_option_l(path);
 }
 
 void	ls_print_folder_way(t_app *app, t_list **lst, char *dir)

@@ -40,7 +40,7 @@ struct group	*ls_get_group_data(int gid);
 
 struct stat 	ls_get_data_file(char *name, int is_link);
 void			ls_print_mode(int st_mode);
-void			ls_print_option_l(char *name);
+void			ls_print_option_l(t_path *path);
 
 void			ls_print_physical_link(int st_nlink);
 void			ls_print_user_group(int st_uid, int st_gid);

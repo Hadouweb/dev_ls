@@ -12,21 +12,17 @@
 
 #include "ft_ls.h"
 
-void		ls_print_option_l(char *name)
+void		ls_print_option_l(t_path *path)
 {
 	struct stat file;
-	char		*link;
 
-	if ((link = ls_get_link(name)) == NULL)
-		file = ls_get_data_file(name, 0);
-	else
-		file = ls_get_data_file(name, 1);
+	file = path->file;
 	ls_print_mode(file.st_mode);
 	ls_print_physical_link(file.st_nlink);
 	ls_print_user_group(file.st_uid, file.st_gid);
 	ls_print_size(file.st_size, file.st_mode, file.st_rdev);
 	ls_print_time(file.st_mtime);
-	ls_print_path(name, link);
+	ls_print_path(path->name, path->link);
 	ft_putchar('\n');
 }
 
