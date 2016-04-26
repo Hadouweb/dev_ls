@@ -30,9 +30,10 @@ typedef struct  	s_app
 {
 	unsigned char	opt;
 	t_list			*lst;
+	int 			size_lst;
 }					t_app;
 
-void			ls_print_folder(char *name, int opt);
+void			ls_print_folder(t_app *app, char *name, int opt);
 void			ls_error_errno(char *str);
 struct passwd	*ls_get_user_data(int uid);
 struct group	*ls_get_group_data(int gid);
@@ -62,7 +63,8 @@ void			ls_error(char *str);
 
 void			ls_option(char *opt, t_app *app);
 
-void			ls_lstsort(t_list **lst);
+void			ls_lstsort_param(t_list **lst);
+void			ls_lstsort_folder(t_list **lst);
 
 void	ls_prepare_to_push(char *relativ_path, char *name, t_list **lst);
 

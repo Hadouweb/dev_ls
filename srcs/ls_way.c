@@ -22,7 +22,7 @@ static void	ls_print_without_option(t_app *app)
 	{
 		path = (t_path*)l->content;
 		if (S_ISDIR(path->file.st_mode))
-			ls_print_folder(path->name, 0);
+			ls_print_folder(app, path->name, 0);
 		else
 			ft_putendl(path->name);
 		l = l->next;

@@ -48,15 +48,15 @@ void	ls_closedir(DIR *dir)
 		ls_error_errno("Error in ls_closedir ");
 }
 
-void	ls_print_folder_way(t_list **lst, char *dir, int opt)
+void	ls_print_folder_way(t_app *app, t_list **lst, char *dir, int opt)
 {
 	t_list	*l;
 	t_list	*tmp;
 	t_path	*path;
 
+	ls_lstsort_folder(lst);
 	l = *lst;
-	ls_lstsort(lst);
-	if (ft_strcmp(dir, ".") != 0)
+	if (app->size_lst > 1)
 	{
 		ft_putchar('\n');
 		ft_putstr(dir);
@@ -76,7 +76,7 @@ void	ls_print_folder_way(t_list **lst, char *dir, int opt)
 	}
 }
 
-void	ls_print_folder(char *name, int opt)
+void	ls_print_folder(t_app *app, char *name, int opt)
 {
 	DIR		*dir;
 	char	*dir_path;
@@ -90,6 +90,6 @@ void	ls_print_folder(char *name, int opt)
 	dir = ls_opendir(dir_path);
 	ls_readdir(dir, &lst, dir_path);
 	ls_closedir(dir);
-	ls_print_folder_way(&lst, name, opt);
+	ls_print_folder_way(app, &lst, name, opt);
 	ft_strdel(&dir_path);
 }

@@ -26,13 +26,16 @@ int		main(int ac, char **av)
 			if (av[i][0] == '-')
 				ls_option(av[i], &app);
 			else
+			{
 				ls_prepare_to_push(NULL, av[i], &app.lst);
+				app.size_lst++;
+			}
 			i++;
 		}
 	}
 	if (app.lst == NULL)
 		ls_prepare_to_push(NULL, ".", &app.lst);
-	ls_lstsort(&app.lst);
+	ls_lstsort_param(&app.lst);
 	ls_print_result(&app);
 	return (0);
 }
