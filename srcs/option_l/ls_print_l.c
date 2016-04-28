@@ -12,25 +12,32 @@
 
 #include "ft_ls.h"
 
-void		ls_print_user_group(int st_uid, int st_gid)
+void		ls_prepare_user(t_prepa *p, int st_uid, t_app *app)
 {
 	struct passwd	*user;
-	struct group	*group;
+	int 			size;
 
 	user = ls_get_user_data(st_uid);
-	ft_putchar(' ');
 	if (user == NULL)
-		ft_putnbr(st_uid);
+		p->user = ft_itoa(st_uid);
 	else
-		ft_putstr(user->pw_name);
-	ft_putchar(' ');
+		p->user = user->pw_name;
+	if ((size = ft_strlen(p->user)) > app->ms.user)
+		app->ms.user = size;
+}
+
+void		ls_prepare_group(t_prepa *p, int st_gid, t_app *app)
+{
+	struct group	*group;
+	int 			size;
+
 	group = ls_get_group_data(st_gid);
-	ft_putchar(' ');
 	if (group == NULL)
-		ft_putnbr(st_gid);
+		p->group = ft_itoa(st_gid);
 	else
-		ft_putstr(group->gr_name);
-	ft_putchar(' ');
+		p->group = group->gr_name;
+	if ((size = ft_strlen(p->group)) > app->ms.group)
+		app->ms.group = size;
 }
 
 void		ls_print_size(int st_size, int st_mode, int st_rdev)

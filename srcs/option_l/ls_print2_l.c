@@ -12,10 +12,13 @@
 
 #include "ft_ls.h"
 
-void		ls_print_physical_link(int st_nlink)
+void		ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app)
 {
-	ft_putchar(' ');
-	ft_putnbr(st_nlink);
+	int		size;
+	
+	p->nb_link = ft_itoa(st_nlink);
+	if ((size = ft_strlen(p->nb_link)) > app->ms.nb_link)
+		app->ms.nb_link = size;
 }
 
 void		ls_print_path(char *path, char *link)

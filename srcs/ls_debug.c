@@ -28,12 +28,25 @@ void	ls_debug_path(void *content)
 	//ls_print_stat_debug(path->file);
 }
 
+void	ls_debug_max_size(t_app *app)
+{
+	printf("size nb_link : %d\n", app->ms.nb_link);
+	printf("size user : %d\n", app->ms.user);
+	printf("size group : %d\n", app->ms.group);
+	printf("size size : %d\n", app->ms.size);
+	printf("size time : %d\n", app->ms.time);
+	printf("size name : %d\n", app->ms.name);
+}
+
 void	ls_debug_prepared_data(void *content)
 {
 	t_prepa		*p;
 
 	p = (t_prepa*)content;
 	printf("Mode : %s\n", p->mode);
+	printf("nb link : %s\n", p->nb_link);
+	printf("user : %s\n", p->user);
+	printf("group : %s\n", p->group);
 }
 
 void	ls_print_dirent_debug(struct dirent *dp) 

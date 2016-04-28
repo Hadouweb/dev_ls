@@ -42,11 +42,22 @@ typedef struct  	s_prepa
 	char			*name;
 }					t_prepa;
 
+typedef struct 		s_max_size
+{
+	int				nb_link;
+	int				user;
+	int				group;
+	int				size;
+	int				time;
+	int				name;
+}					t_max_size;
+
 typedef struct  	s_app
 {
 	unsigned char	opt;
 	t_list			*lst;
 	t_list			*prepa;
+	t_max_size		ms;
 	t_col			col;
 	int 			size_lst;
 }					t_app;
@@ -61,8 +72,9 @@ struct stat 	ls_get_data_file(char *name, int is_link);
 void			ls_prepare_mode(t_prepa *p, int st_mode);
 void			ls_print_option_l(t_path *path);
 
-void			ls_print_physical_link(int st_nlink);
-void			ls_print_user_group(int st_uid, int st_gid);
+void			ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app);
+void			ls_prepare_user(t_prepa *p, int st_uid, t_app *app);
+void			ls_prepare_group(t_prepa *p, int st_gid, t_app *app);
 void			ls_print_size(int st_size, int st_mode, int st_rdev);
 void			ls_print_time(const time_t t);
 
@@ -78,6 +90,7 @@ void			ls_print_user_debug(struct passwd *user);
 void			ls_print_path(char *path, char *link);
 void			ls_debug_path(void *content);
 void			ls_debug_prepared_data(void *content);
+void			ls_debug_max_size(t_app *app);
 
 void			ls_error(char *str);
 

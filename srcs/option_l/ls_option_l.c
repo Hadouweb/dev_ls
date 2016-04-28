@@ -18,8 +18,8 @@ void		ls_print_option_l(t_path *path)
 
 	file = path->file;
 	//ls_print_mode(file.st_mode);
-	ls_print_physical_link(file.st_nlink);
-	ls_print_user_group(file.st_uid, file.st_gid);
+	//ls_print_physical_link(file.st_nlink);
+	//ls_print_user_group(file.st_uid, file.st_gid);
 	ls_print_size(file.st_size, file.st_mode, file.st_rdev);
 	ls_print_time(file.st_mtime);
 	ls_print_path(path->name, path->link);
