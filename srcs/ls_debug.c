@@ -28,6 +28,14 @@ void	ls_debug_path(void *content)
 	//ls_print_stat_debug(path->file);
 }
 
+void	ls_debug_prepared_data(void *content)
+{
+	t_prepa		*p;
+
+	p = (t_prepa*)content;
+	printf("Mode : %s\n", p->mode);
+}
+
 void	ls_print_dirent_debug(struct dirent *dp) 
 {
 	printf("d_ino : %llu\n", dp->d_ino);

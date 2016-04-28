@@ -41,9 +41,10 @@ static void	ls_print_with_option_l(t_app *app)
 		if (S_ISDIR(path->file.st_mode))
 			ls_print_folder(app, path->name);
 		else
-			ls_print_option_l(path);
+			ls_prepare_for_option_l(app, path);
 		l = l->next;
 	}
+	ft_lstprint(app->prepa, ls_debug_prepared_data);
 }
 
 void		ls_print_result(t_app *app)

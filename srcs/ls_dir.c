@@ -35,7 +35,7 @@ void	ls_readdir(DIR *dir, t_list **lst, char *origin)
 		if (errno != 0)
 			ls_error_errno("Error in ls_readdir ");
 		if (dp->d_name[0] != '.')
-			ls_prepare_to_push(relativ_path, dp->d_name, lst);
+			ls_prepare_file_data(relativ_path, dp->d_name, lst);
 		ft_strdel(&relativ_path);
 	}
 }

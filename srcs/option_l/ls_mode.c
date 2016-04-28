@@ -47,23 +47,20 @@ static void	ls_stickybit_suid(char *u, char *g, char *o, int st_mode)
 		*o = st_mode & S_ISVTX ? 'T' : *o;
 }
 
-void		ls_print_mode(int st_mode)
+void		ls_prepare_mode(t_prepa *p, int st_mode)
 {
-	char	str_mode[12];
-
-	ft_memset(str_mode, '-', 11);
-	str_mode[11] = '\0';
-	str_mode[0] = ls_get_file_type(st_mode);
-	str_mode[1] = st_mode & S_IRUSR ? 'r' : str_mode[1];
-	str_mode[2] = st_mode & S_IWUSR ? 'w' : str_mode[2];
-	str_mode[3] = st_mode & S_IXUSR ? 'x' : str_mode[3];
-	str_mode[4] = st_mode & S_IRGRP ? 'r' : str_mode[4];
-	str_mode[5] = st_mode & S_IWGRP ? 'w' : str_mode[5];
-	str_mode[6] = st_mode & S_IXGRP ? 'x' : str_mode[6];
-	str_mode[7] = st_mode & S_IROTH ? 'r' : str_mode[7];
-	str_mode[8] = st_mode & S_IWOTH ? 'w' : str_mode[8];
-	str_mode[9] = st_mode & S_IXOTH ? 'x' : str_mode[9];
-	ls_stickybit_suid(&str_mode[3], &str_mode[6], &str_mode[9], st_mode);
-	str_mode[10] = ' ';
-	ft_putstr(str_mode);
+	ft_memset(p->mode, '-', 11);
+	p->mode[11] = '\0';
+	p->mode[0] = ls_get_file_type(st_mode);
+	p->mode[1] = st_mode & S_IRUSR ? 'r' : p->mode[1];
+	p->mode[2] = st_mode & S_IWUSR ? 'w' : p->mode[2];
+	p->mode[3] = st_mode & S_IXUSR ? 'x' : p->mode[3];
+	p->mode[4] = st_mode & S_IRGRP ? 'r' : p->mode[4];
+	p->mode[5] = st_mode & S_IWGRP ? 'w' : p->mode[5];
+	p->mode[6] = st_mode & S_IXGRP ? 'x' : p->mode[6];
+	p->mode[7] = st_mode & S_IROTH ? 'r' : p->mode[7];
+	p->mode[8] = st_mode & S_IWOTH ? 'w' : p->mode[8];
+	p->mode[9] = st_mode & S_IXOTH ? 'x' : p->mode[9];
+	ls_stickybit_suid(&p->mode[3], &p->mode[6], &p->mode[9], st_mode);
+	p->mode[10] = ' ';
 }

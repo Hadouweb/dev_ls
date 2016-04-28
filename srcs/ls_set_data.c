@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void	ls_prepare_to_push(char *relativ_path, char *name, t_list **lst)
+void	ls_prepare_file_data(char *relativ_path, char *name, t_list **lst)
 {
 	t_path	*path;
 
@@ -27,4 +27,16 @@ void	ls_prepare_to_push(char *relativ_path, char *name, t_list **lst)
 		path->file = ls_get_data_file(relativ_path, 1);
 	ft_lstpush_back(lst, (void*)path, sizeof(t_path));
 	free(path);
+}
+
+void	ls_prepare_for_option_l(t_app *app, t_path *path)
+{
+	t_prepa 	*p;
+
+	if ((p = (t_prepa*)ft_memalloc(sizeof(t_prepa))) == NULL)
+		ls_error("Error: malloc");
+	//Prepare
+	ls_prepare_mode(p, path->file.st_mode);
+	ft_lstpush_back(&app->prepa, (void*)p, sizeof(t_prepa));
+	free(p);
 }
