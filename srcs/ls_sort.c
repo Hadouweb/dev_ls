@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-int		ls_swap(t_list *a, t_list *b)
+static int	ls_swap(t_list *a, t_list *b)
 {
 	char	*tmp;
 
@@ -22,7 +22,7 @@ int		ls_swap(t_list *a, t_list *b)
 	return (1);
 }
 
-int		ls_lstcmp(t_list *a, t_list *b)
+static int	ls_lstcmp(t_list *a, t_list *b)
 {
 	t_path	*path_a;
 	t_path	*path_b;
@@ -32,7 +32,7 @@ int		ls_lstcmp(t_list *a, t_list *b)
 	return (ft_strcmp(path_a->name, path_b->name));
 }
 
-int		ls_cmp_file_type(t_list *a, t_list *b)
+static int	ls_cmp_file_type(t_list *a, t_list *b)
 {
 	t_path	*path_a;
 	t_path	*path_b;
@@ -48,7 +48,7 @@ int		ls_cmp_file_type(t_list *a, t_list *b)
 	return (0);
 }
 
-void	ls_lstsort_param(t_list **lst)
+void		ls_sort_param(t_list **lst)
 {
 	t_list	*l;
 	int		swap;
@@ -74,7 +74,7 @@ void	ls_lstsort_param(t_list **lst)
 	}
 }
 
-void	ls_lstsort_folder(t_list **lst)
+void		ls_sort_folder(t_list **lst)
 {
 	t_list	*l;
 	int		swap;

@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void		ls_prepare_user(t_prepa *p, int st_uid, t_app *app)
+void		ls_set_user(t_prepa *p, int st_uid, t_app *app)
 {
 	struct passwd	*user;
 	int 			size;
@@ -26,7 +26,7 @@ void		ls_prepare_user(t_prepa *p, int st_uid, t_app *app)
 		app->ms.user = size;
 }
 
-void		ls_prepare_group(t_prepa *p, int st_gid, t_app *app)
+void		ls_set_group(t_prepa *p, int st_gid, t_app *app)
 {
 	struct group	*group;
 	int 			size;
@@ -40,7 +40,7 @@ void		ls_prepare_group(t_prepa *p, int st_gid, t_app *app)
 		app->ms.group = size;
 }
 
-void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
+void		ls_set_size(t_prepa *p, struct stat file, t_app *app)
 {
 	int		nbr;
 	int		size;
@@ -53,7 +53,7 @@ void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
 		nbr = ls_minor(file.st_rdev);
 		p->minor = ft_itoa(nbr);
 		p->size = NULL;
-		if ((size = 7) > app->ms.size)
+		if ((size = 8) > app->ms.size)
 			app->ms.size = size;
 	}
 	else
@@ -61,7 +61,7 @@ void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
 		p->size = ft_itoa(file.st_size);
 		p->major = NULL;
 		p->minor = NULL;
-		if ((size = ft_strlen(p->size) + 1) > app->ms.size)
+		if ((size = ft_strlen(p->size)) > app->ms.size)
 			app->ms.size = size;
 	}
 }
@@ -83,7 +83,7 @@ void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
 	ft_putstr(m);
 }*/
 
-void		ls_prepare_time(t_prepa *p, const time_t t, t_app *app)
+void		ls_set_time(t_prepa *p, const time_t t, t_app *app)
 {
 	char			*str_time;
 	char			**split;

@@ -24,18 +24,18 @@ crw-rw-rw-  1 root      wheel        25,   0 Apr 26 09:33 dtracehelper
 crw-rw-rw-  1 root      wheel         0,   0 Apr 26 09:33 fbt
 dr-xr-xr-x  1 root      wheel              0 Apr 26 09:33 fd
 crw-r--r--  1 root      wheel        10,   0 Apr 26 09:33 fsevents
-crw-rw-rw-  1 root      wheel        14,  18 Apr 28 17:12 io8log
-cr--r--r--  1 root      wheel        14,  10 Apr 26 09:33 io8logmt
-crw-rw-rw-  1 root      wheel        14,  19 Apr 28 17:13 io8logtemp
+crw-rw-rw-  1 root      wheel        14,  19 Apr 28 18:04 io8log
+cr--r--r--  1 root      wheel        14,  17 Apr 26 09:33 io8logmt
+crw-rw-rw-  1 root      wheel        14,  18 Apr 28 18:05 io8logtemp
 crw-------  1 root      wheel         6,   0 Apr 26 09:33 klog
 crw-rw-rw-  1 root      wheel         0,   0 Apr 26 09:33 lockstat
 crw-rw-rw-  1 root      wheel         0,   0 Apr 26 09:33 machtrace
-crw-rw-rw-  1 root      wheel         3,   2 Apr 28 18:00 null
+crw-rw-rw-  1 root      wheel         3,   2 Apr 28 18:48 null
 crw-------  1 root      wheel         9,   0 Apr 26 09:33 pf
 crw-------  1 root      wheel         9,   1 Apr 26 09:33 pfm
 crw-------  1 root      operator     20,   0 Apr 26 09:33 pmCPU
 crw-rw-rw-  1 root      wheel         0,   0 Apr 26 09:33 profile
-crw-rw-rw-  1 root      tty          15,   2 Apr 28 18:00 ptmx
+crw-rw-rw-  1 root      tty          15,   1 Apr 28 18:48 ptmx
 crw-rw-rw-  1 root      wheel         5,   0 Apr 26 09:33 ptyp0
 crw-rw-rw-  1 root      wheel         5,   1 Apr 26 09:33 ptyp1
 crw-rw-rw-  1 root      wheel         5,   2 Apr 26 09:33 ptyp2
@@ -164,7 +164,7 @@ crw-rw-rw-  1 root      wheel         5, 124 Apr 26 09:33 ptywc
 crw-rw-rw-  1 root      wheel         5, 125 Apr 26 09:33 ptywd
 crw-rw-rw-  1 root      wheel         5, 126 Apr 26 09:33 ptywe
 crw-rw-rw-  1 root      wheel         5, 127 Apr 26 09:33 ptywf
-crw-rw-rw-  1 root      wheel        11,   0 Apr 28 17:54 random
+crw-rw-rw-  1 root      wheel        11,   0 Apr 28 18:44 random
 crw-r-----  1 root      operator      1,   0 Apr 26 09:33 rdisk0
 crw-r-----  1 root      operator      1,   1 Apr 26 09:33 rdisk0s1
 crw-r-----  1 root      operator      1,   5 Apr 26 09:33 rdisk0s2
@@ -227,8 +227,7 @@ crw-rw-rw-  1 root      wheel         4,  45 Apr 26 09:33 ttyrd
 crw-rw-rw-  1 root      wheel         4,  46 Apr 26 09:33 ttyre
 crw-rw-rw-  1 root      wheel         4,  47 Apr 26 09:33 ttyrf
 crw-rw-rw-  1 root      wheel         4,  48 Apr 26 09:33 ttys0
-crw--w----  1 nle-bret  tty          16,   0 Apr 28 17:54 ttys000
-crw--w----  1 nle-bret  tty          16,   1 Apr 28 18:00 ttys001
+crw--w----  1 nle-bret  tty          16,   0 Apr 28 18:48 ttys000
 crw-rw-rw-  1 root      wheel         4,  49 Apr 26 09:33 ttys1
 crw-rw-rw-  1 root      wheel         4,  50 Apr 26 09:33 ttys2
 crw-rw-rw-  1 root      wheel         4,  51 Apr 26 09:33 ttys3

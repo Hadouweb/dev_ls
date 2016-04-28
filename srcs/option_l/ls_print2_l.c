@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void		ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app)
+void		ls_set_nb_link(t_prepa *p, int st_nlink, t_app *app)
 {
 	int		size;
 
@@ -21,7 +21,7 @@ void		ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app)
 		app->ms.nb_link = size;
 }
 
-void		ls_prepare_path(t_prepa *p, char *path, char *link, t_app *app)
+void		ls_set_path(t_prepa *p, char *path, char *link, t_app *app)
 {
 	int		size;
 

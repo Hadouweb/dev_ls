@@ -67,7 +67,7 @@ void		ls_print_adjust_size(t_prepa *p, t_app *app)
 	}
 	else
 	{
-		ls_print_adjust_space_left(p->major, 2);
+		ls_print_adjust_space_left(p->major, 3);
 		ft_putchar(',');
 		ls_print_adjust_space_left(p->minor, 3);
 	}
@@ -88,7 +88,7 @@ void		ls_print_option_l(t_app *app)
 		ls_print_adjust_space_left(p->nb_link, app->ms.nb_link);
 		ft_putchar(' ');
 		ls_print_adjust_space_right(p->user, app->ms.user + 1);
-		ls_print_adjust_space_right(p->group, app->ms.group);
+		ls_print_adjust_space_right(p->group, app->ms.group - 1);
 		ls_print_adjust_size(p, app);
 		ls_print_adjust_space_left(p->time, app->ms.time);
 		ft_putchar(' ');

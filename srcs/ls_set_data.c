@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void	ls_prepare_file_data(char *rpath, char *name, t_list **lst, t_app *app)
+void	ls_set_file_data(char *rpath, char *name, t_list **lst, t_app *app)
 {
 	t_path	*path;
 
@@ -30,19 +30,37 @@ void	ls_prepare_file_data(char *rpath, char *name, t_list **lst, t_app *app)
 	free(path);
 }
 
-void	ls_prepare_for_option_l(t_app *app, t_path *path)
+void	ls_set_option_l(t_app *app, t_path *path)
 {
 	t_prepa 	*p;
 
 	if ((p = (t_prepa*)ft_memalloc(sizeof(t_prepa))) == NULL)
 		ls_error("Error: malloc");
-	ls_prepare_mode(p, path->file.st_mode);
-	ls_prepare_nb_link(p, path->file.st_nlink, app);
-	ls_prepare_user(p, path->file.st_uid, app);
-	ls_prepare_group(p, path->file.st_gid, app);
-	ls_prepare_size(p, path->file, app);
-	ls_prepare_time(p, path->file.st_mtime, app);
-	ls_prepare_path(p, path->name, path->link, app);
+	ls_set_mode(p, path->file.st_mode);
+	ls_set_nb_link(p, path->file.st_nlink, app);
+	ls_set_user(p, path->file.st_uid, app);
+	ls_set_group(p, path->file.st_gid, app);
+	ls_set_size(p, path->file, app);
+	ls_set_time(p, path->file.st_mtime, app);
+	ls_set_path(p, path->name, path->link, app);
 	ft_lstpush_back(&app->prepa, (void*)p, sizeof(t_prepa));
 	free(p);
+}
+
+void	ls_set_folder(t_app *app, char *name)
+{
+	DIR		*dir;
+	char	*dir_path;
+	t_list	*lst;
+
+	lst = NULL;
+	if (name[ft_strlen(name) - 1] != '/')
+		dir_path = ft_stradd_char(&name, '/');
+	else
+		dir_path = ft_strdup(name);
+	dir = ls_opendir(dir_path);
+	ls_readdir(dir, &lst, dir_path, app);
+	ls_closedir(dir);
+	ls_print_folder(app, &lst, name);
+	ft_strdel(&dir_path);
 }

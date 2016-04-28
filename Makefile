@@ -12,13 +12,14 @@ HEADER = -I $(LIBFT)/includes -I $(INCPATH)
 LIB = -L$(LIBFT) -lft
 
 SRC = 	$(SRCPATH)/main.c\
-		$(SRCPATH)/ls_dir.c\
+		$(SRCPATH)/ls_util_dir.c\
 		$(SRCPATH)/ls_error.c\
-		$(SRCPATH)/ls_get_user_group.c\
+		$(SRCPATH)/ls_get_data.c\
 		$(SRCPATH)/ls_debug.c\
-		$(SRCPATH)/ls_parse_option.c\
+		$(SRCPATH)/ls_option.c\
 		$(SRCPATH)/ls_sort.c\
-		$(SRCPATH)/ls_way.c\
+		$(SRCPATH)/ls_print_result.c\
+		$(SRCPATH)/ls_print_folder.c\
 		$(SRCPATH)/ls_set_data.c\
 		$(OPTION_L)/ls_option_l.c\
 		$(OPTION_L)/ls_mode.c\
