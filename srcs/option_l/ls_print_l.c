@@ -53,10 +53,8 @@ void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
 		nbr = ls_minor(file.st_rdev);
 		p->minor = ft_itoa(nbr);
 		p->size = NULL;
-		if ((size = ft_strlen(p->major)) > app->ms.major)
-			app->ms.major = size;
-		if ((size = ft_strlen(p->minor)) > app->ms.minor)
-			app->ms.minor = size;
+		if ((size = 7) > app->ms.size)
+			app->ms.size = size;
 	}
 	else
 	{

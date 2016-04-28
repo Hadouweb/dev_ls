@@ -50,8 +50,6 @@ typedef struct 		s_max_size
 	int				user;
 	int				group;
 	int				size;
-	int				major;
-	int				minor;
 	int				time;
 	int				name;
 	int				total_folder;
