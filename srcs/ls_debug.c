@@ -34,6 +34,8 @@ void	ls_debug_max_size(t_app *app)
 	printf("size user : %d\n", app->ms.user);
 	printf("size group : %d\n", app->ms.group);
 	printf("size size : %d\n", app->ms.size);
+	printf("size major : %d\n", app->ms.major);
+	printf("size minor : %d\n", app->ms.minor);
 	printf("size time : %d\n", app->ms.time);
 	printf("size name : %d\n", app->ms.name);
 }

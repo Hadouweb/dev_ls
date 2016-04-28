@@ -38,6 +38,8 @@ typedef struct  	s_prepa
 	char			*user;
 	char			*group;
 	char			*size;
+	char			*major;
+	char			*minor;
 	char			*time;
 	char			*name;
 }					t_prepa;
@@ -48,6 +50,8 @@ typedef struct 		s_max_size
 	int				user;
 	int				group;
 	int				size;
+	int				major;
+	int				minor;
 	int				time;
 	int				name;
 }					t_max_size;
@@ -75,7 +79,7 @@ void			ls_print_option_l(t_path *path);
 void			ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app);
 void			ls_prepare_user(t_prepa *p, int st_uid, t_app *app);
 void			ls_prepare_group(t_prepa *p, int st_gid, t_app *app);
-void			ls_print_size(int st_size, int st_mode, int st_rdev);
+void			ls_prepare_size(t_prepa *p, struct stat file, t_app *app);
 void			ls_print_time(const time_t t);
 
 int 			ls_major(int st_rdev);

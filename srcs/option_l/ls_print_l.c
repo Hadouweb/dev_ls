@@ -40,29 +40,31 @@ void		ls_prepare_group(t_prepa *p, int st_gid, t_app *app)
 		app->ms.group = size;
 }
 
-void		ls_print_size(int st_size, int st_mode, int st_rdev)
+void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
 {
 	int		nbr;
 	int		size;
 
 	nbr = 0;
-	size = 0;
-	if (S_ISCHR(st_mode) || S_ISBLK(st_mode))
+	if (S_ISCHR(file.st_mode) || S_ISBLK(file.st_mode))
 	{
-		nbr = ls_major(st_rdev);
-		ls_adjust_space(4 - ft_intlen(nbr));
-		ft_putnbr(nbr);
-		ft_putchar(',');
-		nbr = ls_minor(st_rdev);
-		ls_adjust_space(4 - ft_intlen(nbr));
-		ft_putnbr(nbr);
-		ft_putchar(' ');
+		nbr = ls_major(file.st_rdev);
+		p->major = ft_itoa(nbr);
+		nbr = ls_minor(file.st_rdev);
+		p->minor = ft_itoa(nbr);
+		p->size = NULL;
+		if ((size = ft_strlen(p->major)) > app->ms.major)
+			app->ms.major = size;
+		if ((size = ft_strlen(p->minor)) > app->ms.minor)
+			app->ms.minor = size;
 	}
 	else
 	{
-		ft_putchar(' ');
-		ft_putnbr(st_size);
-		ft_putchar(' ');
+		p->size = ft_itoa(file.st_size);
+		p->major = NULL;
+		p->minor = NULL;
+		if ((size = ft_strlen(p->size)) > app->ms.size)
+			app->ms.size = size;
 	}
 }
 

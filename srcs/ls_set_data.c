@@ -39,6 +39,7 @@ void	ls_prepare_for_option_l(t_app *app, t_path *path)
 	ls_prepare_nb_link(p, path->file.st_nlink, app);
 	ls_prepare_user(p, path->file.st_uid, app);
 	ls_prepare_group(p, path->file.st_gid, app);
+	ls_prepare_size(p, path->file, app);
 	ft_lstpush_back(&app->prepa, (void*)p, sizeof(t_prepa));
 	free(p);
 }
