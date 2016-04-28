@@ -12,11 +12,39 @@
 
 #include "ft_ls.h"
 
-void		ls_print_option_l(t_path *path)
+void		ls_print_adjust_space(char *str, int size)
 {
-	struct stat file;
+	int		i;
 
-	file = path->file;
+	i = ft_strlen(str) - 1;
+	while (i < size)
+	{
+		ft_putchar(' ');
+		i++;
+	}
+	ft_putstr(str);
+}
+
+void		ls_print_option_l(t_app *app)
+{
+	t_list	*l;
+
+	l = app->prepa;
+	while (l)
+	{
+		t_prepa		*p;
+
+		p = (t_prepa*)l->content;
+		ft_putstr(p->mode);
+		ls_print_adjust_space(p->nb_link, app->ms.nb_link);
+		ls_print_adjust_space(p->user, app->ms.user);
+		ls_print_adjust_space(p->group, app->ms.group);
+		ls_print_adjust_space(p->size, app->ms.size);
+		ls_print_adjust_space(p->time, app->ms.time);
+		ls_print_adjust_space(p->name, app->ms.name);
+		ft_putchar('\n');
+		l = l->next;
+	}
 	//ls_print_mode(file.st_mode);
 	//ls_print_physical_link(file.st_nlink);
 	//ls_print_user_group(file.st_uid, file.st_gid);

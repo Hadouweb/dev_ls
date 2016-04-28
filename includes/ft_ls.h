@@ -74,7 +74,7 @@ void			ls_prepare_for_option_l(t_app *app, t_path *path);
 
 struct stat 	ls_get_data_file(char *name, int is_link);
 void			ls_prepare_mode(t_prepa *p, int st_mode);
-void			ls_print_option_l(t_path *path);
+void			ls_print_option_l(t_app *app);
 
 void			ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app);
 void			ls_prepare_user(t_prepa *p, int st_uid, t_app *app);

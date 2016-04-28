@@ -36,7 +36,7 @@ void		ls_prepare_group(t_prepa *p, int st_gid, t_app *app)
 		p->group = ft_itoa(st_gid);
 	else
 		p->group = group->gr_name;
-	if ((size = ft_strlen(p->group)) > app->ms.group)
+	if ((size = ft_strlen(p->group) + 1) > app->ms.group)
 		app->ms.group = size;
 }
 
@@ -63,7 +63,7 @@ void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
 		p->size = ft_itoa(file.st_size);
 		p->major = NULL;
 		p->minor = NULL;
-		if ((size = ft_strlen(p->size)) > app->ms.size)
+		if ((size = ft_strlen(p->size) + 1) > app->ms.size)
 			app->ms.size = size;
 	}
 }

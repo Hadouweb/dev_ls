@@ -53,7 +53,7 @@ void	ls_final_output(t_app *app, t_path *path)
 	if (app->opt == 0)
 		ft_putendl(path->name);
 	else if (app->opt & OPT_l)
-		ls_print_option_l(path);
+		ls_prepare_for_option_l(app, path);
 }
 
 void	ls_print_folder_way(t_app *app, t_list **lst, char *dir)

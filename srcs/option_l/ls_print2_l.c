@@ -25,7 +25,7 @@ void		ls_prepare_path(t_prepa *p, char *path, char *link, t_app *app)
 {
 	int		size;
 
-	p->name = path;
+	p->name = ft_strdup(path);
 	if (link != NULL)
 	{
 		p->name = ft_strjoin_free_s1(p->name, " -> ");
