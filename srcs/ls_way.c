@@ -37,15 +37,19 @@ static void	ls_print_with_option_l(t_app *app)
 	l = app->lst;
 	while (l)
 	{
-		ft_bzero(&app->ms, sizeof(t_max_size));
 		path = (t_path*)l->content;
 		if (S_ISDIR(path->file.st_mode))
+		{
+			ls_print_option_l(app);
+			ft_bzero(&app->ms, sizeof(t_max_size));
 			ls_print_folder(app, path->name);
+			ls_print_option_l(app);
+		}
 		else
 			ls_prepare_for_option_l(app, path);
-		ls_print_option_l(app);
 		l = l->next;
 	}
+	ls_print_option_l(app);
 	//ft_lstprint(app->prepa, ls_debug_prepared_data);
 	//ls_debug_max_size(app);
 }
