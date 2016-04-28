@@ -81,6 +81,7 @@ void			ls_prepare_user(t_prepa *p, int st_uid, t_app *app);
 void			ls_prepare_group(t_prepa *p, int st_gid, t_app *app);
 void			ls_prepare_size(t_prepa *p, struct stat file, t_app *app);
 void			ls_prepare_time(t_prepa *p, const time_t t, t_app *app);
+void			ls_prepare_path(t_prepa *p, char *path, char *link, t_app *app);
 
 int 			ls_major(int st_rdev);
 int 			ls_minor(int st_rdev);
@@ -91,7 +92,6 @@ void			ls_print_stat_debug(struct stat file);
 void			ls_print_dirent_debug(struct dirent *dp); 
 void			ls_print_group_debug(struct group *group);
 void			ls_print_user_debug(struct passwd *user);
-void			ls_print_path(char *path, char *link);
 void			ls_debug_path(void *content);
 void			ls_debug_prepared_data(void *content);
 void			ls_debug_max_size(t_app *app);

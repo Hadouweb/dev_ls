@@ -41,6 +41,7 @@ void	ls_prepare_for_option_l(t_app *app, t_path *path)
 	ls_prepare_group(p, path->file.st_gid, app);
 	ls_prepare_size(p, path->file, app);
 	ls_prepare_time(p, path->file.st_mtime, app);
+	ls_prepare_path(p, path->name, path->link, app);
 	ft_lstpush_back(&app->prepa, (void*)p, sizeof(t_prepa));
 	free(p);
 }

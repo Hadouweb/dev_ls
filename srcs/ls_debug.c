@@ -50,6 +50,7 @@ void	ls_debug_prepared_data(void *content)
 	printf("user : %s\n", p->user);
 	printf("group : %s\n", p->group);
 	printf("time : %s\n", p->time);
+	printf("name : %s\n", p->name);
 }
 
 void	ls_print_dirent_debug(struct dirent *dp) 

@@ -15,19 +15,22 @@
 void		ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app)
 {
 	int		size;
-	
+
 	p->nb_link = ft_itoa(st_nlink);
 	if ((size = ft_strlen(p->nb_link)) > app->ms.nb_link)
 		app->ms.nb_link = size;
 }
 
-void		ls_print_path(char *path, char *link)
+void		ls_prepare_path(t_prepa *p, char *path, char *link, t_app *app)
 {
-	ft_putchar(' ');
-	ft_putstr(path);
+	int		size;
+
+	p->name = path;
 	if (link != NULL)
 	{
-		ft_putstr(" -> ");
-		ft_putstr(link);
+		p->name = ft_strjoin_free_s1(p->name, " -> ");
+		p->name = ft_strjoin_free_s1(p->name, link);
 	}
+	if ((size = ft_strlen(p->name)) > app->ms.name)
+		app->ms.name = size;
 }
