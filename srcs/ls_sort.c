@@ -60,7 +60,7 @@ void	ls_lstsort_param(t_list **lst)
 		swap = 0;
 		l = *lst;
 		is_dir = 0;
-		while (l->next)
+		while (l && l->next)
 		{
 			is_dir = ls_cmp_file_type(l, l->next);
 			if (is_dir == 1)
@@ -86,7 +86,7 @@ void	ls_lstsort_folder(t_list **lst)
 		swap = 0;
 		l = *lst;
 		is_dir = 0;
-		while (l->next)
+		while (l && l->next)
 		{
 			if (ls_lstcmp(l, l->next) > 0)
 				swap = ls_swap(l, l->next);

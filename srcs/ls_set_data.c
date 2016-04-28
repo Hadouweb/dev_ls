@@ -15,7 +15,6 @@
 void	ls_prepare_to_push(char *relativ_path, char *name, t_list **lst)
 {
 	t_path	*path;
-	char	*link;
 
 	if (relativ_path == NULL)
 		relativ_path = name;

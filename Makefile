@@ -1,4 +1,4 @@
-cCC = clang -Werror -Wextra -Wall -g
+CC = clang -Werror -Wextra -Wall -g
 
 SRCPATH = ./srcs
 OPTION_L = $(SRCPATH)/option_l
