@@ -54,6 +54,7 @@ typedef struct 		s_max_size
 	int				minor;
 	int				time;
 	int				name;
+	int				total_folder;
 }					t_max_size;
 
 typedef struct  	s_app
@@ -103,7 +104,7 @@ void			ls_option(char *opt, t_app *app);
 void			ls_lstsort_param(t_list **lst);
 void			ls_lstsort_folder(t_list **lst);
 
-void	ls_prepare_file_data(char *relativ_path, char *name, t_list **lst);
+void	ls_prepare_file_data(char *rpath, char *name, t_list **lst, t_app *app);
 
 void	ls_print_result(t_app *app);
 

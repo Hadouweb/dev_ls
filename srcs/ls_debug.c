@@ -14,8 +14,7 @@ void	ls_print_stat_debug(struct stat file)
 	printf("st_blocks : %lld\n", file.st_blocks);   /* Nombre de blocs alloués */
 	printf("st_atime : %ld\n", file.st_atime);    /* Heure dernier accès */
 	printf("st_mtime : %ld\n", file.st_mtime);    /* Heure dernière modification */
-	printf("st_ctime : %ld\n", file.st_ctime);    /* Heure dernier changement état */
-	printf("__%d\n", S_IFMT);
+	printf("st_ctime : %ld\n\n", file.st_ctime);    /* Heure dernier changement état */
 }
 
 void	ls_debug_path(void *content)
@@ -58,7 +57,7 @@ void	ls_print_dirent_debug(struct dirent *dp)
 	printf("d_ino : %llu\n", dp->d_ino);
 	printf("d_reclen : %d\n", dp->d_reclen);
 	printf("d_type : %hhu\n", dp->d_type);
-	printf("d_name : %s\n", dp->d_name);
+	printf("d_name : %s\n\n", dp->d_name);
 }
 
 void	ls_print_group_debug(struct group *group)

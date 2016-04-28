@@ -23,7 +23,7 @@ DIR		*ls_opendir(char *file)
 	return (dir);
 }
 
-void	ls_readdir(DIR *dir, t_list **lst, char *origin)
+void	ls_readdir(DIR *dir, t_list **lst, char *origin, t_app *app)
 {
 	struct dirent	*dp;
 	char			*relativ_path;
@@ -35,8 +35,9 @@ void	ls_readdir(DIR *dir, t_list **lst, char *origin)
 		if (errno != 0)
 			ls_error_errno("Error in ls_readdir ");
 		if (dp->d_name[0] != '.')
-			ls_prepare_file_data(relativ_path, dp->d_name, lst);
+			ls_prepare_file_data(relativ_path, dp->d_name, lst, app);
 		ft_strdel(&relativ_path);
+		//ls_print_dirent_debug(dp);
 	}
 }
 
@@ -70,6 +71,9 @@ void	ls_print_folder_way(t_app *app, t_list **lst, char *dir)
 		ft_putstr(dir);
 		ft_putendl(":");
 	}
+	ft_putstr("total ");
+	ft_putnbr(app->ms.total_folder);
+	ft_putchar('\n');
 	while (l)
 	{
 		path = (t_path*)l->content;
@@ -96,7 +100,7 @@ void	ls_print_folder(t_app *app, char *name)
 	else
 		dir_path = ft_strdup(name);
 	dir = ls_opendir(dir_path);
-	ls_readdir(dir, &lst, dir_path);
+	ls_readdir(dir, &lst, dir_path, app);
 	ls_closedir(dir);
 	ls_print_folder_way(app, &lst, name);
 	ft_strdel(&dir_path);

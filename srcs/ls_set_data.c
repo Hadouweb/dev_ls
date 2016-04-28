@@ -12,19 +12,20 @@
 
 #include "ft_ls.h"
 
-void	ls_prepare_file_data(char *relativ_path, char *name, t_list **lst)
+void	ls_prepare_file_data(char *rpath, char *name, t_list **lst, t_app *app)
 {
 	t_path	*path;
 
-	if (relativ_path == NULL)
-		relativ_path = name;
+	if (rpath == NULL)
+		rpath = name;
 	if ((path = (t_path*)ft_memalloc(sizeof(t_path))) == NULL)
 		ls_error("Error: malloc");
 	path->name = ft_strdup(name);
-	if ((path->link = ls_get_link(relativ_path)) == NULL)
-		path->file = ls_get_data_file(relativ_path, 0);
+	if ((path->link = ls_get_link(rpath)) == NULL)
+		path->file = ls_get_data_file(rpath, 0);
 	else
-		path->file = ls_get_data_file(relativ_path, 1);
+		path->file = ls_get_data_file(rpath, 1);
+	app->ms.total_folder += path->file.st_blocks;
 	ft_lstpush_back(lst, (void*)path, sizeof(t_path));
 	free(path);
 }

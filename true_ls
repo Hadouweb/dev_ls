@@ -3,35 +3,35 @@
 -rwxr-xr-x  1 nle-bret  2015_paris    9 Apr 26 15:53 auteur
 
 libft:
-total 198
+total 196
 -rw-r--r--   1 nle-bret  2015_paris   3087 Apr 28 13:28 Makefile
 -rw-r--r--   1 nle-bret  2015_paris    152 Apr 26 15:53 README.md
 -rw-r--r--   1 nle-bret  2015_paris      9 Apr 26 15:53 auteur
 drwxr-xr-x   2 nle-bret  2015_paris   4096 Apr 26 15:53 includes
--rw-r--r--   1 nle-bret  2015_paris  88216 Apr 28 13:29 libft.a
-drwxr-xr-x  10 nle-bret  2015_paris   4096 Apr 28 12:35 srcs
+-rw-r--r--   1 nle-bret  2015_paris  87104 Apr 28 15:47 libft.a
+drwxr-xr-x  10 nle-bret  2015_paris   4096 Apr 28 15:47 srcs
 
 srcs:
-total 175
--rw-r--r--  1 nle-bret  2015_paris   3096 Apr 28 13:36 ls_debug.c
--rw-r--r--  1 nle-bret  2015_paris  11380 Apr 28 13:36 ls_debug.o
--rw-r--r--  1 nle-bret  2015_paris   2538 Apr 28 13:40 ls_dir.c
--rw-r--r--  1 nle-bret  2015_paris  10076 Apr 28 13:40 ls_dir.o
+total 176
+-rw-r--r--  1 nle-bret  2015_paris   3073 Apr 28 15:41 ls_debug.c
+-rw-r--r--  1 nle-bret  2015_paris  11360 Apr 28 15:47 ls_debug.o
+-rw-r--r--  1 nle-bret  2015_paris   2666 Apr 28 15:49 ls_dir.c
+-rw-r--r--  1 nle-bret  2015_paris  10224 Apr 28 15:49 ls_dir.o
 -rw-r--r--  1 nle-bret  2015_paris   1128 Apr 26 17:22 ls_error.c
--rw-r--r--  1 nle-bret  2015_paris   2740 Apr 28 12:35 ls_error.o
+-rw-r--r--  1 nle-bret  2015_paris   2740 Apr 28 15:47 ls_error.o
 -rw-r--r--  1 nle-bret  2015_paris   1323 Apr 26 17:21 ls_get_user_group.c
--rw-r--r--  1 nle-bret  2015_paris   3872 Apr 28 12:35 ls_get_user_group.o
+-rw-r--r--  1 nle-bret  2015_paris   3872 Apr 28 15:47 ls_get_user_group.o
 -rw-r--r--  1 nle-bret  2015_paris    760 Apr 26 16:19 ls_group.o
 -rw-r--r--  1 nle-bret  2015_paris   1668 Apr 26 16:19 ls_option.o
 -rw-r--r--  1 nle-bret  2015_paris   1659 Apr 26 17:21 ls_parse_option.c
--rw-r--r--  1 nle-bret  2015_paris   4764 Apr 28 12:35 ls_parse_option.o
--rw-r--r--  1 nle-bret  2015_paris   1947 Apr 28 14:48 ls_set_data.c
--rw-r--r--  1 nle-bret  2015_paris   7828 Apr 28 14:49 ls_set_data.o
+-rw-r--r--  1 nle-bret  2015_paris   4828 Apr 28 15:47 ls_parse_option.o
+-rw-r--r--  1 nle-bret  2015_paris   1964 Apr 28 15:47 ls_set_data.c
+-rw-r--r--  1 nle-bret  2015_paris   7916 Apr 28 15:47 ls_set_data.o
 -rw-r--r--  1 nle-bret  2015_paris   2426 Apr 28 11:25 ls_sort.c
--rw-r--r--  1 nle-bret  2015_paris   7432 Apr 28 12:35 ls_sort.o
+-rw-r--r--  1 nle-bret  2015_paris   7432 Apr 28 15:47 ls_sort.o
 -rw-r--r--  1 nle-bret  2015_paris    760 Apr 26 16:19 ls_user.o
--rw-r--r--  1 nle-bret  2015_paris   1998 Apr 28 15:28 ls_way.c
--rw-r--r--  1 nle-bret  2015_paris   7464 Apr 28 15:28 ls_way.o
--rw-r--r--  1 nle-bret  2015_paris   1344 Apr 28 15:18 main.c
--rw-r--r--  1 nle-bret  2015_paris   4020 Apr 28 15:19 main.o
-drwxr-xr-x  2 nle-bret  2015_paris   4096 Apr 28 15:17 option_l
+-rw-r--r--  1 nle-bret  2015_paris   1998 Apr 28 15:37 ls_way.c
+-rw-r--r--  1 nle-bret  2015_paris   7488 Apr 28 15:47 ls_way.o
+-rw-r--r--  1 nle-bret  2015_paris   1356 Apr 28 15:47 main.c
+-rw-r--r--  1 nle-bret  2015_paris   4044 Apr 28 15:47 main.o
+drwxr-xr-x  2 nle-bret  2015_paris   4096 Apr 28 15:47 option_l
