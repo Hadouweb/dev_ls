@@ -1,7 +1,6 @@
 #ifndef FT_LS_H
 # define FT_LS_H
 
-# include "libft.h"
 # include <sys/types.h>
 # include <dirent.h>
 # include <errno.h>
@@ -11,6 +10,7 @@
 # include <grp.h>
 # include <time.h>
 # include <stdio.h>
+# include "libft.h"
 
 # define OPT_l 0x01
 # define OPT_R 0x02
@@ -106,8 +106,8 @@ void			ls_lstsort_folder(t_list **lst);
 
 void	ls_prepare_file_data(char *rpath, char *name, t_list **lst, t_app *app);
 
-void	ls_print_result(t_app *app);
+void			ls_print_result(t_app *app);
 
-void	ls_adjust_space(int max);
+void		ls_adjust_space(int max);
 
 #endif
