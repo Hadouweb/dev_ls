@@ -25,9 +25,31 @@ void		ls_print_adjust_space(char *str, int size)
 	ft_putstr(str);
 }
 
+void		ls_clear_node_prepared(t_list *node)
+{
+	t_prepa		*p;
+
+	p = (t_prepa*)node->content;
+	ft_strdel(&p->nb_link);
+	if (p->size != NULL)
+		ft_strdel(&p->size);
+	else
+	{
+		ft_strdel(&p->major);
+		ft_strdel(&p->minor);
+	}
+	ft_strdel(&p->time);
+	ft_strdel(&p->name);
+	free(p);
+	p = NULL;
+	free(node);
+	node = NULL;
+}
+
 void		ls_print_option_l(t_app *app)
 {
 	t_list	*l;
+	t_list	*tmp;
 
 	l = app->prepa;
 	while (l)
@@ -44,14 +66,11 @@ void		ls_print_option_l(t_app *app)
 		ft_putchar(' ');
 		ft_putstr(p->name);
 		ft_putchar('\n');
+		tmp = l;
 		l = l->next;
+		ls_clear_node_prepared(tmp);
 	}
-	//ls_print_mode(file.st_mode);
-	//ls_print_physical_link(file.st_nlink);
-	//ls_print_user_group(file.st_uid, file.st_gid);
-	//ls_print_size(file.st_size, file.st_mode, file.st_rdev);
-	//ls_print_time(file.st_mtime);
-	//ls_print_path(path->name, path->link);
+	app->prepa = NULL;
 	ft_putchar('\n');
 }
 
