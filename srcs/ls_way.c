@@ -47,7 +47,7 @@ static void	ls_print_with_option_l(t_app *app)
 		l = l->next;
 	}
 	//ft_lstprint(app->prepa, ls_debug_prepared_data);
-	ls_debug_max_size(app);
+	//ls_debug_max_size(app);
 }
 
 void		ls_print_result(t_app *app)

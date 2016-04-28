@@ -41,7 +41,8 @@ void		ls_print_option_l(t_app *app)
 		ls_print_adjust_space(p->group, app->ms.group);
 		ls_print_adjust_space(p->size, app->ms.size);
 		ls_print_adjust_space(p->time, app->ms.time);
-		ls_print_adjust_space(p->name, app->ms.name);
+		ft_putchar(' ');
+		ft_putstr(p->name);
 		ft_putchar('\n');
 		l = l->next;
 	}

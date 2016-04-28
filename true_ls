@@ -1,62 +1,14 @@
-Makefile
-auteur
-
-.:
-Makefile
-auteur
-ft_ls
-includes
-libft
-my_ls
-srcs
-test_ls
-true_ls
-
-.:
-Makefile
-auteur
-ft_ls
-includes
-libft
-my_ls
-srcs
-test_ls
-true_ls
-
-..:
-dev_ls
-
-includes:
-ft_ls.h
-
-libft:
-Makefile
-README.md
-auteur
-includes
-libft.a
-srcs
-
-srcs:
-ls_debug.c
-ls_debug.o
-ls_dir.c
-ls_dir.o
-ls_error.c
-ls_error.o
-ls_get_user_group.c
-ls_get_user_group.o
-ls_group.o
-ls_option.o
-ls_parse_option.c
-ls_parse_option.o
-ls_set_data.c
-ls_set_data.o
-ls_sort.c
-ls_sort.o
-ls_user.o
-ls_way.c
-ls_way.o
-main.c
-main.o
-option_l
+total 28
+-rwxr-xr-x  1 nle-bret  2015_paris     0 Apr 26 15:53 fichier
+-rwxr-xr-x  1 nle-bret  2015_paris     0 Apr 26 15:53 fichié
+drwxr-xr-x  2 nle-bret  2015_paris  4096 Apr 26 15:53 folder
+-rw-r--r--  1 nle-bret  2015_paris     6 Apr 26 15:53 link
+-rw-r--r--  1 nle-bret  2015_paris     6 Apr 26 15:53 link_src
+-rw-r--r--  1 nle-bret  2015_paris     6 Apr 26 15:53 link_src2
+-rwxr-xr-x  1 nle-bret  2015_paris     0 Apr 26 15:53 no_access
+drwxr-xr-x  2 nle-bret  2015_paris  4096 Apr 26 15:53 sort
+drwxr-xr-x  2 nle-bret  2015_paris  4096 Apr 26 15:53 special_mode
+lrwxrwxrwx  1 nle-bret  2015_paris    10 Apr 26 15:53 test2 -> folder/lol
+-rwxr-xr-x  1 nle-bret  2015_paris     0 Apr 26 15:53 test_༄
+-rwxr-xr-x  1 nle-bret  2015_paris     0 Apr 26 15:53 ༠
+-rwxr-xr-x  1 nle-bret  2015_paris     0 Apr 26 15:53 ༠༡༢༣༤༥༦༧༨༩༪༫༬༭༮

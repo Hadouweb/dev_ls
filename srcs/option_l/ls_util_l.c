@@ -25,12 +25,13 @@ int		ls_minor(int st_rdev)
 char	*ls_get_link(char *name)
 {
 	char		buf[1024];
+	int			nb_char;
 
 	errno = 0;
-	readlink(name, buf, 1025);
-	if (errno != 0)
+	nb_char = readlink(name, buf, 1025);
+	if (errno != 0 || nb_char == -1)
 		return (NULL);
-	return (ft_strdup(buf));
+	return (ft_strndup(buf, nb_char));
 }
 
 int		ls_diff_six_month(time_t t)
