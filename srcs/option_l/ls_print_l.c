@@ -85,31 +85,27 @@ void		ls_prepare_size(t_prepa *p, struct stat file, t_app *app)
 	ft_putstr(m);
 }*/
 
-void		ls_print_time(const time_t t)
+void		ls_prepare_time(t_prepa *p, const time_t t, t_app *app)
 {
 	char			*str_time;
 	char			**split;
-	int				i;
 	int				dm;
+	int				size;
 
 	dm = ls_diff_six_month(t);
 	str_time = ctime(&t);
 	split = ft_strsplit(str_time, ' ');
-	i = 0;
-	if (ft_strlen(split[2]) == 1)
-		ft_putchar(' ');
-	ft_putstr(split[1]);
-	ft_putchar(' ');
-	ft_putstr(split[2]);
-	ft_putchar(' ');
+	p->time = ft_strdup(split[1]);
+	p->time = ft_strjoin_free_s1(p->time, " ");
+	p->time = ft_strjoin_free_s1(p->time, split[2]);
+	p->time = ft_strjoin_free_s1(p->time, " ");
 	split[3][5] = '\0';
 	split[4][4] = '\0';
 	if (dm)
-	{
-		ft_putchar(' ');
-		ft_putstr(split[4]);
-	}
+		p->time = ft_strjoin_free_s1(p->time, split[4]);
 	else
-		ft_putstr(split[3]);
+		p->time = ft_strjoin_free_s1(p->time, split[3]);
 	ft_free_tab(split);
+	if ((size = ft_strlen(p->time)) > app->ms.time)
+		app->ms.time = size;
 }

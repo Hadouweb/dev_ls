@@ -80,7 +80,7 @@ void			ls_prepare_nb_link(t_prepa *p, int st_nlink, t_app *app);
 void			ls_prepare_user(t_prepa *p, int st_uid, t_app *app);
 void			ls_prepare_group(t_prepa *p, int st_gid, t_app *app);
 void			ls_prepare_size(t_prepa *p, struct stat file, t_app *app);
-void			ls_print_time(const time_t t);
+void			ls_prepare_time(t_prepa *p, const time_t t, t_app *app);
 
 int 			ls_major(int st_rdev);
 int 			ls_minor(int st_rdev);

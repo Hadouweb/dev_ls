@@ -49,6 +49,7 @@ void	ls_debug_prepared_data(void *content)
 	printf("nb link : %s\n", p->nb_link);
 	printf("user : %s\n", p->user);
 	printf("group : %s\n", p->group);
+	printf("time : %s\n", p->time);
 }
 
 void	ls_print_dirent_debug(struct dirent *dp) 
