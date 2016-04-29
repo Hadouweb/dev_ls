@@ -18,7 +18,6 @@ void		ls_print_folder(t_app *app, t_list **lst, char *dir)
 	l = *lst;
 	if (app->size_lst > 1)
 	{
-		ft_putchar('\n');
 		ft_putstr(dir);
 		ft_putendl(":");
 	}

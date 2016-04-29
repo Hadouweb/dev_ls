@@ -25,6 +25,8 @@ static void	ls_print_without_option(t_app *app)
 			ls_set_folder(app, path->name);
 		else
 			ft_putendl(path->name);
+		if (l->next)
+			ft_putchar('\n');
 		l = l->next;
 	}
 }
