@@ -103,7 +103,7 @@ struct passwd	*ls_get_user_data(int uid);
 struct group	*ls_get_group_data(int gid);
 void			ls_set_for_option_l(t_app *app, t_path *path);
 
-struct stat 	ls_get_data_file(char *name, int is_link);
+int				ls_get_data_file(char *name, int is_link, struct stat *file);
 void			ls_set_mode(t_prepa *p, int st_mode);
 void			ls_print_option_l(t_app *app);
 

@@ -100,17 +100,3 @@ void		ls_print_option_l(t_app *app)
 	}
 	app->prepa = NULL;
 }
-
-struct stat	ls_get_data_file(char *name, int is_link)
-{
-	struct stat	file;
-
-	errno = 0;
-	if (is_link)
-		lstat(name, &file);
-	else
-		stat(name, &file);
-	if (errno != 0)
-		ls_error_errno("Error in ft_get_data_file ");
-	return (file);
-}

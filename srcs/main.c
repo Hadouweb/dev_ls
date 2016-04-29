@@ -16,20 +16,24 @@ int		main(int ac, char **av)
 {
 	int		i;
 	t_app	app;
+	int		end_option;
 
 	i = 1;
+	end_option = 0;
 	ft_bzero(&app, sizeof(t_app));
 	if (ac > 1)
 	{
 		while (i < ac)
 		{
-			if (av[i][0] == '-')
+			if (av[i][0] == '-' && ft_strlen(av[i]) > 1 && !end_option)
 				ls_option(av[i], &app);
 			else
 			{
 				ls_set_file_data(NULL, av[i], &app.lst, &app);
 				app.size_lst++;
 			}
+			if (ft_strcmp(av[i], "--") == 0 || ft_strcmp(av[i], "-") == 0)
+				end_option = 1;
 			i++;
 		}
 	}

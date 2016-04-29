@@ -16,13 +16,13 @@ static void	ls_check_option(char *opt)
 {
 	int		i;
 
-	if (ft_strcmp("-", opt) == 0)
-		ls_error("ft_ls: -: No such file or directory");
 	i = 1;
+	if (ft_strcmp(opt, "--") == 0)
+		return;
 	while (opt[i])
 	{
 		if (opt[i] != 'l' && opt[i] != 'R' && opt[i] != 'a' && opt[i] != 't'
-			&& opt[i] != 'r')
+			&& opt[i] != 'r' && opt[i] != '1')
 		{
 			ft_putstr_fd("ls: illegal option -- ", 2);
 			ft_putchar_fd(opt[i], 2);

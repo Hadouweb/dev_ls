@@ -15,18 +15,21 @@
 void	ls_set_file_data(char *rpath, char *name, t_list **lst, t_app *app)
 {
 	t_path	*path;
+	int		ret;
 
+	ret = -1;
 	if (rpath == NULL)
 		rpath = name;
 	if ((path = (t_path*)ft_memalloc(sizeof(t_path))) == NULL)
 		ls_error("Error: malloc");
 	path->name = ft_strdup(name);
 	if ((path->link = ls_get_link(rpath)) == NULL)
-		path->file = ls_get_data_file(rpath, 0);
+		ret = ls_get_data_file(rpath, 0, &path->file);
 	else
-		path->file = ls_get_data_file(rpath, 1);
+		ret = ls_get_data_file(rpath, 1, &path->file);
 	app->ms.total_folder += path->file.st_blocks;
-	ft_lstpush_back(lst, (void*)path, sizeof(t_path));
+	if (ret == 0)
+		ft_lstpush_back(lst, (void*)path, sizeof(t_path));
 	free(path);
 }
 

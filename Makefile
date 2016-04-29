@@ -1,4 +1,4 @@
-CC = clang -Werror -Wextra -Wall -g
+CC = gcc -Werror -Wextra -Wall -g
 
 SRCPATH = ./srcs
 OPTION_L = $(SRCPATH)/option_l
@@ -31,10 +31,12 @@ OBJ = $(SRC:.c=.o)
 
 NAME = ft_ls
 
-all : $(NAME)
+all : dep $(NAME)
+	
+dep : 
+	make -C $(LIBFT)
 
 $(NAME) : $(OBJ)
-	@make -C $(LIBFT)
 	@$(CC) $(HEADER) $(LIB) $(OBJ) -o $(NAME)
 	@echo "\n\033[39mCompilation done.\033[0m"
 
@@ -44,11 +46,11 @@ $(NAME) : $(OBJ)
 
 clean : 
 	@make -C $(LIBFT) clean
-	@rm -rf $(OBJ)
+	rm -rf $(OBJ)
 
 fclean : clean
 	@make -C $(LIBFT) fclean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re : fclean all
 

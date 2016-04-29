@@ -33,3 +33,21 @@ struct group	*ls_get_group_data(int gid)
 		;//ls_error_errno("Error in ls_get_group_data ");
 	return (group);
 }
+
+int		ls_get_data_file(char *name, int is_link, struct stat *file)
+{
+	int			ret;
+
+	errno = 0;
+	ret = -1;
+	if (is_link)
+		ret = lstat(name, file);
+	else
+		ret = stat(name, file);
+	if (errno != 0)
+	{
+		ft_putstr("ls: ");
+		perror(name);
+	}
+	return (ret);
+}

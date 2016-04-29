@@ -34,7 +34,7 @@ void	ls_readdir(DIR *dir, t_list **lst, char *origin, t_app *app)
 		relativ_path = ft_strjoin(origin, dp->d_name);
 		if (errno != 0)
 			ls_error_errno("Error in ls_readdir ");
-		if (dp->d_name[0] != '.')
+		if (dp->d_name[0] != '.' || app->opt & OPT_a)
 			ls_set_file_data(relativ_path, dp->d_name, lst, app);
 		ft_strdel(&relativ_path);
 	}

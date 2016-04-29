@@ -22,9 +22,12 @@ void		ls_print_folder(t_app *app, t_list **lst, char *dir)
 		ft_putstr(dir);
 		ft_putendl(":");
 	}
-	ft_putstr("total ");
-	ft_putnbr(app->ms.total_folder);
-	ft_putchar('\n');
+	if (app->opt & OPT_l)
+	{
+		ft_putstr("total ");
+		ft_putnbr(app->ms.total_folder);
+		ft_putchar('\n');
+	}
 	while (l)
 	{
 		path = (t_path*)l->content;
