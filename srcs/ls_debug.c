@@ -24,7 +24,7 @@ void	ls_debug_path(void *content)
 	path = (t_path*)content;
 	printf("\nname : %s\n", path->name);
 	printf("link : %s\n", path->link);
-	//ls_print_stat_debug(path->file);
+	ls_print_stat_debug(path->file);
 }
 
 void	ls_debug_max_size(t_app *app)

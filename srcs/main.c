@@ -37,7 +37,7 @@ int		main(int ac, char **av)
 			i++;
 		}
 	}
-	if (app.lst == NULL)
+	if (app.size_lst == 0)
 		ls_set_file_data(NULL, ".", &app.lst, &app);
 	ls_sort_param(&app.lst);
 	ls_print_result(&app);

@@ -2,7 +2,7 @@
 
 static void	ls_final_output_folder(t_app *app, t_path *path)
 {
-	if (app->opt == 0)
+	if (app->opt == 0 || app->opt == OPT_a)
 		ft_putendl(path->name);
 	else if (app->opt & OPT_l)
 		ls_set_option_l(app, path);

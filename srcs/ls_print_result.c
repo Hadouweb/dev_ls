@@ -62,7 +62,7 @@ void		ls_print_result(t_app *app)
 	else if (app->opt & OPT_R)
 		printf("option R\n");
 	else if (app->opt & OPT_a)
-		printf("option a\n");
+		ls_print_without_option(app);
 	else if (app->opt & OPT_t)
 		printf("option t\n");
 	else if (app->opt & OPT_r)
