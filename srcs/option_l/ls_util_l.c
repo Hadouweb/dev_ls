@@ -45,12 +45,3 @@ int		ls_diff_six_month(time_t t)
 		return (1);
 	return (0);
 }
-
-void	ls_adjust_space(int max)
-{
-	int		i;
-
-	i = 0;
-	while (i++ < max)
-		ft_putchar(' ');
-}

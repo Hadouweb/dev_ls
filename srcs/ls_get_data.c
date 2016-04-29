@@ -34,7 +34,7 @@ struct group	*ls_get_group_data(int gid)
 	return (group);
 }
 
-int		ls_get_data_file(char *name, int is_link, struct stat *file)
+int			ls_get_data_file(char *name, int is_link, struct stat *file)
 {
 	int			ret;
 
