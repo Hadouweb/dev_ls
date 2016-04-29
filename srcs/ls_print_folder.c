@@ -2,7 +2,7 @@
 
 static void	ls_final_output_folder(t_app *app, t_path *path)
 {
-	if (app->opt == 0 || app->opt == OPT_a)
+	if (app->opt == 0 || app->opt == OPT_a || app->opt == OPT_t)
 		ft_putendl(path->name);
 	else if (app->opt & OPT_l)
 		ls_set_option_l(app, path);
@@ -14,7 +14,7 @@ void		ls_print_folder(t_app *app, t_list **lst, char *dir)
 	t_list	*tmp;
 	t_path	*path;
 
-	ls_sort_folder(lst);
+	ls_sort_folder(app, lst);
 	l = *lst;
 	if (app->size_lst > 1)
 	{

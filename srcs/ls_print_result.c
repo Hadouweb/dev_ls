@@ -12,6 +12,16 @@
 
 #include "ft_ls.h"
 
+static int	ls_next_node_is_folder(t_list *node)
+{
+	t_path	*path;
+
+	path = (t_path*)node->content;
+	if (S_ISDIR(path->file.st_mode))
+		return (1);
+	return (0);
+}
+
 static void	ls_print_without_option(t_app *app)
 {
 	t_list	*l;
@@ -22,10 +32,12 @@ static void	ls_print_without_option(t_app *app)
 	{
 		path = (t_path*)l->content;
 		if (S_ISDIR(path->file.st_mode))
+		{
 			ls_set_folder(app, path->name);
+		}
 		else
 			ft_putendl(path->name);
-		if (l->next)
+		if (l->next && ls_next_node_is_folder(l->next))
 			ft_putchar('\n');
 		l = l->next;
 	}
@@ -63,8 +75,6 @@ void		ls_print_result(t_app *app)
 		printf("option R\n");
 	else if (app->opt & OPT_a)
 		ls_print_without_option(app);
-	else if (app->opt & OPT_t)
-		printf("option t\n");
 	else if (app->opt & OPT_r)
 		printf("option r\n");
 	else

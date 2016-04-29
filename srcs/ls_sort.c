@@ -12,23 +12,45 @@
 
 #include "ft_ls.h"
 
-static int	ls_swap(t_list *a, t_list *b)
-{
-	char	*tmp;
-
-	tmp = a->content;
-	a->content = b->content;
-	b->content = tmp;
-	return (1);
-}
-
-static int	ls_lstcmp(t_list *a, t_list *b)
+void		ls_debug_swap(t_list *a, t_list *b)
 {
 	t_path	*path_a;
 	t_path	*path_b;
 
 	path_a = (t_path*)a->content;
 	path_b = (t_path*)b->content;
+	printf("SWAP [%s %s]\n", path_a->name, path_b->name);
+}
+
+static int	ls_swap(t_list *a, t_list *b)
+{
+	char	*tmp;
+
+	//ls_debug_swap(a, b);
+	tmp = a->content;
+	a->content = b->content;
+	b->content = tmp;
+	return (1);
+}
+
+static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
+{
+	t_path	*path_a;
+	t_path	*path_b;
+
+	path_a = (t_path*)a->content;
+	path_b = (t_path*)b->content;
+	if (app->opt & OPT_t)
+	{
+		if (path_b->file.st_mtime - path_a->file.st_mtime == 0)
+		{
+			if (!S_ISDIR(path_a->file.st_mode) && S_ISDIR(path_b->file.st_mode))
+				return (-1);
+			else
+				return (ft_strcmp(path_a->name, path_b->name));
+		}
+		return (path_b->file.st_mtime - path_a->file.st_mtime);
+	}
 	return (ft_strcmp(path_a->name, path_b->name));
 }
 
@@ -48,7 +70,7 @@ static int	ls_cmp_file_type(t_list *a, t_list *b)
 	return (0);
 }
 
-void		ls_sort_param(t_list **lst)
+void		ls_sort_param(t_app *app, t_list **lst)
 {
 	t_list	*l;
 	int		swap;
@@ -65,7 +87,7 @@ void		ls_sort_param(t_list **lst)
 			is_dir = ls_cmp_file_type(l, l->next);
 			if (is_dir == 1)
 				swap = ls_swap(l, l->next);
-			else if (ls_lstcmp(l, l->next) > 0 && is_dir == -1)
+			else if (ls_lstcmp(l, l->next, app) > 0 && is_dir == -1)
 				swap = ls_swap(l, l->next);
 			l = l->next;
 		//	ft_lstprint(*lst, ls_debug_path);
@@ -74,7 +96,7 @@ void		ls_sort_param(t_list **lst)
 	}
 }
 
-void		ls_sort_folder(t_list **lst)
+void		ls_sort_folder(t_app *app, t_list **lst)
 {
 	t_list	*l;
 	int		swap;
@@ -88,7 +110,7 @@ void		ls_sort_folder(t_list **lst)
 		is_dir = 0;
 		while (l && l->next)
 		{
-			if (ls_lstcmp(l, l->next) > 0)
+			if (ls_lstcmp(l, l->next, app) > 0)
 				swap = ls_swap(l, l->next);
 			l = l->next;
 		//	ft_lstprint(*lst, ls_debug_path);

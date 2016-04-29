@@ -69,8 +69,8 @@ DIR				*ls_opendir(char *file);
 void			ls_readdir(DIR *dir, t_list **lst, char *origin, t_app *app);
 void			ls_closedir(DIR *dir);
 
-void			ls_sort_param(t_list **lst);
-void			ls_sort_folder(t_list **lst);
+void			ls_sort_param(t_app *app, t_list **lst);
+void			ls_sort_folder(t_app *app, t_list **lst);
 
 void			ls_set_file_data(char *rpath, char *name, t_list **lst, t_app *app);
 void			ls_set_option_l(t_app *app, t_path *path);
