@@ -1,6 +1,6 @@
 CC = gcc -Werror -Wextra -Wall -g
 
-SRCPATH = ./srcs
+SRCPATH = ./src
 OPTION_L = $(SRCPATH)/option_l
 
 INCPATH = ./includes
