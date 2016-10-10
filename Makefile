@@ -5,11 +5,12 @@ OPTION_L = $(SRCPATH)/option_l
 
 INCPATH = ./includes
 
-LIBFT = ./libft
+LIBFTPATH = ./libft
 
-HEADER = -I $(LIBFT)/includes -I $(INCPATH)
+HEADER = -I $(LIBFTPATH)/includes -I $(INCPATH)
 
-LIB = -L$(LIBFT) -lft
+LIB = -L$(LIBFTPATH) -lft
+LIBNAME = libft/libft.a
 
 SRC = 	$(SRCPATH)/main.c\
 		$(SRCPATH)/ls_util_dir.c\
@@ -31,27 +32,27 @@ OBJ = $(SRC:.c=.o)
 
 NAME = ft_ls
 
-all : dep $(NAME)
-	
-dep : 
-	make -C $(LIBFT)
+all: $(NAME)
 
-$(NAME) : $(OBJ)
-	@$(CC) $(HEADER) $(LIB) $(OBJ) -o $(NAME)
+$(NAME): $(LIBNAME) $(OBJ)
+	@$(CC) -o $@ $(LIB) $^
 	@echo "\n\033[39mCompilation done.\033[0m"
 
+$(LIBNAME):
+	make -C $(LIBFTPATH)
+
 %.o: %.c
-	@$(CC) $(HEADER) -o $@ -c $<
+	@$(CC) -o $@ -c $< $(HEADER)
 	@echo "\033[34m█\033[0m\c"
 
-clean : 
-	@make -C $(LIBFT) clean
-	rm -rf $(OBJ)
+clean: 
+	@make -C $(LIBFTPATH) clean
+	@rm -rf $(OBJ)
 
-fclean : clean
-	@make -C $(LIBFT) fclean
-	rm -rf $(NAME)
+fclean: clean
+	@make -C $(LIBFTPATH) fclean
+	@rm -rf $(NAME)
 
-re : fclean all
+re: fclean all
 
 .PHONY: all clean fclean re
