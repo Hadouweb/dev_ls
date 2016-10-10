@@ -18,6 +18,7 @@ int		main(int ac, char **av)
 	t_app	app;
 	int		end_option;
 
+
 	i = 1;
 	end_option = 0;
 	ft_bzero(&app, sizeof(t_app));

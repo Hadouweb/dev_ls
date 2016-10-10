@@ -33,6 +33,20 @@ static int	ls_swap(t_list *a, t_list *b)
 	return (1);
 }
 
+void		TEST(time_t now) 
+{
+    struct tm *tm;
+
+    if ((tm = localtime (&now)) == NULL) {
+        printf ("Error extracting time stuff\n");
+        //return;
+    }
+
+       printf ("%04d-%02d-%02d %02d:%02d:%02d\n",
+        tm->tm_year+1900, tm->tm_mon+1, tm->tm_mday,
+        tm->tm_hour, tm->tm_min, tm->tm_sec);
+}
+
 static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 {
 	t_path	*path_a;
@@ -42,12 +56,21 @@ static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 	path_b = (t_path*)b->content;
 	if (app->opt & OPT_t)
 	{
+		//TEST(path_b->file.st_mtime);
 		if (path_b->file.st_mtime - path_a->file.st_mtime == 0)
 		{
+			//TEST(path_b->file.st_mtime);
+			//TEST(path_a->file.st_mtime);
 			if (!S_ISDIR(path_a->file.st_mode) && S_ISDIR(path_b->file.st_mode))
 				return (-1);
-			else
-				return (ft_strcmp(path_a->name, path_b->name));
+			else {
+				printf("%s : %s", path_b->name, path_a->name);
+				printf("%d\n", ft_strcmp(path_a->name, path_b->name));
+				//printf("\n\n");
+				if (ft_strcmp(path_b->name, path_a->name) < 0)
+					return 1;
+				return (ft_strcmp(path_b->name, path_a->name));
+			}
 		}
 		return (path_b->file.st_mtime - path_a->file.st_mtime);
 	}
