@@ -67,9 +67,9 @@ static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 				printf("%s : %s", path_b->name, path_a->name);
 				printf("%d\n", ft_strcmp(path_a->name, path_b->name));
 				//printf("\n\n");
-				if (ft_strcmp(path_b->name, path_a->name) < 0)
+				if (ft_strcmp(path_a->name, path_b->name) < 0)
 					return 1;
-				return (ft_strcmp(path_b->name, path_a->name));
+				//return (ft_strcmp(path_b->name, path_a->name));
 			}
 		}
 		return (path_b->file.st_mtime - path_a->file.st_mtime);
