@@ -3,3 +3,4 @@ libft.a
 *.o
 *._
 CMakeLists.txt
+*.idea
