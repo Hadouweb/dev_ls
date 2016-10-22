@@ -56,19 +56,19 @@ static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 	path_a = (t_path*)a->content;
 	path_b = (t_path*)b->content;
 
-	TEST(path_b->file);
-
 	t1 = 0;
-	t1 = ((t1 << 64) | path_a->file.st_mtimespec.tv_nsec) | path_a->file.st_mode;
-	t2 = 0;
-	t2 = ((t2 << 64) | path_a->file.st_mtimespec.tv_nsec) | path_a->file.st_mode;
-	printf("%lld\n", (long long)(t1));
-	printf("%ld\n", path_a->file.st_mtimespec.tv_nsec);
-	printf("%hu\n", path_a->file.st_mode);
+	t1 = (t1 << 64) | path_a->file.st_mode;
+	t1 = (t1 >> 64) | path_a->file.st_mtimespec.tv_sec;
+
+	t2 = path_b->file.st_mode;
+	t2 |= (t2 << 64) | path_b->file.st_mtimespec.tv_sec;
 	if (app->opt & OPT_t)
 	{
-		if ((path_b->file.st_mtimespec.tv_nsec + path_b->file.st_mode) -
-                    (path_a->file.st_mtimespec.tv_nsec + path_a->file.st_mode) == 0)
+		printf("1 %lld\n", (long long)(t1));
+		printf("2 %ld\n", path_a->file.st_mtimespec.tv_sec);
+		printf("3 %hu\n\n", path_a->file.st_mode);
+		//TEST(path_b->file);
+		if (t2 - t1 == 0)
 		{
 			if (!S_ISDIR(path_a->file.st_mode) && S_ISDIR(path_b->file.st_mode))
 				return (-1);
@@ -77,8 +77,7 @@ static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 				return (ft_strcmp(path_a->name, path_b->name));
 			}
 		}
-		return ((path_b->file.st_mtimespec.tv_nsec + path_b->file.st_mode) -
-                (path_a->file.st_mtimespec.tv_nsec + path_a->file.st_mode));
+		return (t2 - t1);
 	}
 	return (ft_strcmp(path_a->name, path_b->name));
 }

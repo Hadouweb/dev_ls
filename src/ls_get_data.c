@@ -34,6 +34,11 @@ struct group	*ls_get_group_data(int gid)
 	return (group);
 }
 
+void DEBUG_print_file(char *name, struct stat *file)
+{
+	printf("Name %s | %ld\n", name, file->st_mtimespec.tv_sec);
+}
+
 int			ls_get_data_file(char *name, int is_link, struct stat *file)
 {
 	int			ret;
@@ -49,5 +54,8 @@ int			ls_get_data_file(char *name, int is_link, struct stat *file)
 		ft_putstr("ls: ");
 		perror(name);
 	}
+
+	//DEBUG_print_file(name, file);
+
 	return (ret);
 }
