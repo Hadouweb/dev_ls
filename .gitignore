@@ -2,5 +2,4 @@ ft_ls
 libft.a
 *.o
 *._
-CMakeLists.txt
 *.idea

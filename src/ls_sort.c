@@ -13,6 +13,7 @@
 #include <time.h>
 #include <sys/stat.h>
 #include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 void		ls_debug_swap(t_list *a, t_list *b)
 {
@@ -47,28 +48,32 @@ void TEST(struct stat file) {
 
 static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 {
-	t_path	*path_a;
-	t_path	*path_b;
+	t_path			*path_a;
+	t_path			*path_b;
+	__int128_t 		t1;
+	__int128_t 		t2;
 
 	path_a = (t_path*)a->content;
 	path_b = (t_path*)b->content;
+
+	TEST(path_b->file);
+
+	t1 = 0;
+	t1 = ((t1 << 64) | path_a->file.st_mtimespec.tv_nsec) | path_a->file.st_mode;
+	t2 = 0;
+	t2 = ((t2 << 64) | path_a->file.st_mtimespec.tv_nsec) | path_a->file.st_mode;
+	printf("%lld\n", (long long)(t1));
+	printf("%ld\n", path_a->file.st_mtimespec.tv_nsec);
+	printf("%hu\n", path_a->file.st_mode);
 	if (app->opt & OPT_t)
 	{
-		TEST(path_b->file);
 		if ((path_b->file.st_mtimespec.tv_nsec + path_b->file.st_mode) -
                     (path_a->file.st_mtimespec.tv_nsec + path_a->file.st_mode) == 0)
 		{
-			//TEST(path_b->file.st_mtime);
-			//TEST(path_a->file.st_mtime);
 			if (!S_ISDIR(path_a->file.st_mode) && S_ISDIR(path_b->file.st_mode))
 				return (-1);
 			else
             {
-				//printf("%s : %s", path_b->name, path_a->name);
-				//printf("%d\n", ft_strcmp(path_a->name, path_b->name));
-				//printf("\n\n");
-				//if (ft_strcmp(path_a->name, path_b->name) < 0)
-				//	return 1;
 				return (ft_strcmp(path_a->name, path_b->name));
 			}
 		}
