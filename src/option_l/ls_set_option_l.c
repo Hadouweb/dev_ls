@@ -15,7 +15,7 @@
 void		ls_set_user(t_prepa *p, int st_uid, t_app *app)
 {
 	struct passwd	*user;
-	int 			size;
+	int				size;
 
 	user = ls_get_user_data(st_uid);
 	if (user == NULL)
