@@ -26,6 +26,7 @@ set(SOURCE_FILES
     libft/srcs/list/ft_lstprint.c
     libft/srcs/list/ft_lstpush_back.c
     libft/srcs/list/ft_lstpush_front.c
+    libft/srcs/list/ft_push_after_node.c
     libft/srcs/list/ft_lstsize.c
     libft/srcs/list/ft_lstsplit.c
     libft/srcs/list/ft_lsttotab.c

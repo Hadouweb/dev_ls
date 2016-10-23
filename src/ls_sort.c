@@ -29,7 +29,7 @@ static int	ls_swap(t_list *a, t_list *b)
 {
 	char	*tmp;
 
-	//ls_debug_swap(a, b);
+	ls_debug_swap(a, b);
 	tmp = a->content;
 	a->content = b->content;
 	b->content = tmp;
@@ -50,24 +50,19 @@ static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 {
 	t_path			*path_a;
 	t_path			*path_b;
-	__int128_t 		t1;
-	__int128_t 		t2;
+	__uint128_t 	t1;
+	__uint128_t 	t2;
 
 	path_a = (t_path*)a->content;
 	path_b = (t_path*)b->content;
 
-	t1 = 0;
-	t1 = (t1 << 64) | path_a->file.st_mode;
-	t1 = (t1 >> 64) | path_a->file.st_mtimespec.tv_sec;
+	t1 = (__uint128_t) path_a->file.st_mtimespec.tv_sec << 64 | path_a->file.st_mtimespec.tv_nsec;
+	t2 =  (__uint128_t) path_b->file.st_mtimespec.tv_sec << 64 | path_b->file.st_mtimespec.tv_nsec;
 
-	t2 = path_b->file.st_mode;
-	t2 |= (t2 << 64) | path_b->file.st_mtimespec.tv_sec;
 	if (app->opt & OPT_t)
 	{
-		printf("1 %lld\n", (long long)(t1));
-		printf("2 %ld\n", path_a->file.st_mtimespec.tv_sec);
-		printf("3 %hu\n\n", path_a->file.st_mode);
-		//TEST(path_b->file);
+		//printf("name : %s time : %ld%ld\n", path_a->name, path_a->file.st_mtimespec.tv_sec, path_a->file.st_mtimespec.tv_nsec);
+		//printf("name : %s time : %ld%ld\n\n", path_b->name, path_b->file.st_mtimespec.tv_sec, path_b->file.st_mtimespec.tv_nsec);
 		if (t2 - t1 == 0)
 		{
 			if (!S_ISDIR(path_a->file.st_mode) && S_ISDIR(path_b->file.st_mode))
@@ -76,8 +71,8 @@ static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
             {
 				return (ft_strcmp(path_a->name, path_b->name));
 			}
-		}
-		return (t2 - t1);
+		} else if (t2 > t1)
+			return 1;
 	}
 	return (ft_strcmp(path_a->name, path_b->name));
 }
@@ -115,34 +110,25 @@ void		ls_sort_param(t_app *app, t_list **lst)
 			is_dir = ls_cmp_file_type(l, l->next);
 			if (is_dir == 1)
 				swap = ls_swap(l, l->next);
-			else if (ls_lstcmp(l, l->next, app) > 0 && is_dir == -1)
+			else if (ls_lstcmp(l, l->next, app) != 0 && is_dir == -1)
 				swap = ls_swap(l, l->next);
 			l = l->next;
-		//	ft_lstprint(*lst, ls_debug_path);
-		//	ft_putendl("_______");
 		}
 	}
 }
 
-void		ls_sort_folder(t_app *app, t_list **lst)
+void		ls_sort(t_app *app, t_list **lst)
 {
 	t_list	*l;
-	int		swap;
-	int		is_dir;
 
-	swap = 1;
-	while (swap)
+	l = *lst;
+	while (l && l->next)
 	{
-		swap = 0;
-		l = *lst;
-		is_dir = 0;
-		while (l && l->next)
-		{
-			if (ls_lstcmp(l, l->next, app) > 0)
-				swap = ls_swap(l, l->next);
-			l = l->next;
-		//	ft_lstprint(*lst, ls_debug_path);
-		//	ft_putendl("_______");
+		if (ls_lstcmp(l, l->next, app) > 0) {
+			if (ls_swap(l, l->next)) {
+
+			}
 		}
+		l = l->next;
 	}
 }

@@ -45,6 +45,7 @@ int			ls_get_data_file(char *name, int is_link, struct stat *file)
 
 	errno = 0;
 	ret = -1;
+	is_link = 0;
 	if (is_link)
 		ret = lstat(name, file);
 	else
