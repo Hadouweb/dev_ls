@@ -25,14 +25,12 @@ t_listd	*ls_get_node_cmp(t_listd **lst, t_path *path)
 	__uint128_t 	t1;
 	__uint128_t 	t2;
 	t_listd 		*l;
-	t_listd			*previous_node;
 	t_path 			*path_cmp;
 
 	t1 = (__uint128_t) path->file.st_mtimespec.tv_sec
 				 << 64 | path->file.st_mtimespec.tv_nsec;
 
 	l = *lst;
-	previous_node = NULL;
 	while (l)
 	{
 		path_cmp = (t_path*)l->content;
@@ -48,7 +46,7 @@ t_listd	*ls_get_node_cmp(t_listd **lst, t_path *path)
 					S_ISDIR(path_cmp->file.st_mode))
 				{
 					printf("not dir:[%s] dir:[%s]\n", path->name, path_cmp->name);
-					return previous_node;
+					return l;
 				}
 			}
 			printf("t1:[%s][%ld %ld] t2[%s][%ld %ld]\n",
@@ -59,10 +57,9 @@ t_listd	*ls_get_node_cmp(t_listd **lst, t_path *path)
 			if (t1 > t2)
 			{
 				printf("t1:[%s] > t2[%s]\n", path->name, path_cmp->name);
-				return previous_node;
+				return l;
 			}
 		}
-		previous_node = l;
 		l = l->next;
 	}
 	return NULL;
@@ -76,8 +73,8 @@ void	ls_push_after_sort(t_listd **lst, t_path *path, t_app *app)
 		t_listd *node = ls_get_node_cmp(lst, path);
 		if (node != NULL)
 		{
-			ft_lstd_pushbefore_node(node, ft_lstd_new((void *) path, sizeof(t_path)));
-			printf("after this: %s current: %s\n",
+			ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) path, sizeof(t_path)));
+			printf("before this: %s current: %s\n",
 			 ((t_path*)node->content)->name, path->name);
 		} else {
 			ft_lstd_pushback(lst, (void *) path, sizeof(t_path));
