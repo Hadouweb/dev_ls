@@ -91,7 +91,7 @@ void	ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app)
 	t_path	*path;
 	int		ret;
 
-	ft_lstd_print(*lst, debug_print_content);
+	ft_lstd_print(*lst, debug_print_content, 1);
 	//printf("ls_set_file_data | rpath: %s name: %s\n", rpath, name);
 
 	ret = -1;
