@@ -29,7 +29,7 @@ static int	ls_swap(t_listd *a, t_listd *b)
 {
 	char	*tmp;
 
-	ls_debug_swap(a, b);
+	//ls_debug_swap(a, b);
 	tmp = a->content;
 	a->content = b->content;
 	b->content = tmp;
@@ -50,30 +50,12 @@ static int	ls_lstcmp(t_listd *a, t_listd *b, t_app *app)
 {
 	t_path			*path_a;
 	t_path			*path_b;
-	__uint128_t 	t1;
-	__uint128_t 	t2;
 
+	if (app)
+		;
 	path_a = (t_path*)a->content;
 	path_b = (t_path*)b->content;
 
-	t1 = (__uint128_t) path_a->file.st_mtimespec.tv_sec << 64 | path_a->file.st_mtimespec.tv_nsec;
-	t2 =  (__uint128_t) path_b->file.st_mtimespec.tv_sec << 64 | path_b->file.st_mtimespec.tv_nsec;
-
-	if (app->opt & OPT_t)
-	{
-		//printf("name : %s time : %ld%ld\n", path_a->name, path_a->file.st_mtimespec.tv_sec, path_a->file.st_mtimespec.tv_nsec);
-		//printf("name : %s time : %ld%ld\n\n", path_b->name, path_b->file.st_mtimespec.tv_sec, path_b->file.st_mtimespec.tv_nsec);
-		if (t2 - t1 == 0)
-		{
-			if (!S_ISDIR(path_a->file.st_mode) && S_ISDIR(path_b->file.st_mode))
-				return (-1);
-			else
-            {
-				return (ft_strcmp(path_a->name, path_b->name));
-			}
-		} else if (t2 > t1)
-			return 1;
-	}
 	return (ft_strcmp(path_a->name, path_b->name));
 }
 
@@ -110,14 +92,14 @@ void		ls_sort_param(t_app *app, t_listd **lst)
 			is_dir = ls_cmp_file_type(l, l->next);
 			if (is_dir == 1)
 				swap = ls_swap(l, l->next);
-			else if (ls_lstcmp(l, l->next, app) != 0 && is_dir == -1)
+			else if (ls_lstcmp(l, l->next, app) > 0 && is_dir == -1)
 				swap = ls_swap(l, l->next);
 			l = l->next;
 		}
 	}
 }
 
-void		ls_sort(t_app *app, t_listd **lst)
+/*void		ls_sort(t_app *app, t_listd **lst)
 {
 	t_listd	*l;
 
@@ -131,4 +113,4 @@ void		ls_sort(t_app *app, t_listd **lst)
 		}
 		l = l->next;
 	}
-}
+}*/
