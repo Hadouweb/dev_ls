@@ -17,6 +17,8 @@ set(SOURCE_FILES
     libft/srcs/is/ft_isascii.c
     libft/srcs/is/ft_isdigit.c
     libft/srcs/is/ft_isprint.c
+    libft/srcs/is/ft_islower.c
+    libft/srcs/is/ft_isupper.c
     libft/srcs/list/ft_lstadd.c
     libft/srcs/list/ft_lstdel.c
     libft/srcs/list/ft_lstdelone.c
