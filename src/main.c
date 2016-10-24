@@ -42,6 +42,6 @@ int		main(int ac, char **av)
 		ls_set_file_data(NULL, ".", &app.lst, &app);
 	ls_sort_param(&app, &app.lst);
 	ls_print_result(&app);
-	//sleep(5);
+	//sleep(50);
 	return (0);
 }
