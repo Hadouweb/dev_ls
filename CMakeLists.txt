@@ -23,10 +23,14 @@ set(SOURCE_FILES
     libft/srcs/list/ft_lstiter.c
     libft/srcs/list/ft_lstmap.c
     libft/srcs/list/ft_lstnew.c
+    libft/srcs/list/ft_lstd_new.c
+    libft/srcs/list/ft_lstd_pushbefore_node.c
     libft/srcs/list/ft_lstprint.c
     libft/srcs/list/ft_lstpush_back.c
     libft/srcs/list/ft_lstpush_front.c
-    libft/srcs/list/ft_push_after_node.c
+    libft/srcs/list/ft_lst_pushafter_node.c
+    libft/srcs/list/ft_lstd_pushback.c
+    libft/srcs/list/ft_lstd_print.c
     libft/srcs/list/ft_lstsize.c
     libft/srcs/list/ft_lstsplit.c
     libft/srcs/list/ft_lsttotab.c

@@ -38,7 +38,7 @@ void		ls_print_adjust_space_right(char *str, int size)
 	}
 }
 
-void		ls_clear_node_prepared(t_list *node)
+void		ls_clear_node_prepared(t_listd *node)
 {
 	t_prepa		*p;
 
@@ -75,8 +75,8 @@ void		ls_print_adjust_size(t_prepa *p, t_app *app)
 
 void		ls_print_option_l(t_app *app)
 {
-	t_list	*l;
-	t_list	*tmp;
+	t_listd	*l;
+	t_listd	*tmp;
 
 	l = app->prepa;
 	while (l)

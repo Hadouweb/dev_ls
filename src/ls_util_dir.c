@@ -23,7 +23,7 @@ DIR		*ls_opendir(char *file)
 	return (dir);
 }
 
-void	ls_readdir(DIR *dir, t_list **lst, char *origin, t_app *app)
+void	ls_readdir(DIR *dir, t_listd **lst, char *origin, t_app *app)
 {
 	struct dirent	*dp;
 	char			*relativ_path;

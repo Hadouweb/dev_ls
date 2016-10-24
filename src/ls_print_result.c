@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-static int	ls_next_node_is_folder(t_list *node)
+static int	ls_next_node_is_folder(t_listd *node)
 {
 	t_path	*path;
 
@@ -24,7 +24,7 @@ static int	ls_next_node_is_folder(t_list *node)
 
 static void	ls_print_without_option(t_app *app)
 {
-	t_list	*l;
+	t_listd	*l;
 	t_path	*path;
 
 	l = app->lst;
@@ -45,7 +45,7 @@ static void	ls_print_without_option(t_app *app)
 
 static void	ls_print_with_option_l(t_app *app)
 {
-	t_list	*l;
+	t_listd	*l;
 	t_path	*path;
 
 	l = app->lst;

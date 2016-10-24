@@ -58,27 +58,27 @@ typedef struct 		s_max_size
 typedef struct  	s_app
 {
 	unsigned char	opt;
-	t_list			*lst;
-	t_list			*prepa;
+	t_listd			*lst;
+	t_listd			*prepa;
 	t_max_size		ms;
 	t_col			col;
 	int 			size_lst;
 }					t_app;
 
 DIR				*ls_opendir(char *file);
-void			ls_readdir(DIR *dir, t_list **lst, char *origin, t_app *app);
+void			ls_readdir(DIR *dir, t_listd **lst, char *origin, t_app *app);
 void			ls_closedir(DIR *dir);
 
-void			ls_sort_param(t_app *app, t_list **lst);
-void			ls_sort(t_app *app, t_list **lst);
+void			ls_sort_param(t_app *app, t_listd **lst);
+void			ls_sort(t_app *app, t_listd **lst);
 
-void			ls_set_file_data(char *rpath, char *name, t_list **lst, t_app *app);
+void			ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app);
 void			ls_set_option_l(t_app *app, t_path *path);
 void			ls_set_folder(t_app *app, char *name);
 
 void			ls_print_result(t_app *app);
 
-void			ls_print_folder(t_app *app, t_list **lst, char *dir);
+void			ls_print_folder(t_app *app, t_listd **lst, char *dir);
 
 void			ls_option(char *opt, t_app *app);
 
@@ -111,7 +111,7 @@ void			ls_set_path(t_prepa *p, char *path, char *link, t_app *app);
 
 void			ls_print_adjust_space_left(char *str, int size);
 void			ls_print_adjust_space_right(char *str, int size);
-void			ls_clear_node_prepared(t_list *node);
+void			ls_clear_node_prepared(t_listd *node);
 void			ls_print_adjust_size(t_prepa *p, t_app *app);
 void			ls_print_option_l(t_app *app);
 

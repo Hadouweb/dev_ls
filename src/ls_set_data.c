@@ -20,55 +20,79 @@ void	debug_print_content(void *content)
 	ft_putstr(path->name);
 }
 
-t_list	*ls_get_node_cmp(t_list **lst, t_path *path)
+t_listd	*ls_get_node_cmp(t_listd **lst, t_path *path)
 {
 	__uint128_t 	t1;
 	__uint128_t 	t2;
-	t_list 			*l;
+	t_listd 		*l;
+	t_listd			*previous_node;
 	t_path 			*path_cmp;
 
 	t1 = (__uint128_t) path->file.st_mtimespec.tv_sec
 				 << 64 | path->file.st_mtimespec.tv_nsec;
 
 	l = *lst;
-	while (l && l->next)
+	previous_node = NULL;
+	while (l)
 	{
 		path_cmp = (t_path*)l->content;
-		t2 = (__uint128_t) path_cmp->file.st_mtimespec.tv_sec
-		<< 64 | path_cmp->file.st_mtimespec.tv_nsec;
+		if (ft_strcmp(path->name, path_cmp->name) != 0)
+		{
+			t2 = (__uint128_t) path_cmp->file.st_mtimespec.tv_sec
+						 << 64 | path_cmp->file.st_mtimespec.tv_nsec;
 
-		if (t2 - t1 == 0 && ft_strcmp(path->name, path_cmp->name) > 0)
-			if (!S_ISDIR(path->file.st_mode) && S_ISDIR(path_cmp->file.st_mode))
-				return l;
-		if (t1 > t2)
-			return l;
-		if (ft_strcmp(path->name, path_cmp->name) > 0)
-			return l;
+			if (t2 - t1 == 0 && ft_strcmp(path->name, path_cmp->name) > 0)
+			{
+				printf("t1:[%s] = t2:[%s]\n", path->name, path_cmp->name);
+				if (!S_ISDIR(path->file.st_mode) &&
+					S_ISDIR(path_cmp->file.st_mode))
+				{
+					printf("not dir:[%s] dir:[%s]\n", path->name, path_cmp->name);
+					return previous_node;
+				}
+			}
+			printf("t1:[%s][%ld %ld] t2[%s][%ld %ld]\n",
+				   path->name, path->file.st_mtimespec.tv_sec,
+				   path->file.st_mtimespec.tv_nsec,
+				   path_cmp->name, path_cmp->file.st_mtimespec.tv_sec,
+				   path_cmp->file.st_mtimespec.tv_nsec);
+			if (t1 > t2)
+			{
+				printf("t1:[%s] > t2[%s]\n", path->name, path_cmp->name);
+				return previous_node;
+			}
+		}
+		previous_node = l;
 		l = l->next;
 	}
 	return NULL;
 }
 
 
-void	ls_push_after_sort(t_list **lst, t_path *path, t_app *app)
+void	ls_push_after_sort(t_listd **lst, t_path *path, t_app *app)
 {
 	if (app->opt & OPT_t)
 	{
-		t_list *node = ls_get_node_cmp(lst, path);
+		t_listd *node = ls_get_node_cmp(lst, path);
 		if (node != NULL)
-			ft_push_after_node(node, ft_lstnew((void*)path, sizeof(t_path)));
-		else
-			ft_lstpush_back(lst, (void*)path, sizeof(t_path));
+		{
+			ft_lstd_pushbefore_node(node, ft_lstd_new((void *) path, sizeof(t_path)));
+			printf("after this: %s current: %s\n",
+			 ((t_path*)node->content)->name, path->name);
+		} else {
+			ft_lstd_pushback(lst, (void *) path, sizeof(t_path));
+			printf("add classic: %s\n", path->name);
+		}
 	}
 }
 
-void	ls_set_file_data(char *rpath, char *name, t_list **lst, t_app *app)
+void	ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app)
 {
 	t_path	*path;
 	int		ret;
 
-	ft_lstprint(*lst, debug_print_content);
-	printf("ls_set_file_data | rpath: %s name: %s\n", rpath, name);
+	ft_lstd_print(*lst, debug_print_content);
+	//printf("ls_set_file_data | rpath: %s name: %s\n", rpath, name);
 
 	ret = -1;
 	if (rpath == NULL)
@@ -99,7 +123,7 @@ void	ls_set_option_l(t_app *app, t_path *path)
 	ls_set_size(p, path->file, app);
 	ls_set_time(p, path->file.st_mtime, app);
 	ls_set_path(p, path->name, path->link, app);
-	ft_lstpush_back(&app->prepa, (void*)p, sizeof(t_prepa));
+	ft_lstd_pushback(&app->prepa, (void*)p, sizeof(t_prepa));
 	free(p);
 }
 
@@ -107,7 +131,7 @@ void	ls_set_folder(t_app *app, char *name)
 {
 	DIR		*dir;
 	char	*dir_path;
-	t_list	*lst;
+	t_listd	*lst;
 
 	lst = NULL;
 	if (name[ft_strlen(name) - 1] != '/')

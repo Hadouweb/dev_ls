@@ -8,13 +8,13 @@ static void	ls_final_output_folder(t_app *app, t_path *path)
 		ls_set_option_l(app, path);
 }
 
-void		ls_print_folder(t_app *app, t_list **lst, char *dir)
+void		ls_print_folder(t_app *app, t_listd **lst, char *dir)
 {
-	t_list	*l;
-	t_list	*tmp;
+	t_listd	*l;
+	t_listd	*tmp;
 	t_path	*path;
 
-	printf("ls_print_folder \n");
+	//printf("ls_print_folder \n");
 
 	//ls_sort(app, lst);
 	l = *lst;

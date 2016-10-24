@@ -15,7 +15,7 @@
 #include "ft_ls.h"
 #include "../includes/ft_ls.h"
 
-void		ls_debug_swap(t_list *a, t_list *b)
+void		ls_debug_swap(t_listd *a, t_listd *b)
 {
 	t_path	*path_a;
 	t_path	*path_b;
@@ -25,7 +25,7 @@ void		ls_debug_swap(t_list *a, t_list *b)
 	printf("SWAP [%s %s]\n", path_a->name, path_b->name);
 }
 
-static int	ls_swap(t_list *a, t_list *b)
+static int	ls_swap(t_listd *a, t_listd *b)
 {
 	char	*tmp;
 
@@ -46,7 +46,7 @@ void TEST(struct stat file) {
 
 }
 
-static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
+static int	ls_lstcmp(t_listd *a, t_listd *b, t_app *app)
 {
 	t_path			*path_a;
 	t_path			*path_b;
@@ -77,7 +77,7 @@ static int	ls_lstcmp(t_list *a, t_list *b, t_app *app)
 	return (ft_strcmp(path_a->name, path_b->name));
 }
 
-static int	ls_cmp_file_type(t_list *a, t_list *b)
+static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 {
 	t_path	*path_a;
 	t_path	*path_b;
@@ -93,9 +93,9 @@ static int	ls_cmp_file_type(t_list *a, t_list *b)
 	return (0);
 }
 
-void		ls_sort_param(t_app *app, t_list **lst)
+void		ls_sort_param(t_app *app, t_listd **lst)
 {
-	t_list	*l;
+	t_listd	*l;
 	int		swap;
 	int		is_dir;
 
@@ -117,9 +117,9 @@ void		ls_sort_param(t_app *app, t_list **lst)
 	}
 }
 
-void		ls_sort(t_app *app, t_list **lst)
+void		ls_sort(t_app *app, t_listd **lst)
 {
-	t_list	*l;
+	t_listd	*l;
 
 	l = *lst;
 	while (l && l->next)
