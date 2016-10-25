@@ -69,6 +69,10 @@ DIR				*ls_opendir(char *file);
 void			ls_readdir(DIR *dir, t_listd **lst, char *origin, t_app *app);
 void			ls_closedir(DIR *dir);
 
+t_listd			*ls_get_node_cmp(t_listd **lst, t_path *path);
+t_listd			*ls_get_node_cmp_time(t_listd **lst, t_path *path);
+
+void			ls_push_after_sort(t_listd **lst, t_path *path, t_app *app);
 void			ls_sort_param(t_app *app, t_listd **lst);
 void			ls_sort(t_app *app, t_listd **lst);
 
@@ -96,6 +100,8 @@ void			ls_debug_prepared_data(void *content);
 void			ls_print_dirent_debug(struct dirent *dp);
 void			ls_print_group_debug(struct group *group);
 void			ls_print_user_debug(struct passwd *user);
+void			ls_debug_print_content(void *content);
+void			ls_debug_swap(t_listd *a, t_listd *b);
 
 int				ls_major(int st_rdev);
 int				ls_minor(int st_rdev);

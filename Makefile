@@ -22,6 +22,7 @@ SRC = 	$(SRCPATH)/main.c\
 		$(SRCPATH)/ls_print_result.c\
 		$(SRCPATH)/ls_print_folder.c\
 		$(SRCPATH)/ls_set_data.c\
+		$(SRCPATH)/ls_cmp.c\
 		$(OPTION_L)/ls_option_l.c\
 		$(OPTION_L)/ls_mode.c\
 		$(OPTION_L)/ls_set_option_l.c\

@@ -108,6 +108,7 @@ set(SOURCE_FILES
     src/option_l/ls_util_l.c
     src/ls_debug.c
     src/ls_error.c
+    src/ls_cmp.c
     src/ls_get_data.c
     src/ls_option.c
     src/ls_print_folder.c

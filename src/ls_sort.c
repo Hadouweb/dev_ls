@@ -10,20 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <time.h>
-#include <sys/stat.h>
 #include "ft_ls.h"
-#include "../includes/ft_ls.h"
-
-void		ls_debug_swap(t_listd *a, t_listd *b)
-{
-	t_path	*path_a;
-	t_path	*path_b;
-
-	path_a = (t_path*)a->content;
-	path_b = (t_path*)b->content;
-	printf("SWAP [%s %s]\n", path_a->name, path_b->name);
-}
 
 static int	ls_swap(t_listd *a, t_listd *b)
 {
@@ -34,16 +21,6 @@ static int	ls_swap(t_listd *a, t_listd *b)
 	a->content = b->content;
 	b->content = tmp;
 	return (1);
-}
-
-void TEST(struct stat file) {
-
-    printf("%ld %hu\n", file.st_mtimespec.tv_nsec, file.st_mode);
-
-    char *nsec = ft_ltoa(file.st_mtimespec.tv_nsec);
-    printf("%s\n", nsec);
-
-
 }
 
 static int	ls_lstcmp(t_listd *a, t_listd *b, t_app *app)
@@ -99,18 +76,21 @@ void		ls_sort_param(t_app *app, t_listd **lst)
 	}
 }
 
-/*void		ls_sort(t_app *app, t_listd **lst)
+void	ls_push_after_sort(t_listd **lst, t_path *path, t_app *app)
 {
-	t_listd	*l;
+	t_listd *node;
 
-	l = *lst;
-	while (l && l->next)
+	node = NULL;
+	if (app->opt & OPT_t)
+		node = ls_get_node_cmp_time(lst, path);
+	else
+		node = ls_get_node_cmp(lst, path);
+	if (node != NULL)
 	{
-		if (ls_lstcmp(l, l->next, app) > 0) {
-			if (ls_swap(l, l->next)) {
-
-			}
-		}
-		l = l->next;
+		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) path, sizeof(t_path)));
+		//printf("before this: %s current: %s\n", ((t_path*)node->content)->name, path->name);
+	} else {
+		ft_lstd_pushback(lst, (void *) path, sizeof(t_path));
+		//printf("add classic: %s\n", path->name);
 	}
-}*/
+}

@@ -17,6 +17,24 @@ void	ls_print_stat_debug(struct stat file)
 	printf("st_ctime : %ld\n\n", file.st_ctime);    /* Heure dernier changement état */
 }
 
+void	ls_debug_swap(t_listd *a, t_listd *b)
+{
+	t_path	*path_a;
+	t_path	*path_b;
+
+	path_a = (t_path*)a->content;
+	path_b = (t_path*)b->content;
+	printf("SWAP [%s %s]\n", path_a->name, path_b->name);
+}
+
+void	ls_debug_print_content(void *content)
+{
+	t_path *path;
+
+	path = (t_path*)content;
+	ft_putstr(path->name);
+}
+
 void	ls_debug_path(void *content)
 {
 	t_path	*path;
