@@ -32,7 +32,14 @@ void	ls_debug_print_content(void *content)
 	t_path *path;
 
 	path = (t_path*)content;
-	ft_putstr(path->name);
+	if (path != NULL && path->name != NULL) {
+		ft_putstr(path->name);
+		ft_putstr(" ");
+		if (path->parent)
+			ft_putstr(path->parent);
+		else
+			ft_putstr("NULL");
+	}
 }
 
 void	ls_debug_path(void *content)

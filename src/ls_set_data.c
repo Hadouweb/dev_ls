@@ -17,10 +17,13 @@ void	ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app)
 	t_path	*path;
 	int		ret;
 
-	if (rpath == NULL)
-		rpath = name;
 	if ((path = (t_path*)ft_memalloc(sizeof(t_path))) == NULL)
 		ls_error("Error: malloc");
+	if (rpath == NULL) {
+		path->parent = NULL;
+		rpath = name;
+	} else
+		path->parent = ft_strdup(rpath);
 	path->name = ft_strdup(name);
 	if ((path->link = ls_get_link(rpath)) == NULL)
 		ret = ls_get_data_file(rpath, 0, &path->file);
@@ -56,13 +59,17 @@ void	ls_set_folder(t_app *app, char *name)
 	t_listd	*lst;
 
 	lst = NULL;
+	//printf("__ %s\n", name);
 	if (name[ft_strlen(name) - 1] != '/')
 		dir_path = ft_stradd_char(&name, '/');
 	else
 		dir_path = ft_strdup(name);
+	//printf("__ %s\n", dir_path);
 	dir = ls_opendir(dir_path);
-	ls_readdir(dir, &lst, dir_path, app);
-	ls_closedir(dir);
-	ls_print_folder(app, &lst, name);
-	ft_strdel(&dir_path);
+	if (dir != NULL) {
+		ls_readdir(dir, &lst, dir_path, app);
+		ls_closedir(dir);
+		ls_print_folder(app, &lst, name);
+		ft_strdel(&dir_path);
+	}
 }

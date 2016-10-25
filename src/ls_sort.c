@@ -81,10 +81,12 @@ void	ls_push_after_sort(t_listd **lst, t_path *path, t_app *app)
 	t_listd *node;
 
 	node = NULL;
-	if (app->opt & OPT_t)
+	if (app->opt & OPT_t) {
 		node = ls_get_node_cmp_time(lst, path);
-	else
+	}
+	else {
 		node = ls_get_node_cmp(lst, path);
+	}
 	if (node != NULL)
 	{
 		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) path, sizeof(t_path)));
@@ -93,4 +95,5 @@ void	ls_push_after_sort(t_listd **lst, t_path *path, t_app *app)
 		ft_lstd_pushback(lst, (void *) path, sizeof(t_path));
 		//printf("add classic: %s\n", path->name);
 	}
+	//ft_lstd_print(*lst, ls_debug_print_content, 1);
 }

@@ -22,6 +22,7 @@ typedef struct 		s_path
 {
 	char			*name;
 	struct stat 	file;
+	char			*parent;
 	char			*link;
 
 }					t_path;
@@ -62,6 +63,7 @@ typedef struct  	s_app
 	t_listd			*prepa;
 	t_max_size		ms;
 	t_col			col;
+	int 			token;
 	int 			size_lst;
 }					t_app;
 
@@ -122,5 +124,6 @@ void			ls_print_adjust_size(t_prepa *p, t_app *app);
 void			ls_print_option_l(t_app *app);
 
 void			ls_set_mode(t_prepa *p, int st_mode);
+void 			ls_print_with_option_R(t_listd *lst, t_app *app);
 
 #endif

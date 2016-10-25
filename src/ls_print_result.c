@@ -67,12 +67,50 @@ static void	ls_print_with_option_l(t_app *app)
 	//ls_debug_max_size(app);
 }
 
+void 	ls_print_with_option_R(t_listd *lst, t_app *app)
+{
+	t_listd	*l;
+	t_path	*path;
+
+	//printf("ls_print_with_option_R\n");
+	//ft_lstd_print(lst, ls_debug_print_content, 1);
+	l = lst;
+	while (l)
+	{
+		path = (t_path*)l->content;
+		if (path->name) {
+			if (S_ISDIR(path->file.st_mode) && path->parent != NULL) {
+				//printf("|parent: %s child: %s\n", path->parent, path->name);
+				ft_putchar('\n');
+				ft_putstr(path->parent);
+				ft_putendl(":");
+				ls_set_folder(app, path->parent);
+			}
+			else if (S_ISDIR(path->file.st_mode)) {
+				//printf("LOL\n");
+				/*if (app->token == 1)
+					ft_putchar('\n');
+				else
+					app->token = 1;*/
+				ls_set_folder(app, path->name);
+			}
+			else
+				ft_putendl(path->name);
+			if (l->next && ls_next_node_is_folder(l->next))
+				ft_putchar('\n');
+			path = NULL;
+			free(path);
+		}
+		l = l->next;
+	}
+}
+
 void		ls_print_result(t_app *app)
 {
 	if (app->opt & OPT_l)
 		ls_print_with_option_l(app);
 	else if (app->opt & OPT_R)
-		printf("option R\n");
+		ls_print_with_option_R(app->lst, app);
 	else if (app->opt & OPT_a)
 		ls_print_without_option(app);
 	else if (app->opt & OPT_r)

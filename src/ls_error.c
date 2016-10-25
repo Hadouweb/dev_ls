@@ -18,7 +18,7 @@ void	ls_error_errno(char *str)
 		perror(str);
 	else
 		perror("");
-	exit(1);
+	//exit(1);
 }
 
 void	ls_error(char *str)
