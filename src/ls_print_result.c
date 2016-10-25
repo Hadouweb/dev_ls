@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-static int	ls_next_node_is_folder(t_listd *node)
+/*static int	ls_next_node_is_folder(t_listd *node)
 {
 	t_path	*path;
 
@@ -20,25 +20,30 @@ static int	ls_next_node_is_folder(t_listd *node)
 	if (S_ISDIR(path->file.st_mode))
 		return (1);
 	return (0);
-}
+}*/
 
 static void	ls_print_without_option(t_app *app)
 {
 	t_listd	*l;
 	t_path	*path;
 
+	//ft_lstd_print(app->lst, ls_debug_print_content, 1);
 	l = app->lst;
 	while (l)
 	{
 		path = (t_path*)l->content;
 		if (S_ISDIR(path->file.st_mode))
 		{
+			if (app->token == 1)
+				ft_putchar('\n');
+			else
+				app->token = 1;
+			ft_putstr(path->name);
+			ft_putendl(":");
 			ls_set_folder(app, path->name);
 		}
-		else
-			ft_putendl(path->name);
-		if (l->next && ls_next_node_is_folder(l->next))
-			ft_putchar('\n');
+		//else
+		//	ft_putendl(path->name);
 		l = l->next;
 	}
 }
@@ -94,10 +99,8 @@ void 	ls_print_with_option_R(t_listd *lst, t_app *app)
 					app->token = 1;*/
 				ls_set_folder(app, path->name);
 			}
-			else
-				ft_putendl(path->name);
-			if (l->next && ls_next_node_is_folder(l->next))
-				ft_putchar('\n');
+			//if (l->next && ls_next_node_is_folder(l->next))
+			//	ft_putchar('\n');
 			path = NULL;
 			free(path);
 		}
