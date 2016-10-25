@@ -40,9 +40,9 @@ void		ls_print_adjust_space_right(char *str, int size)
 
 void		ls_clear_node_prepared(t_listd *node)
 {
-	t_prepa		*p;
+	t_entity_full		*p;
 
-	p = (t_prepa*)node->content;
+	p = (t_entity_full*)node->content;
 	ft_strdel(&p->nb_link);
 	if (p->size != NULL)
 		ft_strdel(&p->size);
@@ -59,7 +59,7 @@ void		ls_clear_node_prepared(t_listd *node)
 	node = NULL;
 }
 
-void		ls_print_adjust_size(t_prepa *p, t_app *app)
+void		ls_print_adjust_size(t_entity_full *p, t_app *app)
 {
 	if (p->size != NULL)
 	{
@@ -73,6 +73,20 @@ void		ls_print_adjust_size(t_prepa *p, t_app *app)
 	}
 }
 
+void		ls_print_line_opt_l(t_app *app, t_entity_full *p)
+{
+	ft_putstr(p->mode);
+	ls_print_adjust_space_left(p->nb_link, app->ms.nb_link);
+	ft_putchar(' ');
+	ls_print_adjust_space_right(p->user, app->ms.user + 1);
+	ls_print_adjust_space_right(p->group, app->ms.group - 1);
+	ls_print_adjust_size(p, app);
+	ls_print_adjust_space_left(p->time, app->ms.time);
+	ft_putchar(' ');
+	ft_putstr(p->name);
+	ft_putchar('\n');
+}
+
 void		ls_print_option_l(t_app *app)
 {
 	t_listd	*l;
@@ -81,9 +95,9 @@ void		ls_print_option_l(t_app *app)
 	l = app->prepa;
 	while (l)
 	{
-		t_prepa		*p;
+		t_entity_full		*p;
 
-		p = (t_prepa*)l->content;
+		p = (t_entity_full*)l->content;
 		ft_putstr(p->mode);
 		ls_print_adjust_space_left(p->nb_link, app->ms.nb_link);
 		ft_putchar(' ');

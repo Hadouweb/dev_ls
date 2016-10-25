@@ -1,11 +1,11 @@
 #include "ft_ls.h"
 
-t_listd	*ls_get_node_cmp_time(t_listd **lst, t_path *path)
+t_listd	*ls_get_node_cmp_time(t_listd **lst, t_entity *path)
 {
 	__uint128_t 	t1;
 	__uint128_t 	t2;
 	t_listd 		*l;
-	t_path 			*path_cmp;
+	t_entity 			*path_cmp;
 
 	t1 = (__uint128_t) path->file.st_mtimespec.tv_sec
 				 << 64 | path->file.st_mtimespec.tv_nsec;
@@ -13,7 +13,7 @@ t_listd	*ls_get_node_cmp_time(t_listd **lst, t_path *path)
 	l = *lst;
 	while (l)
 	{
-		path_cmp = (t_path*)l->content;
+		path_cmp = (t_entity*)l->content;
 		if (ft_strcmp(path->name, path_cmp->name) != 0)
 		{
 			t2 = (__uint128_t) path_cmp->file.st_mtimespec.tv_sec
@@ -40,15 +40,15 @@ t_listd	*ls_get_node_cmp_time(t_listd **lst, t_path *path)
 	return NULL;
 }
 
-t_listd	*ls_get_node_cmp(t_listd **lst, t_path *path)
+t_listd	*ls_get_node_cmp(t_listd **lst, t_entity *path)
 {
 	t_listd 		*l;
-	t_path 			*path_cmp;
+	t_entity 			*path_cmp;
 
 	l = *lst;
 	while (l)
 	{
-		path_cmp = (t_path*)l->content;
+		path_cmp = (t_entity*)l->content;
 		if (ft_strcmp(path->name, path_cmp->name) != 0)
 		{
 			/*if (!ft_isalpha(path->name[0]) && ft_isalpha(path_cmp->name[0]))

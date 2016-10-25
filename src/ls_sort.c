@@ -25,24 +25,24 @@ static int	ls_swap(t_listd *a, t_listd *b)
 
 static int	ls_lstcmp(t_listd *a, t_listd *b, t_app *app)
 {
-	t_path			*path_a;
-	t_path			*path_b;
+	t_entity			*path_a;
+	t_entity			*path_b;
 
 	if (app)
 		;
-	path_a = (t_path*)a->content;
-	path_b = (t_path*)b->content;
+	path_a = (t_entity*)a->content;
+	path_b = (t_entity*)b->content;
 
 	return (ft_strcmp(path_a->name, path_b->name));
 }
 
 static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 {
-	t_path	*path_a;
-	t_path	*path_b;
+	t_entity	*path_a;
+	t_entity	*path_b;
 
-	path_a = (t_path*)a->content;
-	path_b = (t_path*)b->content;
+	path_a = (t_entity*)a->content;
+	path_b = (t_entity*)b->content;
 	if (S_ISDIR(path_a->file.st_mode) && !S_ISDIR(path_b->file.st_mode))
 		return (1);
 	else if (!S_ISDIR(path_a->file.st_mode) && !S_ISDIR(path_b->file.st_mode))
@@ -76,7 +76,7 @@ void		ls_sort_param(t_app *app, t_listd **lst)
 	}
 }
 
-void	ls_push_after_sort(t_listd **lst, t_path *path, t_app *app)
+void	ls_push_after_sort(t_listd **lst, t_entity *path, t_app *app)
 {
 	t_listd *node;
 
@@ -89,10 +89,10 @@ void	ls_push_after_sort(t_listd **lst, t_path *path, t_app *app)
 	}
 	if (node != NULL)
 	{
-		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) path, sizeof(t_path)));
-		//printf("before this: %s current: %s\n", ((t_path*)node->content)->name, path->name);
+		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) path, sizeof(t_entity)));
+		//printf("before this: %s current: %s\n", ((t_entity*)node->content)->name, path->name);
 	} else {
-		ft_lstd_pushback(lst, (void *) path, sizeof(t_path));
+		ft_lstd_pushback(lst, (void *) path, sizeof(t_entity));
 		//printf("add classic: %s\n", path->name);
 	}
 	//ft_lstd_print(*lst, ls_debug_print_content, 1);

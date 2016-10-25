@@ -30,18 +30,18 @@ int		main(int ac, char **av)
 				ls_option(av[i], &app);
 			else
 			{
-				ls_set_file_data(NULL, av[i], &app.lst, &app);
-				app.size_lst++;
+				ls_set_file_data(NULL, av[i], &app.param, &app);
+				app.nb_param++;
 			}
 			if (ft_strcmp(av[i], "--") == 0 || ft_strcmp(av[i], "-") == 0)
 				end_option = 1;
 			i++;
 		}
 	}
-	if (app.size_lst == 0)
-		ls_set_file_data(NULL, ".", &app.lst, &app);
-	ls_sort_param(&app, &app.lst);
-	ls_print_result(&app);
+	if (app.nb_param == 0)
+		ls_set_file_data(NULL, ".", &app.param, &app);
+	//ls_sort_param(&app, &app.lst)
+	ls_foreach_param(&app);
 	//sleep(50);
 	return (0);
 }

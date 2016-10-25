@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void		ls_set_user(t_prepa *p, int st_uid, t_app *app)
+void		ls_set_user(t_entity_full *p, int st_uid, t_app *app)
 {
 	struct passwd	*user;
 	int				size;
@@ -26,7 +26,7 @@ void		ls_set_user(t_prepa *p, int st_uid, t_app *app)
 		app->ms.user = size;
 }
 
-void		ls_set_group(t_prepa *p, int st_gid, t_app *app)
+void		ls_set_group(t_entity_full *p, int st_gid, t_app *app)
 {
 	struct group	*group;
 	int 			size;
@@ -40,7 +40,7 @@ void		ls_set_group(t_prepa *p, int st_gid, t_app *app)
 		app->ms.group = size;
 }
 
-void		ls_set_size(t_prepa *p, struct stat file, t_app *app)
+void		ls_set_size(t_entity_full *p, struct stat file, t_app *app)
 {
 	int		nbr;
 	int		size;
@@ -66,7 +66,7 @@ void		ls_set_size(t_prepa *p, struct stat file, t_app *app)
 	}
 }
 
-void		ls_set_time(t_prepa *p, const time_t t, t_app *app)
+void		ls_set_time(t_entity_full *p, const time_t t, t_app *app)
 {
 	char			*str_time;
 	char			**split;

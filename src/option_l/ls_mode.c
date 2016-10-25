@@ -47,7 +47,7 @@ static void	ls_stickybit_suid(char *u, char *g, char *o, int st_mode)
 		*o = st_mode & S_ISVTX ? 'T' : *o;
 }
 
-void		ls_set_mode(t_prepa *p, int st_mode)
+void		ls_set_mode(t_entity_full *p, int st_mode)
 {
 	ft_memset(p->mode, '-', 11);
 	p->mode[11] = '\0';

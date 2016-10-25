@@ -19,19 +19,28 @@ void	ls_print_stat_debug(struct stat file)
 
 void	ls_debug_swap(t_listd *a, t_listd *b)
 {
-	t_path	*path_a;
-	t_path	*path_b;
+	t_entity	*path_a;
+	t_entity	*path_b;
 
-	path_a = (t_path*)a->content;
-	path_b = (t_path*)b->content;
+	path_a = (t_entity*)a->content;
+	path_b = (t_entity*)b->content;
 	printf("SWAP [%s %s]\n", path_a->name, path_b->name);
+}
+
+void	ls_debug_print_entity_full(void *content)
+{
+	t_entity_full *prepa;
+
+	prepa = (t_entity_full*)content;
+	ft_putstr(prepa->name);
+	ft_putstr(" ");
 }
 
 void	ls_debug_print_content(void *content)
 {
-	t_path *path;
+	t_entity *path;
 
-	path = (t_path*)content;
+	path = (t_entity*)content;
 	if (path != NULL && path->name != NULL) {
 		ft_putstr(path->name);
 		ft_putstr(" ");
@@ -44,9 +53,9 @@ void	ls_debug_print_content(void *content)
 
 void	ls_debug_path(void *content)
 {
-	t_path	*path;
+	t_entity	*path;
 
-	path = (t_path*)content;
+	path = (t_entity*)content;
 	printf("\nname : %s\n", path->name);
 	printf("link : %s\n", path->link);
 	ls_print_stat_debug(path->file);
@@ -64,9 +73,9 @@ void	ls_debug_max_size(t_app *app)
 
 void	ls_debug_prepared_data(void *content)
 {
-	t_prepa		*p;
+	t_entity_full		*p;
 
-	p = (t_prepa*)content;
+	p = (t_entity_full*)content;
 	printf("Mode : %s\n", p->mode);
 	printf("nb link : %s\n", p->nb_link);
 	printf("user : %s\n", p->user);

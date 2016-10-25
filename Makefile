@@ -19,7 +19,7 @@ SRC = 	$(SRCPATH)/main.c\
 		$(SRCPATH)/ls_debug.c\
 		$(SRCPATH)/ls_option.c\
 		$(SRCPATH)/ls_sort.c\
-		$(SRCPATH)/ls_print_result.c\
+		$(SRCPATH)/ls_foreach_param.c\
 		$(SRCPATH)/ls_print_folder.c\
 		$(SRCPATH)/ls_set_data.c\
 		$(SRCPATH)/ls_cmp.c\

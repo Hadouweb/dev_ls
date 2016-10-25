@@ -14,10 +14,10 @@
 
 void	ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app)
 {
-	t_path	*path;
+	t_entity	*path;
 	int		ret;
 
-	if ((path = (t_path*)ft_memalloc(sizeof(t_path))) == NULL)
+	if ((path = (t_entity*)ft_memalloc(sizeof(t_entity))) == NULL)
 		ls_error("Error: malloc");
 	if (rpath == NULL) {
 		path->parent = NULL;
@@ -35,11 +35,11 @@ void	ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app)
 	free(path);
 }
 
-void	ls_set_option_l(t_app *app, t_path *path)
+void	ls_set_option_l(t_app *app, t_entity *path)
 {
-	t_prepa 	*p;
+	t_entity_full 	*p;
 
-	if ((p = (t_prepa*)ft_memalloc(sizeof(t_prepa))) == NULL)
+	if ((p = (t_entity_full*)ft_memalloc(sizeof(t_entity_full))) == NULL)
 		ls_error("Error: malloc");
 	ls_set_mode(p, path->file.st_mode);
 	ls_set_nb_link(p, path->file.st_nlink, app);
@@ -47,12 +47,11 @@ void	ls_set_option_l(t_app *app, t_path *path)
 	ls_set_group(p, path->file.st_gid, app);
 	ls_set_size(p, path->file, app);
 	ls_set_time(p, path->file.st_mtime, app);
-	ls_set_path(p, path->name, path->link, app);
-	ft_lstd_pushback(&app->prepa, (void*)p, sizeof(t_prepa));
-	free(p);
+	ls_set_entity(p, path->name, path->link, app);
+	ft_lstd_pushback(&app->prepa, (void*)p, sizeof(t_entity_full));
 }
 
-void	ls_set_folder(t_app *app, char *name)
+void	ls_open_folder(t_app *app, char *name)
 {
 	DIR		*dir;
 	char	*dir_path;
