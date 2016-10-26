@@ -51,14 +51,10 @@ typedef struct 		s_entity
 	char			*name;
 	struct stat 	file;
 	t_entity_full	*entity_full;
-<<<<<<< HEAD
-	char			*parent;	
-=======
 	t_listd			*child;
 	t_max_size		ms;
 	struct s_entity	*e_parent;
 	char 			*rpath;
->>>>>>> 9f0d8b12072cf843a54b9d2b885ba8978807b7c6
 	char			*link;
 }					t_entity;
 
