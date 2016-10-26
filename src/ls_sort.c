@@ -52,7 +52,7 @@ static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 	return (0);
 }
 
-void		ls_sort_param(t_app *app, t_listd **lst)
+void		ls_sort_entity(t_app *app, t_listd **lst)
 {
 	t_listd	*l;
 	int		swap;

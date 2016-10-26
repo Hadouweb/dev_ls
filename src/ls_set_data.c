@@ -14,61 +14,59 @@
 
 void	ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app)
 {
-	t_entity	*path;
-	int		ret;
+	t_entity	*e;
+	int			ret;
 
-	if ((path = (t_entity*)ft_memalloc(sizeof(t_entity))) == NULL)
+	if ((e = (t_entity*)ft_memalloc(sizeof(t_entity))) == NULL)
 		ls_error("Error: malloc");
 	if (rpath == NULL) {
-		path->parent = NULL;
+		e->parent = NULL;
 		rpath = name;
 	} else
-		path->parent = ft_strdup(rpath);
-	path->name = ft_strdup(name);
-	if ((path->link = ls_get_link(rpath)) == NULL)
-		ret = ls_get_data_file(rpath, 0, &path->file);
+		e->parent = ft_strdup(rpath);
+	e->name = ft_strdup(name);
+	if ((e->link = ls_get_link(rpath)) == NULL)
+		ret = ls_get_data_file(rpath, 0, &e->file);
 	else
-		ret = ls_get_data_file(rpath, 1, &path->file);
-	app->ms.total_folder += path->file.st_blocks;
+		ret = ls_get_data_file(rpath, 1, &e->file);
+	e->ms.total_folder += e->file.st_blocks;
 	if (ret == 0)
-		ls_push_after_sort(lst, path, app);
-	free(path);
+		ls_push_after_sort(lst, e, app);
 }
 
-void	ls_set_option_l(t_app *app, t_entity *path)
+void	ls_set_option_l(t_entity *e)
 {
-	t_entity_full 	*p;
+	t_entity_full 	*e_full;
 
-	if ((p = (t_entity_full*)ft_memalloc(sizeof(t_entity_full))) == NULL)
+	if ((e_full = (t_entity_full*)ft_memalloc(sizeof(t_entity_full))) == NULL)
 		ls_error("Error: malloc");
-	ls_set_mode(p, path->file.st_mode);
-	ls_set_nb_link(p, path->file.st_nlink, app);
-	ls_set_user(p, path->file.st_uid, app);
-	ls_set_group(p, path->file.st_gid, app);
-	ls_set_size(p, path->file, app);
-	ls_set_time(p, path->file.st_mtime, app);
-	ls_set_entity(p, path->name, path->link, app);
-	ft_lstd_pushback(&app->prepa, (void*)p, sizeof(t_entity_full));
+	ls_set_mode(e_full, e->file.st_mode);
+	ls_set_nb_link(e, e->file.st_nlink);
+	ls_set_user(e, e->file.st_uid);
+	ls_set_group(e, e->file.st_gid);
+	ls_set_size(e, e->file);
+	ls_set_time(e, e->file.st_mtime);
+	ls_set_entity(e, e->name, e->link);
+	e->entity_full = e_full;
 }
 
-void	ls_open_folder(t_app *app, char *name)
+t_listd	*ls_get_entity_dir(t_app *app, char *name)
 {
 	DIR		*dir;
 	char	*dir_path;
 	t_listd	*lst;
 
 	lst = NULL;
-	//printf("__ %s\n", name);
 	if (name[ft_strlen(name) - 1] != '/')
 		dir_path = ft_stradd_char(&name, '/');
 	else
 		dir_path = ft_strdup(name);
-	//printf("__ %s\n", dir_path);
 	dir = ls_opendir(dir_path);
 	if (dir != NULL) {
 		ls_readdir(dir, &lst, dir_path, app);
 		ls_closedir(dir);
-		ls_print_folder(app, &lst, name);
+		//ls_print_folder(app, &lst, name);
 		ft_strdel(&dir_path);
 	}
+	return lst;
 }

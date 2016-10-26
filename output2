@@ -1,43 +1,13 @@
-level1_1
-level1_2
-lol
-
-test3/level1_1:
-level2_1
-level2_2
-
-test3/level1_1/level2_1:
-level3_1
-level3_2
-
-test3/level1_1/level2_1/level3_1:
-
-test3/level1_1/level2_1/level3_2:
-
-test3/level1_1/level2_2:
-level3_1
-level3_2
-
-test3/level1_1/level2_2/level3_1:
-
-test3/level1_1/level2_2/level3_2:
-
-test3/level1_2:
-level2_1
-level2_2
-
-test3/level1_2/level2_1:
-level3_1
-level3_2
-
-test3/level1_2/level2_1/level3_1:
-
-test3/level1_2/level2_1/level3_2:
-
-test3/level1_2/level2_2:
-level3_1
-level3_2
-
-test3/level1_2/level2_2/level3_1:
-
-test3/level1_2/level2_2/level3_2:
+total 0
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 24 16:54 2
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 24 16:54 A3
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 23 14:36 a
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 23 14:36 b
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 22 11:01 c
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 22 17:09 d
+drwxr-xr-x  4 nle-bret  2015_paris  136 Oct 25 10:18 dir
+drwxr-xr-x  3 nle-bret  2015_paris  102 Oct 25 13:19 dir2
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 22 11:01 e
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 22 17:09 f
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 22 17:14 lol
+-rw-r--r--  1 nle-bret  2015_paris    0 Dec 10  2013 sd3
