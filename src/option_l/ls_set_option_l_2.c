@@ -23,7 +23,7 @@ void		ls_set_nb_link(t_entity *e, int st_nlink)
 		e->ms.nb_link = size;
 }
 
-void		ls_set_entity(t_entity *e, char *path, char *link)
+/*void		ls_push_entity(t_entity *e, char *path, char *link)
 {
 	t_entity_full 	*e_full;
 	int				size;
@@ -37,4 +37,4 @@ void		ls_set_entity(t_entity *e, char *path, char *link)
 	}
 	if ((size = ft_strlen(e_full->name)) > e->ms.name)
 		e->ms.name = size;
-}
+}*/

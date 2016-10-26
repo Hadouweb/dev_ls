@@ -52,27 +52,27 @@ void	ls_debug_print_entity_full(void *content)
 
 void	ls_debug_print_content(void *content)
 {
-	t_entity *path;
+	t_entity *e;
 
-	path = (t_entity*)content;
-	if (path != NULL && path->name != NULL) {
-		ft_putstr(path->name);
+	e = (t_entity*)content;
+	if (e != NULL && e->name != NULL) {
+		ft_putstr(e->name);
 		ft_putstr(" ");
-		if (path->parent)
-			ft_putstr(path->parent);
+		if (e->e_parent)
+			ft_putstr(e->e_parent->name);
 		else
 			ft_putstr("NULL");
 	}
 }
 
-void	ls_debug_path(void *content)
+void	ls_debug_entity(void *content)
 {
-	t_entity	*path;
+	t_entity	*e;
 
-	path = (t_entity*)content;
-	printf("\nname : %s\n", path->name);
-	printf("link : %s\n", path->link);
-	ls_print_stat_debug(path->file);
+	e = (t_entity*)content;
+	printf("\nname : %s\n", e->name);
+	printf("link : %s\n", e->link);
+	ls_print_stat_debug(e->file);
 }
 
 void	ls_debug_max_size(t_entity *e)

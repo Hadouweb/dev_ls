@@ -39,7 +39,7 @@ void DEBUG_print_file(char *name, struct stat *file)
 	printf("Name %s | %ld\n", name, file->st_mtimespec.tv_sec);
 }
 
-int			ls_get_data_file(char *name, int is_link, struct stat *file)
+/*int			ls_get_data_file(char *name, int is_link, struct stat *file)
 {
 	int			ret;
 
@@ -56,4 +56,4 @@ int			ls_get_data_file(char *name, int is_link, struct stat *file)
 		perror(name);
 	}
 	return (ret);
-}
+}*/

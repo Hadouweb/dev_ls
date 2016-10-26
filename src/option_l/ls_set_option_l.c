@@ -47,8 +47,8 @@ void		ls_set_group(t_entity *e, int st_gid)
 void		ls_set_size(t_entity *e, struct stat file)
 {
 	t_entity_full	*e_full;
-	int		nbr;
-	int		size;
+	int				nbr;
+	int				size;
 
 	e_full = e->entity_full;
 	nbr = 0;

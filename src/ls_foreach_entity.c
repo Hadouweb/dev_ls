@@ -128,7 +128,7 @@ void		ls_exec_flag(t_app *app, t_entity *e)
 	//ft_lstd_print(app->entity, ls_debug_print_content, 1);
 	if (app->opt & OPT_l) {
 		if (S_ISDIR(e->file.st_mode))
-			ls_set_child(e, ls_get_entity_dir(app, e->name));
+			ls_set_child(e, ls_get_entity_dir(app, e->name, e));
 		else
 			ls_set_option_l(e);
 	}
@@ -139,10 +139,10 @@ void		ls_print_child(t_app *app, t_entity *e)
 	t_listd 	*l;
 
 	l = e->child;
+	//ft_lstd_print(l, ls_debug_print_entity_full, 1);
 	while (l)
 	{
 		if (app->opt & OPT_l) {
-			ls_set_option_l((t_entity *) l->content);
 			ls_print_line_opt_l((t_entity *) l->content);
 		}
 		l = l->next;

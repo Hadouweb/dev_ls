@@ -23,21 +23,17 @@ DIR		*ls_opendir(char *file)
 	return (dir);
 }
 
-void	ls_readdir(DIR *dir, t_listd **lst, char *origin, t_app *app)
+void	ls_readdir(DIR *dir, t_listd **lst, t_app *app, t_entity *parent)
 {
 	struct dirent	*dp;
-	char			*relativ_path;
 
 	errno = 0;
-	//printf("ls_readdir\n");
 	while ((dp = readdir(dir)) != NULL)
 	{
-		relativ_path = ft_strjoin(origin, dp->d_name);
 		if (errno != 0)
 			ls_error_errno("Error in ls_readdir ");
 		if (dp->d_name[0] != '.' || app->opt & OPT_a)
-			ls_set_file_data(relativ_path, dp->d_name, lst, app);
-		ft_strdel(&relativ_path);
+			ls_push_entity(app, parent, dp->d_name, lst);
 	}
 	//ft_lstd_print(*lst, ls_debug_print_content, 1);
 }

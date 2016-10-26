@@ -53,11 +53,12 @@ typedef struct 		s_entity
 	t_entity_full	*entity_full;
 	t_listd			*child;
 	t_max_size		ms;
-	char			*parent;
+	struct s_entity	*e_parent;
+	char 			*rpath;
 	char			*link;
 }					t_entity;
 
-typedef struct 	s_col
+typedef struct 		s_col
 {
 	int 			nbr_link;
 }					t_col;
@@ -73,7 +74,7 @@ typedef struct  	s_app
 }					t_app;
 
 DIR				*ls_opendir(char *file);
-void			ls_readdir(DIR *dir, t_listd **lst, char *origin, t_app *app);
+void			ls_readdir(DIR *dir, t_listd **lst, t_app *app, t_entity *parent);
 void			ls_closedir(DIR *dir);
 
 t_listd			*ls_get_node_cmp(t_listd **lst, t_entity *path);
@@ -83,9 +84,9 @@ void			ls_push_after_sort(t_listd **lst, t_entity *path, t_app *app);
 void			ls_sort_entity(t_app *app, t_listd **lst);
 void			ls_sort(t_app *app, t_listd **lst);
 
-void			ls_set_file_data(char *rpath, char *name, t_listd **lst, t_app *app);
+int				ls_set_filestat(t_entity *e);
 void			ls_set_option_l(t_entity *path);
-t_listd			*ls_get_entity_dir(t_app *app, char *name);
+t_listd			*ls_get_entity_dir(t_app *app, char *name, t_entity *parent);
 
 void			ls_foreach_entity(t_app *app);
 
@@ -122,7 +123,7 @@ void			ls_set_group(t_entity *e, int st_gid);
 void			ls_set_size(t_entity *e, struct stat file);
 void			ls_set_time(t_entity *e, const time_t t);
 void			ls_set_nb_link(t_entity *e, int st_nlink);
-void			ls_set_entity(t_entity *e, char *path, char *link);
+void			ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst);
 
 void			ls_print_adjust_space_left(char *str, int size);
 void			ls_print_adjust_space_right(char *str, int size);
@@ -130,7 +131,7 @@ void			ls_clear_node_prepared(t_listd *node);
 void			ls_print_adjust_size(t_entity *e);
 void			ls_print_option_l(t_app *app);
 
-void			ls_set_mode(t_entity_full *p, int st_mode);
+void			ls_set_mode(t_entity *e, int st_mode);
 void 			ls_print_with_option_R(t_app *app);
 void			ls_print_line(t_app *app, t_entity *path);
 void			ls_set_stack(t_app *app, t_entity *path);
