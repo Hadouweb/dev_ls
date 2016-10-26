@@ -23,7 +23,7 @@
 	{
 		path = (t_entity*)l->content;
 		ls_print_line(app, path);
-		ls_set_sub_dir(app, path);
+		ls_set_stack(app, path);
 		l = l->next;
 	}
 }
@@ -38,16 +38,16 @@
 	while (l)
 	{
 		path = (t_entity*)l->content;
-		ls_open_folder(app, path->name);
+		ls_get_entity_dir(app, path->name);
 		l = l->next;
 	}
 	ls_print_option_l(app);
-	l = app->sub_dir;
+	l = app->stack;
 	while (l)
 	{
 		//ft_lstd_print(l, ls_debug_print_content, 1);
 		path = (t_entity*)l->content;
-		ls_open_folder(app, path->name);
+		ls_get_entity_dir(app, path->name);
 		tmp = l;
 		l = l->next;
 		path = NULL;
@@ -76,14 +76,14 @@
 		ft_putendl(path->name);
 	}
 }*/
-/*void	ls_set_sub_dir(t_app *app, t_entity *path)
+/*void	ls_set_stack(t_app *app, t_entity *path)
 {
 	if (S_ISDIR(path->file.st_mode))
 	{
 		if (path->parent)
-			ls_open_folder(app, path->parent);
+			ls_get_entity_dir(app, path->parent);
 		else
-			ls_open_folder(app, path->name);
+			ls_get_entity_dir(app, path->name);
 	}
 }*/
 /*void 	ls_print_with_option_R(t_app *app)
@@ -92,13 +92,13 @@
 	t_listd		*tmp;
 	t_entity		*path;
 
-	l = app->sub_dir;
+	l = app->stack;
 	while (l)
 	{
 		//ft_lstd_print(l, ls_debug_print_content, 1);
 		path = (t_entity*)l->content;
 		ls_print_line(app, path);
-		ls_set_sub_dir(app, path);
+		ls_set_stack(app, path);
 		tmp = l;
 		l = l->next;
 		path = NULL;
@@ -110,39 +110,78 @@
 	free(l);
 }*/
 
-void		ls_exec_flag(t_app *app, t_entity *path)
+void		ls_set_child(t_entity *e, t_listd *lst_child)
 {
-	//ft_lstd_print(app->param, ls_debug_print_content, 1);
-	if (app->opt & OPT_l) {
-		ls_set_option_l(app, path);
-	}
-	//ft_lstd_print(app->prepa, ls_debug_print_entity_full, 1);
-}
+	t_listd 	*l;
 
-void		ls_print_data(t_app *app, t_entity *path)
-{
-	if (app->opt & OPT_l) {
-
-	}
-}
-
-void		ls_foreach_param(t_app *app)
-{
-	t_listd		*l;
-	t_entity		*path;
-
-	l = app->param;
+	e->child = lst_child;
+	l = e->child;
 	while (l)
 	{
-		path = (t_entity*)l->content;
-		ls_exec_flag(app, path);
+		ls_set_option_l((t_entity*)l->content);
 		l = l->next;
 	}
-	l = app->param;
+}
+
+void		ls_exec_flag(t_app *app, t_entity *e)
+{
+	//ft_lstd_print(app->entity, ls_debug_print_content, 1);
+	if (app->opt & OPT_l) {
+		if (S_ISDIR(e->file.st_mode))
+			ls_set_child(e, ls_get_entity_dir(app, e->name, e));
+		else
+			ls_set_option_l(e);
+	}
+}
+
+void		ls_print_child(t_app *app, t_entity *e)
+{
+	t_listd 	*l;
+
+	l = e->child;
+	//ft_lstd_print(l, ls_debug_print_entity_full, 1);
 	while (l)
 	{
-		path = (t_entity*)l->content;
-		ls_print_data(app, path);
+		if (app->opt & OPT_l) {
+			ls_print_line_opt_l((t_entity *) l->content);
+		}
+		l = l->next;
+	}
+}
+
+void		ls_print_entity_root(t_app *app, t_entity *e)
+{
+	if (app->opt & OPT_l) {
+		if (S_ISDIR(e->file.st_mode)) {
+			ft_putstr("total ");
+			ft_putnbr(e->ms.total_folder);
+			ft_putchar('\n');
+			ls_print_child(app, e);
+		} else
+			ls_print_line_opt_l(e);
+	}
+	//ls_debug_max_size(app);
+}
+
+void		ls_foreach_entity(t_app *app)
+{
+	t_listd		*l;
+	t_entity	*e;
+
+	l = app->entity;
+	while (l)
+	{
+		e = (t_entity*)l->content;
+		ls_exec_flag(app, e);
+		l = l->next;
+	}
+	//ft_lstd_print(app->entity, ls_debug_print_entity_full, 0);
+
+	l = app->entity;
+	while (l)
+	{
+		e = (t_entity*)l->content;
+		ls_print_entity_root(app, e);
 		l = l->next;
 	}
 }

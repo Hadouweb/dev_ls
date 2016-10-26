@@ -38,7 +38,7 @@ void		ls_print_adjust_space_right(char *str, int size)
 	}
 }
 
-void		ls_clear_node_prepared(t_listd *node)
+/*void		ls_clear_node_prepared(t_listd *node)
 {
 	t_entity_full		*p;
 
@@ -57,37 +57,45 @@ void		ls_clear_node_prepared(t_listd *node)
 	p = NULL;
 	free(node);
 	node = NULL;
-}
+}*/
 
-void		ls_print_adjust_size(t_entity_full *p, t_app *app)
+void		ls_print_adjust_size(t_entity *e)
 {
-	if (p->size != NULL)
+	t_entity_full *e_full;
+
+	e_full = e->entity_full;
+	if (e_full->size != NULL)
 	{
-		ls_print_adjust_space_left(p->size, app->ms.size);
+		ls_print_adjust_space_left(e_full->size, e->ms.size);
 	}
 	else
 	{
-		ls_print_adjust_space_left(p->major, 3);
+		ls_print_adjust_space_left(e_full->major, 3);
 		ft_putchar(',');
-		ls_print_adjust_space_left(p->minor, 3);
+		ls_print_adjust_space_left(e_full->minor, 3);
 	}
 }
 
-void		ls_print_line_opt_l(t_app *app, t_entity_full *p)
+void		ls_print_line_opt_l(t_entity *e)
 {
-	ft_putstr(p->mode);
-	ls_print_adjust_space_left(p->nb_link, app->ms.nb_link);
+	t_entity_full *e_full;
+
+	e_full = e->entity_full;
+	ft_putstr(e_full->mode);
+	ls_print_adjust_space_left(e_full->nb_link, e->ms.nb_link);
 	ft_putchar(' ');
-	ls_print_adjust_space_right(p->user, app->ms.user + 1);
-	ls_print_adjust_space_right(p->group, app->ms.group - 1);
-	ls_print_adjust_size(p, app);
-	ls_print_adjust_space_left(p->time, app->ms.time);
+	ls_print_adjust_space_right(e_full->user, e->ms.user + 1);
+	ls_print_adjust_space_right(e_full->group, e->ms.group - 1);
+	ls_print_adjust_size(e);
+	ls_print_adjust_space_left(e_full->month, e->ms.month);
+	ls_print_adjust_space_left(e_full->day, e->ms.day);
+	ls_print_adjust_space_left(e_full->hour_year, e->ms.hour_year);
 	ft_putchar(' ');
-	ft_putstr(p->name);
+	ft_putstr(e_full->name);
 	ft_putchar('\n');
 }
 
-void		ls_print_option_l(t_app *app)
+/*void		ls_print_option_l(t_app *app)
 {
 	t_listd	*l;
 	t_listd	*tmp;
@@ -113,4 +121,4 @@ void		ls_print_option_l(t_app *app)
 		ls_clear_node_prepared(tmp);
 	}
 	app->prepa = NULL;
-}
+}*/

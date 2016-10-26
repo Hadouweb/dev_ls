@@ -12,25 +12,29 @@
 
 #include "ft_ls.h"
 
-void		ls_set_nb_link(t_entity_full *p, int st_nlink, t_app *app)
+void		ls_set_nb_link(t_entity *e, int st_nlink)
 {
-	int		size;
+	t_entity_full 	*e_full;
+	int				size;
 
-	p->nb_link = ft_itoa(st_nlink);
-	if ((size = ft_strlen(p->nb_link)) > app->ms.nb_link)
-		app->ms.nb_link = size;
+	e_full = e->entity_full;
+	e_full->nb_link = ft_itoa(st_nlink);
+	if ((size = ft_strlen(e_full->nb_link)) > e->ms.nb_link)
+		e->ms.nb_link = size;
 }
 
-void		ls_set_entity(t_entity_full *p, char *path, char *link, t_app *app)
+/*void		ls_push_entity(t_entity *e, char *path, char *link)
 {
-	int		size;
+	t_entity_full 	*e_full;
+	int				size;
 
-	p->name = ft_strdup(path);
+	e_full = e->entity_full;
+	e_full->name = ft_strdup(path);
 	if (link != NULL)
 	{
-		p->name = ft_strjoin_free_s1(p->name, " -> ");
-		p->name = ft_strjoin_free_s1(p->name, link);
+		e_full->name = ft_strjoin_free_s1(e_full->name, " -> ");
+		e_full->name = ft_strjoin_free_s1(e_full->name, link);
 	}
-	if ((size = ft_strlen(p->name)) > app->ms.name)
-		app->ms.name = size;
-}
+	if ((size = ft_strlen(e_full->name)) > e->ms.name)
+		e->ms.name = size;
+}*/

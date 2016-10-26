@@ -29,46 +29,62 @@ void	ls_debug_swap(t_listd *a, t_listd *b)
 
 void	ls_debug_print_entity_full(void *content)
 {
-	t_entity_full *prepa;
+	t_entity 		*e;
+	t_entity_full 	*e_full;
 
-	prepa = (t_entity_full*)content;
-	ft_putstr(prepa->name);
-	ft_putstr(" ");
+	e = (t_entity*)content;
+	e_full = e->entity_full;
+	ft_putchar('\n');
+	ft_putendl(e->name);
+	if (e_full != NULL) {
+		ft_putendl(e_full->group);
+		ft_putendl(e_full->major);
+		ft_putendl(e_full->minor);
+		ft_putendl(e_full->mode);
+		ft_putendl(e_full->nb_link);
+		ft_putendl(e_full->size);
+		ft_putendl(e_full->month);
+		ft_putendl(e_full->day);
+		ft_putendl(e_full->hour_year);
+		ft_putendl(e_full->user);
+	}
 }
 
 void	ls_debug_print_content(void *content)
 {
-	t_entity *path;
+	t_entity *e;
 
-	path = (t_entity*)content;
-	if (path != NULL && path->name != NULL) {
-		ft_putstr(path->name);
+	e = (t_entity*)content;
+	if (e != NULL && e->name != NULL) {
+		ft_putstr(e->name);
 		ft_putstr(" ");
-		if (path->parent)
-			ft_putstr(path->parent);
+		if (e->e_parent)
+			ft_putstr(e->e_parent->name);
 		else
 			ft_putstr("NULL");
 	}
 }
 
-void	ls_debug_path(void *content)
+void	ls_debug_entity(void *content)
 {
-	t_entity	*path;
+	t_entity	*e;
 
-	path = (t_entity*)content;
-	printf("\nname : %s\n", path->name);
-	printf("link : %s\n", path->link);
-	ls_print_stat_debug(path->file);
+	e = (t_entity*)content;
+	printf("\nname : %s\n", e->name);
+	printf("link : %s\n", e->link);
+	ls_print_stat_debug(e->file);
 }
 
-void	ls_debug_max_size(t_app *app)
+void	ls_debug_max_size(t_entity *e)
 {
-	printf("size nb_link : %d\n", app->ms.nb_link);
-	printf("size user : %d\n", app->ms.user);
-	printf("size group : %d\n", app->ms.group);
-	printf("size size : %d\n", app->ms.size);
-	printf("size time : %d\n", app->ms.time);
-	printf("size name : %d\n", app->ms.name);
+	printf("size nb_link : %d\n", e->ms.nb_link);
+	printf("size user : %d\n", e->ms.user);
+	printf("size group : %d\n", e->ms.group);
+	printf("size size : %d\n", e->ms.size);
+	printf("size month : %d\n", e->ms.month);
+	printf("size day : %d\n", e->ms.day);
+	printf("size hour_year : %d\n", e->ms.hour_year);
+	printf("size name : %d\n", e->ms.name);
 }
 
 void	ls_debug_prepared_data(void *content)
@@ -83,7 +99,9 @@ void	ls_debug_prepared_data(void *content)
 	printf("size : %s\n", p->size);
 	printf("major : %s\n", p->major);
 	printf("minor : %s\n", p->minor);
-	printf("time : %s\n", p->time);
+	printf("month : %s\n", p->month);
+	printf("day : %s\n", p->day);
+	printf("hour_year : %s\n", p->hour_year);
 	printf("name : %s\n", p->name);
 }
 

@@ -52,7 +52,7 @@ static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 	return (0);
 }
 
-void		ls_sort_param(t_app *app, t_listd **lst)
+void		ls_sort_entity(t_app *app, t_listd **lst)
 {
 	t_listd	*l;
 	int		swap;
@@ -76,24 +76,21 @@ void		ls_sort_param(t_app *app, t_listd **lst)
 	}
 }
 
-void	ls_push_after_sort(t_listd **lst, t_entity *path, t_app *app)
+void	ls_push_after_sort(t_listd **lst, t_entity *e, t_app *app)
 {
 	t_listd *node;
 
 	node = NULL;
 	if (app->opt & OPT_t) {
-		node = ls_get_node_cmp_time(lst, path);
+		node = ls_get_node_cmp_time(lst, e);
 	}
 	else {
-		node = ls_get_node_cmp(lst, path);
+		node = ls_get_node_cmp(lst, e);
 	}
 	if (node != NULL)
 	{
-		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) path, sizeof(t_entity)));
-		//printf("before this: %s current: %s\n", ((t_entity*)node->content)->name, path->name);
+		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) e, sizeof(t_entity)));
 	} else {
-		ft_lstd_pushback(lst, (void *) path, sizeof(t_entity));
-		//printf("add classic: %s\n", path->name);
+		ft_lstd_pushback(lst, (void *) e, sizeof(t_entity));
 	}
-	//ft_lstd_print(*lst, ls_debug_print_content, 1);
 }

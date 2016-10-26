@@ -12,81 +12,89 @@
 
 #include "ft_ls.h"
 
-void		ls_set_user(t_entity_full *p, int st_uid, t_app *app)
+void		ls_set_user(t_entity *e, int st_uid)
 {
+	t_entity_full	*e_full;
 	struct passwd	*user;
 	int				size;
 
+	e_full = e->entity_full;
 	user = ls_get_user_data(st_uid);
 	if (user == NULL)
-		p->user = ft_itoa(st_uid);
+		e_full->user = ft_itoa(st_uid);
 	else
-		p->user = user->pw_name;
-	if ((size = ft_strlen(p->user)) > app->ms.user)
-		app->ms.user = size;
+		e_full->user = user->pw_name;
+	if ((size = ft_strlen(e_full->user)) > e->ms.user)
+		e->ms.user = size;
 }
 
-void		ls_set_group(t_entity_full *p, int st_gid, t_app *app)
+void		ls_set_group(t_entity *e, int st_gid)
 {
+	t_entity_full	*e_full;
 	struct group	*group;
 	int 			size;
 
+	e_full = e->entity_full;
 	group = ls_get_group_data(st_gid);
 	if (group == NULL)
-		p->group = ft_itoa(st_gid);
+		e_full->group = ft_itoa(st_gid);
 	else
-		p->group = group->gr_name;
-	if ((size = ft_strlen(p->group) + 1) > app->ms.group)
-		app->ms.group = size;
+		e_full->group = group->gr_name;
+	if ((size = ft_strlen(e_full->group) + 1) > e->ms.group)
+		e->ms.group = size;
 }
 
-void		ls_set_size(t_entity_full *p, struct stat file, t_app *app)
+void		ls_set_size(t_entity *e, struct stat file)
 {
-	int		nbr;
-	int		size;
+	t_entity_full	*e_full;
+	int				nbr;
+	int				size;
 
+	e_full = e->entity_full;
 	nbr = 0;
 	if (S_ISCHR(file.st_mode) || S_ISBLK(file.st_mode))
 	{
 		nbr = ls_major(file.st_rdev);
-		p->major = ft_itoa(nbr);
+		e_full->major = ft_itoa(nbr);
 		nbr = ls_minor(file.st_rdev);
-		p->minor = ft_itoa(nbr);
-		p->size = NULL;
-		if ((size = 8) > app->ms.size)
-			app->ms.size = size;
+		e_full->minor = ft_itoa(nbr);
+		e_full->size = NULL;
+		if ((size = 8) > e->ms.size)
+			e->ms.size = size;
 	}
 	else
 	{
-		p->size = ft_itoa(file.st_size);
-		p->major = NULL;
-		p->minor = NULL;
-		if ((size = ft_strlen(p->size)) > app->ms.size)
-			app->ms.size = size;
+		e_full->size = ft_itoa(file.st_size);
+		e_full->major = NULL;
+		e_full->minor = NULL;
+		if ((size = ft_strlen(e_full->size)) > e->ms.size)
+			e->ms.size = size;
 	}
 }
 
-void		ls_set_time(t_entity_full *p, const time_t t, t_app *app)
+void		ls_set_time(t_entity *e, const time_t t)
 {
+	t_entity_full	*e_full;
 	char			*str_time;
 	char			**split;
 	int				dm;
 	int				size;
 
+	e_full = e->entity_full;
 	dm = ls_diff_six_month(t);
 	str_time = ctime(&t);
 	split = ft_strsplit(str_time, ' ');
-	p->time = ft_strdup(split[1]);
-	p->time = ft_strjoin_free_s1(p->time, " ");
-	p->time = ft_strjoin_free_s1(p->time, split[2]);
-	p->time = ft_strjoin_free_s1(p->time, " ");
-	split[3][5] = '\0';
-	split[4][4] = '\0';
+	e_full->month = ft_strdup(split[1]);
+	e_full->day = ft_strdup(split[2]);
 	if (dm)
-		p->time = ft_strjoin_free_s1(p->time, split[4]);
+		e_full->hour_year = ft_strndup(split[4], 4);
 	else
-		p->time = ft_strjoin_free_s1(p->time, split[3]);
+		e_full->hour_year = ft_strndup(split[3], 5);
 	ft_free_tab(split);
-	if ((size = ft_strlen(p->time)) > app->ms.time)
-		app->ms.time = size;
+	if ((size = ft_strlen(e_full->month)) > e->ms.month)
+		e->ms.month = size;
+	if ((size = ft_strlen(e_full->day)) > e->ms.day)
+		e->ms.day = size;
+	if ((size = ft_strlen(e_full->hour_year)) > e->ms.hour_year)
+		e->ms.hour_year = size;
 }

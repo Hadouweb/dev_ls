@@ -30,18 +30,19 @@ int		main(int ac, char **av)
 				ls_option(av[i], &app);
 			else
 			{
-				ls_set_file_data(NULL, av[i], &app.param, &app);
-				app.nb_param++;
+				ls_push_entity(&app, NULL, av[i], &app.entity);
+				app.nb_entity++;
 			}
 			if (ft_strcmp(av[i], "--") == 0 || ft_strcmp(av[i], "-") == 0)
 				end_option = 1;
 			i++;
 		}
 	}
-	if (app.nb_param == 0)
-		ls_set_file_data(NULL, ".", &app.param, &app);
-	//ls_sort_param(&app, &app.lst)
-	ls_foreach_param(&app);
+	//ft_lstd_print(app.entity, ls_debug_print_content, 0);
+	if (app.nb_entity == 0)
+		ls_push_entity(&app, NULL, ".", &app.entity);
+	//ls_sort_entity(&app, &app.lst)
+	ls_foreach_entity(&app);
 	//sleep(50);
 	return (0);
 }
