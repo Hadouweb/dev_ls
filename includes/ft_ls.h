@@ -36,7 +36,7 @@ typedef struct 	s_entity
 	char			*name;
 	struct stat 	file;
 	t_entity_full	*entity_full;
-	char			*parent;
+	char			*parent;	
 	char			*link;
 }					t_entity;
 
