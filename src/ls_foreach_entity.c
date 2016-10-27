@@ -134,9 +134,6 @@ void		ls_exec_flag(t_app *app, t_entity *e)
 	} else {
 		if (S_ISDIR(e->file.st_mode)) {
 			e->child = ls_get_entity_dir(app, e->name, e);
-		} else if (e->link != NULL) {
-			//printf("%s\n", e->link);
-			//printf("%s is a directory %d\n", e->link, S_ISDIR(nfile.st_mode));
 		}
 	}
 }

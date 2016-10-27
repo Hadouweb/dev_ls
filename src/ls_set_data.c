@@ -33,19 +33,27 @@ void	ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst)
 
 char 	*ls_update_link(t_entity *e)
 {
-	char 	*path;
-	DIR		*dir;
-	//char 	*parent;
+	char 	*rpath;
+	char 	*str;
+	int 	i;
 
-	path = e->rpath;
-	dir = opendir("/etc/private/etc");
-	if (dir)
-		printf("Is a directory\n");
-	printf("rpath:[%s] name:[%s] link:[%s]\n", e->rpath, e->name, e->link);
+	rpath = e->rpath;
+	i = ft_strlen(rpath);
 
-	printf("/%d\n", e->file.st_dev);
-
-	return path;
+	while (rpath[i - 1])
+	{
+		if (rpath[i] == '/')
+			break;
+		i--;
+	}
+	if (i > 0)
+		str = ft_strjoin_free_s1(ft_strndup(rpath, i + 1), e->link);
+	else
+		str = ft_strjoin("/", e->link);
+	//printf("str:[%s] name:[%s] link:[%s]\n", str, e->name, e->link);
+	if (opendir(str) != NULL)
+		return str;
+	return e->rpath;
 }
 
 int		ls_set_filestat(t_entity *e)
@@ -59,6 +67,7 @@ int		ls_set_filestat(t_entity *e)
 	errno = 0;
 	if (e->link != NULL) {
 		path = ls_update_link(e);
+		errno = 0;
 		ret = lstat(path, &e->file);
 	} else
 		ret = stat(path, &e->file);

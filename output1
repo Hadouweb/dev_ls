@@ -1,337 +1,319 @@
-lrwxr-xr-x  1 root      wheel       22 Oct 18  2015 /etc/resolv.conf -> ../var/run/resolv.conf
--rw-r--r--  1 nle-bret  2015_paris   0 Oct 27 13:26 file1
--rw-r--r--  1 nle-bret  2015_paris   0 Oct 27 13:26 file2
-
-/dev:
-total 0
-crw-------  1 root      wheel        13,   1 Oct 25 09:33 afsc_type5
-crw-------  1 root      wheel         8,   0 Oct 25 09:33 auditpipe
-crw-r--r--  1 root      wheel         7,   3 Oct 25 09:33 auditsessions
-crw-------  1 root      wheel        18,   0 Oct 25 09:34 autofs
-crw-------  1 root      wheel        31,   0 Oct 25 09:34 autofs_control
-crw-rw-rw-  1 root      wheel        22,   0 Oct 25 09:34 autofs_homedirmounter
-crw-rw-rw-  1 root      wheel        21,   0 Oct 25 09:34 autofs_notrigger
-crw-rw-rw-  1 root      wheel        19,   3 Oct 25 09:34 autofs_nowait
-crw-------  1 root      wheel        23,   0 Oct 25 09:34 bpf0
-crw-------  1 root      wheel        23,   1 Oct 25 09:33 bpf1
-crw-------  1 root      wheel        23,   2 Oct 25 09:34 bpf2
-crw-------  1 root      wheel        23,   3 Oct 25 09:33 bpf3
-crw-------  1 nle-bret  2015_paris    0,   0 Oct 25 09:34 console
-crw-rw-rw-  1 root      wheel        17,   1 Oct 25 09:34 cu.Bluetooth-Incoming-Port
-brw-r-----  1 root      operator      1,   0 Oct 25 09:33 disk0
-brw-r-----  1 root      operator      1,   1 Oct 25 09:33 disk0s1
-brw-r-----  1 root      operator      1,   3 Oct 25 09:33 disk0s2
-brw-r-----  1 root      operator      1,   4 Oct 25 09:33 disk0s3
-brw-r-----  1 root      operator      1,   2 Oct 25 09:33 disk0s4
-brw-r-----  1 root      operator      1,   5 Oct 25 09:33 disk0s5
-brw-r-----  1 root      operator      1,   6 Oct 27 09:51 disk1
-crw-rw-rw-  1 root      wheel        24,   2 Oct 25 09:33 dtrace
-crw-rw-rw-  1 root      wheel        25,   0 Oct 25 09:33 dtracehelper
-crw-rw-rw-  1 root      wheel         0,   0 Oct 25 09:33 fbt
-dr-xr-xr-x  1 root      wheel              0 Oct 25 09:33 fd
-crw-r--r--  1 root      wheel        10,   0 Oct 25 09:33 fsevents
-crw-rw-rw-  1 root      wheel        14,  11 Oct 27 15:11 io8log
-cr--r--r--  1 root      wheel        14,  19 Oct 25 09:33 io8logmt
-crw-rw-rw-  1 root      wheel        14,  17 Oct 27 15:13 io8logtemp
-crw-------  1 root      wheel         6,   0 Oct 25 09:33 klog
-crw-rw-rw-  1 root      wheel         0,   0 Oct 25 09:33 lockstat
-crw-rw-rw-  1 root      wheel         0,   0 Oct 25 09:33 machtrace
-crw-rw-rw-  1 root      wheel         3,   2 Oct 27 16:11 null
-crw-------  1 root      wheel         9,   0 Oct 25 09:33 pf
-crw-------  1 root      wheel         9,   1 Oct 25 09:33 pfm
-crw-------  1 root      operator     20,   0 Oct 25 09:33 pmCPU
-crw-rw-rw-  1 root      wheel         0,   0 Oct 25 09:33 profile
-crw-rw-rw-  1 root      tty          15,   0 Oct 27 16:11 ptmx
-crw-rw-rw-  1 root      wheel         5,   0 Oct 25 09:33 ptyp0
-crw-rw-rw-  1 root      wheel         5,   1 Oct 25 09:33 ptyp1
-crw-rw-rw-  1 root      wheel         5,   2 Oct 25 09:33 ptyp2
-crw-rw-rw-  1 root      wheel         5,   3 Oct 25 09:33 ptyp3
-crw-rw-rw-  1 root      wheel         5,   4 Oct 25 09:33 ptyp4
-crw-rw-rw-  1 root      wheel         5,   5 Oct 25 09:33 ptyp5
-crw-rw-rw-  1 root      wheel         5,   6 Oct 25 09:33 ptyp6
-crw-rw-rw-  1 root      wheel         5,   7 Oct 25 09:33 ptyp7
-crw-rw-rw-  1 root      wheel         5,   8 Oct 25 09:33 ptyp8
-crw-rw-rw-  1 root      wheel         5,   9 Oct 25 09:33 ptyp9
-crw-rw-rw-  1 root      wheel         5,  10 Oct 25 09:33 ptypa
-crw-rw-rw-  1 root      wheel         5,  11 Oct 25 09:33 ptypb
-crw-rw-rw-  1 root      wheel         5,  12 Oct 25 09:33 ptypc
-crw-rw-rw-  1 root      wheel         5,  13 Oct 25 09:33 ptypd
-crw-rw-rw-  1 root      wheel         5,  14 Oct 25 09:33 ptype
-crw-rw-rw-  1 root      wheel         5,  15 Oct 25 09:33 ptypf
-crw-rw-rw-  1 root      wheel         5,  16 Oct 25 09:33 ptyq0
-crw-rw-rw-  1 root      wheel         5,  17 Oct 25 09:33 ptyq1
-crw-rw-rw-  1 root      wheel         5,  18 Oct 25 09:33 ptyq2
-crw-rw-rw-  1 root      wheel         5,  19 Oct 25 09:33 ptyq3
-crw-rw-rw-  1 root      wheel         5,  20 Oct 25 09:33 ptyq4
-crw-rw-rw-  1 root      wheel         5,  21 Oct 25 09:33 ptyq5
-crw-rw-rw-  1 root      wheel         5,  22 Oct 25 09:33 ptyq6
-crw-rw-rw-  1 root      wheel         5,  23 Oct 25 09:33 ptyq7
-crw-rw-rw-  1 root      wheel         5,  24 Oct 25 09:33 ptyq8
-crw-rw-rw-  1 root      wheel         5,  25 Oct 25 09:33 ptyq9
-crw-rw-rw-  1 root      wheel         5,  26 Oct 25 09:33 ptyqa
-crw-rw-rw-  1 root      wheel         5,  27 Oct 25 09:33 ptyqb
-crw-rw-rw-  1 root      wheel         5,  28 Oct 25 09:33 ptyqc
-crw-rw-rw-  1 root      wheel         5,  29 Oct 25 09:33 ptyqd
-crw-rw-rw-  1 root      wheel         5,  30 Oct 25 09:33 ptyqe
-crw-rw-rw-  1 root      wheel         5,  31 Oct 25 09:33 ptyqf
-crw-rw-rw-  1 root      wheel         5,  32 Oct 25 09:33 ptyr0
-crw-rw-rw-  1 root      wheel         5,  33 Oct 25 09:33 ptyr1
-crw-rw-rw-  1 root      wheel         5,  34 Oct 25 09:33 ptyr2
-crw-rw-rw-  1 root      wheel         5,  35 Oct 25 09:33 ptyr3
-crw-rw-rw-  1 root      wheel         5,  36 Oct 25 09:33 ptyr4
-crw-rw-rw-  1 root      wheel         5,  37 Oct 25 09:33 ptyr5
-crw-rw-rw-  1 root      wheel         5,  38 Oct 25 09:33 ptyr6
-crw-rw-rw-  1 root      wheel         5,  39 Oct 25 09:33 ptyr7
-crw-rw-rw-  1 root      wheel         5,  40 Oct 25 09:33 ptyr8
-crw-rw-rw-  1 root      wheel         5,  41 Oct 25 09:33 ptyr9
-crw-rw-rw-  1 root      wheel         5,  42 Oct 25 09:33 ptyra
-crw-rw-rw-  1 root      wheel         5,  43 Oct 25 09:33 ptyrb
-crw-rw-rw-  1 root      wheel         5,  44 Oct 25 09:33 ptyrc
-crw-rw-rw-  1 root      wheel         5,  45 Oct 25 09:33 ptyrd
-crw-rw-rw-  1 root      wheel         5,  46 Oct 25 09:33 ptyre
-crw-rw-rw-  1 root      wheel         5,  47 Oct 25 09:33 ptyrf
-crw-rw-rw-  1 root      wheel         5,  48 Oct 25 09:33 ptys0
-crw-rw-rw-  1 root      wheel         5,  49 Oct 25 09:33 ptys1
-crw-rw-rw-  1 root      wheel         5,  50 Oct 25 09:33 ptys2
-crw-rw-rw-  1 root      wheel         5,  51 Oct 25 09:33 ptys3
-crw-rw-rw-  1 root      wheel         5,  52 Oct 25 09:33 ptys4
-crw-rw-rw-  1 root      wheel         5,  53 Oct 25 09:33 ptys5
-crw-rw-rw-  1 root      wheel         5,  54 Oct 25 09:33 ptys6
-crw-rw-rw-  1 root      wheel         5,  55 Oct 25 09:33 ptys7
-crw-rw-rw-  1 root      wheel         5,  56 Oct 25 09:33 ptys8
-crw-rw-rw-  1 root      wheel         5,  57 Oct 25 09:33 ptys9
-crw-rw-rw-  1 root      wheel         5,  58 Oct 25 09:33 ptysa
-crw-rw-rw-  1 root      wheel         5,  59 Oct 25 09:33 ptysb
-crw-rw-rw-  1 root      wheel         5,  60 Oct 25 09:33 ptysc
-crw-rw-rw-  1 root      wheel         5,  61 Oct 25 09:33 ptysd
-crw-rw-rw-  1 root      wheel         5,  62 Oct 25 09:33 ptyse
-crw-rw-rw-  1 root      wheel         5,  63 Oct 25 09:33 ptysf
-crw-rw-rw-  1 root      wheel         5,  64 Oct 25 09:33 ptyt0
-crw-rw-rw-  1 root      wheel         5,  65 Oct 25 09:33 ptyt1
-crw-rw-rw-  1 root      wheel         5,  66 Oct 25 09:33 ptyt2
-crw-rw-rw-  1 root      wheel         5,  67 Oct 25 09:33 ptyt3
-crw-rw-rw-  1 root      wheel         5,  68 Oct 25 09:33 ptyt4
-crw-rw-rw-  1 root      wheel         5,  69 Oct 25 09:33 ptyt5
-crw-rw-rw-  1 root      wheel         5,  70 Oct 25 09:33 ptyt6
-crw-rw-rw-  1 root      wheel         5,  71 Oct 25 09:33 ptyt7
-crw-rw-rw-  1 root      wheel         5,  72 Oct 25 09:33 ptyt8
-crw-rw-rw-  1 root      wheel         5,  73 Oct 25 09:33 ptyt9
-crw-rw-rw-  1 root      wheel         5,  74 Oct 25 09:33 ptyta
-crw-rw-rw-  1 root      wheel         5,  75 Oct 25 09:33 ptytb
-crw-rw-rw-  1 root      wheel         5,  76 Oct 25 09:33 ptytc
-crw-rw-rw-  1 root      wheel         5,  77 Oct 25 09:33 ptytd
-crw-rw-rw-  1 root      wheel         5,  78 Oct 25 09:33 ptyte
-crw-rw-rw-  1 root      wheel         5,  79 Oct 25 09:33 ptytf
-crw-rw-rw-  1 root      wheel         5,  80 Oct 25 09:33 ptyu0
-crw-rw-rw-  1 root      wheel         5,  81 Oct 25 09:33 ptyu1
-crw-rw-rw-  1 root      wheel         5,  82 Oct 25 09:33 ptyu2
-crw-rw-rw-  1 root      wheel         5,  83 Oct 25 09:33 ptyu3
-crw-rw-rw-  1 root      wheel         5,  84 Oct 25 09:33 ptyu4
-crw-rw-rw-  1 root      wheel         5,  85 Oct 25 09:33 ptyu5
-crw-rw-rw-  1 root      wheel         5,  86 Oct 25 09:33 ptyu6
-crw-rw-rw-  1 root      wheel         5,  87 Oct 25 09:33 ptyu7
-crw-rw-rw-  1 root      wheel         5,  88 Oct 25 09:33 ptyu8
-crw-rw-rw-  1 root      wheel         5,  89 Oct 25 09:33 ptyu9
-crw-rw-rw-  1 root      wheel         5,  90 Oct 25 09:33 ptyua
-crw-rw-rw-  1 root      wheel         5,  91 Oct 25 09:33 ptyub
-crw-rw-rw-  1 root      wheel         5,  92 Oct 25 09:33 ptyuc
-crw-rw-rw-  1 root      wheel         5,  93 Oct 25 09:33 ptyud
-crw-rw-rw-  1 root      wheel         5,  94 Oct 25 09:33 ptyue
-crw-rw-rw-  1 root      wheel         5,  95 Oct 25 09:33 ptyuf
-crw-rw-rw-  1 root      wheel         5,  96 Oct 25 09:33 ptyv0
-crw-rw-rw-  1 root      wheel         5,  97 Oct 25 09:33 ptyv1
-crw-rw-rw-  1 root      wheel         5,  98 Oct 25 09:33 ptyv2
-crw-rw-rw-  1 root      wheel         5,  99 Oct 25 09:33 ptyv3
-crw-rw-rw-  1 root      wheel         5, 100 Oct 25 09:33 ptyv4
-crw-rw-rw-  1 root      wheel         5, 101 Oct 25 09:33 ptyv5
-crw-rw-rw-  1 root      wheel         5, 102 Oct 25 09:33 ptyv6
-crw-rw-rw-  1 root      wheel         5, 103 Oct 25 09:33 ptyv7
-crw-rw-rw-  1 root      wheel         5, 104 Oct 25 09:33 ptyv8
-crw-rw-rw-  1 root      wheel         5, 105 Oct 25 09:33 ptyv9
-crw-rw-rw-  1 root      wheel         5, 106 Oct 25 09:33 ptyva
-crw-rw-rw-  1 root      wheel         5, 107 Oct 25 09:33 ptyvb
-crw-rw-rw-  1 root      wheel         5, 108 Oct 25 09:33 ptyvc
-crw-rw-rw-  1 root      wheel         5, 109 Oct 25 09:33 ptyvd
-crw-rw-rw-  1 root      wheel         5, 110 Oct 25 09:33 ptyve
-crw-rw-rw-  1 root      wheel         5, 111 Oct 25 09:33 ptyvf
-crw-rw-rw-  1 root      wheel         5, 112 Oct 25 09:33 ptyw0
-crw-rw-rw-  1 root      wheel         5, 113 Oct 25 09:33 ptyw1
-crw-rw-rw-  1 root      wheel         5, 114 Oct 25 09:33 ptyw2
-crw-rw-rw-  1 root      wheel         5, 115 Oct 25 09:33 ptyw3
-crw-rw-rw-  1 root      wheel         5, 116 Oct 25 09:33 ptyw4
-crw-rw-rw-  1 root      wheel         5, 117 Oct 25 09:33 ptyw5
-crw-rw-rw-  1 root      wheel         5, 118 Oct 25 09:33 ptyw6
-crw-rw-rw-  1 root      wheel         5, 119 Oct 25 09:33 ptyw7
-crw-rw-rw-  1 root      wheel         5, 120 Oct 25 09:33 ptyw8
-crw-rw-rw-  1 root      wheel         5, 121 Oct 25 09:33 ptyw9
-crw-rw-rw-  1 root      wheel         5, 122 Oct 25 09:33 ptywa
-crw-rw-rw-  1 root      wheel         5, 123 Oct 25 09:33 ptywb
-crw-rw-rw-  1 root      wheel         5, 124 Oct 25 09:33 ptywc
-crw-rw-rw-  1 root      wheel         5, 125 Oct 25 09:33 ptywd
-crw-rw-rw-  1 root      wheel         5, 126 Oct 25 09:33 ptywe
-crw-rw-rw-  1 root      wheel         5, 127 Oct 25 09:33 ptywf
-crw-rw-rw-  1 root      wheel        11,   0 Oct 27 16:04 random
-crw-r-----  1 root      operator      1,   0 Oct 25 09:33 rdisk0
-crw-r-----  1 root      operator      1,   1 Oct 25 09:33 rdisk0s1
-crw-r-----  1 root      operator      1,   3 Oct 25 09:33 rdisk0s2
-crw-r-----  1 root      operator      1,   4 Oct 25 09:33 rdisk0s3
-crw-r-----  1 root      operator      1,   2 Oct 25 09:33 rdisk0s4
-crw-r-----  1 root      operator      1,   5 Oct 25 09:33 rdisk0s5
-crw-r-----  1 root      operator      1,   6 Oct 27 09:51 rdisk1
-crw-rw-rw-  1 root      wheel         0,   0 Oct 25 09:33 sdt
-lr-xr-xr-x  1 root      wheel              0 Oct 25 09:33 stderr -> fd/2
-lr-xr-xr-x  1 root      wheel              0 Oct 25 09:33 stdin -> fd/0
-lr-xr-xr-x  1 root      wheel              0 Oct 25 09:33 stdout -> fd/1
-crw-rw-rw-  1 root      wheel         0,   0 Oct 25 09:33 systrace
-crw-rw-rw-  1 root      wheel         2,   0 Oct 25 09:33 tty
-crw-rw-rw-  1 root      wheel        17,   0 Oct 25 09:34 tty.Bluetooth-Incoming-Port
-crw-rw-rw-  1 root      wheel         4,   0 Oct 25 09:33 ttyp0
-crw-rw-rw-  1 root      wheel         4,   1 Oct 25 09:33 ttyp1
-crw-rw-rw-  1 root      wheel         4,   2 Oct 25 09:33 ttyp2
-crw-rw-rw-  1 root      wheel         4,   3 Oct 25 09:33 ttyp3
-crw-rw-rw-  1 root      wheel         4,   4 Oct 25 09:33 ttyp4
-crw-rw-rw-  1 root      wheel         4,   5 Oct 25 09:33 ttyp5
-crw-rw-rw-  1 root      wheel         4,   6 Oct 25 09:33 ttyp6
-crw-rw-rw-  1 root      wheel         4,   7 Oct 25 09:33 ttyp7
-crw-rw-rw-  1 root      wheel         4,   8 Oct 25 09:33 ttyp8
-crw-rw-rw-  1 root      wheel         4,   9 Oct 25 09:33 ttyp9
-crw-rw-rw-  1 root      wheel         4,  10 Oct 25 09:33 ttypa
-crw-rw-rw-  1 root      wheel         4,  11 Oct 25 09:33 ttypb
-crw-rw-rw-  1 root      wheel         4,  12 Oct 25 09:33 ttypc
-crw-rw-rw-  1 root      wheel         4,  13 Oct 25 09:33 ttypd
-crw-rw-rw-  1 root      wheel         4,  14 Oct 25 09:33 ttype
-crw-rw-rw-  1 root      wheel         4,  15 Oct 25 09:33 ttypf
-crw-rw-rw-  1 root      wheel         4,  16 Oct 25 09:33 ttyq0
-crw-rw-rw-  1 root      wheel         4,  17 Oct 25 09:33 ttyq1
-crw-rw-rw-  1 root      wheel         4,  18 Oct 25 09:33 ttyq2
-crw-rw-rw-  1 root      wheel         4,  19 Oct 25 09:33 ttyq3
-crw-rw-rw-  1 root      wheel         4,  20 Oct 25 09:33 ttyq4
-crw-rw-rw-  1 root      wheel         4,  21 Oct 25 09:33 ttyq5
-crw-rw-rw-  1 root      wheel         4,  22 Oct 25 09:33 ttyq6
-crw-rw-rw-  1 root      wheel         4,  23 Oct 25 09:33 ttyq7
-crw-rw-rw-  1 root      wheel         4,  24 Oct 25 09:33 ttyq8
-crw-rw-rw-  1 root      wheel         4,  25 Oct 25 09:33 ttyq9
-crw-rw-rw-  1 root      wheel         4,  26 Oct 25 09:33 ttyqa
-crw-rw-rw-  1 root      wheel         4,  27 Oct 25 09:33 ttyqb
-crw-rw-rw-  1 root      wheel         4,  28 Oct 25 09:33 ttyqc
-crw-rw-rw-  1 root      wheel         4,  29 Oct 25 09:33 ttyqd
-crw-rw-rw-  1 root      wheel         4,  30 Oct 25 09:33 ttyqe
-crw-rw-rw-  1 root      wheel         4,  31 Oct 25 09:33 ttyqf
-crw-rw-rw-  1 root      wheel         4,  32 Oct 25 09:33 ttyr0
-crw-rw-rw-  1 root      wheel         4,  33 Oct 25 09:33 ttyr1
-crw-rw-rw-  1 root      wheel         4,  34 Oct 25 09:33 ttyr2
-crw-rw-rw-  1 root      wheel         4,  35 Oct 25 09:33 ttyr3
-crw-rw-rw-  1 root      wheel         4,  36 Oct 25 09:33 ttyr4
-crw-rw-rw-  1 root      wheel         4,  37 Oct 25 09:33 ttyr5
-crw-rw-rw-  1 root      wheel         4,  38 Oct 25 09:33 ttyr6
-crw-rw-rw-  1 root      wheel         4,  39 Oct 25 09:33 ttyr7
-crw-rw-rw-  1 root      wheel         4,  40 Oct 25 09:33 ttyr8
-crw-rw-rw-  1 root      wheel         4,  41 Oct 25 09:33 ttyr9
-crw-rw-rw-  1 root      wheel         4,  42 Oct 25 09:33 ttyra
-crw-rw-rw-  1 root      wheel         4,  43 Oct 25 09:33 ttyrb
-crw-rw-rw-  1 root      wheel         4,  44 Oct 25 09:33 ttyrc
-crw-rw-rw-  1 root      wheel         4,  45 Oct 25 09:33 ttyrd
-crw-rw-rw-  1 root      wheel         4,  46 Oct 25 09:33 ttyre
-crw-rw-rw-  1 root      wheel         4,  47 Oct 25 09:33 ttyrf
-crw-rw-rw-  1 root      wheel         4,  48 Oct 25 09:33 ttys0
-crw--w----  1 nle-bret  tty          16,   1 Oct 27 16:11 ttys001
-crw-rw-rw-  1 root      wheel         4,  49 Oct 25 09:33 ttys1
-crw-rw-rw-  1 root      wheel         4,  50 Oct 25 09:33 ttys2
-crw-rw-rw-  1 root      wheel         4,  51 Oct 25 09:33 ttys3
-crw-rw-rw-  1 root      wheel         4,  52 Oct 25 09:33 ttys4
-crw-rw-rw-  1 root      wheel         4,  53 Oct 25 09:33 ttys5
-crw-rw-rw-  1 root      wheel         4,  54 Oct 25 09:33 ttys6
-crw-rw-rw-  1 root      wheel         4,  55 Oct 25 09:33 ttys7
-crw-rw-rw-  1 root      wheel         4,  56 Oct 25 09:33 ttys8
-crw-rw-rw-  1 root      wheel         4,  57 Oct 25 09:33 ttys9
-crw-rw-rw-  1 root      wheel         4,  58 Oct 25 09:33 ttysa
-crw-rw-rw-  1 root      wheel         4,  59 Oct 25 09:33 ttysb
-crw-rw-rw-  1 root      wheel         4,  60 Oct 25 09:33 ttysc
-crw-rw-rw-  1 root      wheel         4,  61 Oct 25 09:33 ttysd
-crw-rw-rw-  1 root      wheel         4,  62 Oct 25 09:33 ttyse
-crw-rw-rw-  1 root      wheel         4,  63 Oct 25 09:33 ttysf
-crw-rw-rw-  1 root      wheel         4,  64 Oct 25 09:33 ttyt0
-crw-rw-rw-  1 root      wheel         4,  65 Oct 25 09:33 ttyt1
-crw-rw-rw-  1 root      wheel         4,  66 Oct 25 09:33 ttyt2
-crw-rw-rw-  1 root      wheel         4,  67 Oct 25 09:33 ttyt3
-crw-rw-rw-  1 root      wheel         4,  68 Oct 25 09:33 ttyt4
-crw-rw-rw-  1 root      wheel         4,  69 Oct 25 09:33 ttyt5
-crw-rw-rw-  1 root      wheel         4,  70 Oct 25 09:33 ttyt6
-crw-rw-rw-  1 root      wheel         4,  71 Oct 25 09:33 ttyt7
-crw-rw-rw-  1 root      wheel         4,  72 Oct 25 09:33 ttyt8
-crw-rw-rw-  1 root      wheel         4,  73 Oct 25 09:33 ttyt9
-crw-rw-rw-  1 root      wheel         4,  74 Oct 25 09:33 ttyta
-crw-rw-rw-  1 root      wheel         4,  75 Oct 25 09:33 ttytb
-crw-rw-rw-  1 root      wheel         4,  76 Oct 25 09:33 ttytc
-crw-rw-rw-  1 root      wheel         4,  77 Oct 25 09:33 ttytd
-crw-rw-rw-  1 root      wheel         4,  78 Oct 25 09:33 ttyte
-crw-rw-rw-  1 root      wheel         4,  79 Oct 25 09:33 ttytf
-crw-rw-rw-  1 root      wheel         4,  80 Oct 25 09:33 ttyu0
-crw-rw-rw-  1 root      wheel         4,  81 Oct 25 09:33 ttyu1
-crw-rw-rw-  1 root      wheel         4,  82 Oct 25 09:33 ttyu2
-crw-rw-rw-  1 root      wheel         4,  83 Oct 25 09:33 ttyu3
-crw-rw-rw-  1 root      wheel         4,  84 Oct 25 09:33 ttyu4
-crw-rw-rw-  1 root      wheel         4,  85 Oct 25 09:33 ttyu5
-crw-rw-rw-  1 root      wheel         4,  86 Oct 25 09:33 ttyu6
-crw-rw-rw-  1 root      wheel         4,  87 Oct 25 09:33 ttyu7
-crw-rw-rw-  1 root      wheel         4,  88 Oct 25 09:33 ttyu8
-crw-rw-rw-  1 root      wheel         4,  89 Oct 25 09:33 ttyu9
-crw-rw-rw-  1 root      wheel         4,  90 Oct 25 09:33 ttyua
-crw-rw-rw-  1 root      wheel         4,  91 Oct 25 09:33 ttyub
-crw-rw-rw-  1 root      wheel         4,  92 Oct 25 09:33 ttyuc
-crw-rw-rw-  1 root      wheel         4,  93 Oct 25 09:33 ttyud
-crw-rw-rw-  1 root      wheel         4,  94 Oct 25 09:33 ttyue
-crw-rw-rw-  1 root      wheel         4,  95 Oct 25 09:33 ttyuf
-crw-rw-rw-  1 root      wheel         4,  96 Oct 25 09:33 ttyv0
-crw-rw-rw-  1 root      wheel         4,  97 Oct 25 09:33 ttyv1
-crw-rw-rw-  1 root      wheel         4,  98 Oct 25 09:33 ttyv2
-crw-rw-rw-  1 root      wheel         4,  99 Oct 25 09:33 ttyv3
-crw-rw-rw-  1 root      wheel         4, 100 Oct 25 09:33 ttyv4
-crw-rw-rw-  1 root      wheel         4, 101 Oct 25 09:33 ttyv5
-crw-rw-rw-  1 root      wheel         4, 102 Oct 25 09:33 ttyv6
-crw-rw-rw-  1 root      wheel         4, 103 Oct 25 09:33 ttyv7
-crw-rw-rw-  1 root      wheel         4, 104 Oct 25 09:33 ttyv8
-crw-rw-rw-  1 root      wheel         4, 105 Oct 25 09:33 ttyv9
-crw-rw-rw-  1 root      wheel         4, 106 Oct 25 09:33 ttyva
-crw-rw-rw-  1 root      wheel         4, 107 Oct 25 09:33 ttyvb
-crw-rw-rw-  1 root      wheel         4, 108 Oct 25 09:33 ttyvc
-crw-rw-rw-  1 root      wheel         4, 109 Oct 25 09:33 ttyvd
-crw-rw-rw-  1 root      wheel         4, 110 Oct 25 09:33 ttyve
-crw-rw-rw-  1 root      wheel         4, 111 Oct 25 09:33 ttyvf
-crw-rw-rw-  1 root      wheel         4, 112 Oct 25 09:33 ttyw0
-crw-rw-rw-  1 root      wheel         4, 113 Oct 25 09:33 ttyw1
-crw-rw-rw-  1 root      wheel         4, 114 Oct 25 09:33 ttyw2
-crw-rw-rw-  1 root      wheel         4, 115 Oct 25 09:33 ttyw3
-crw-rw-rw-  1 root      wheel         4, 116 Oct 25 09:33 ttyw4
-crw-rw-rw-  1 root      wheel         4, 117 Oct 25 09:33 ttyw5
-crw-rw-rw-  1 root      wheel         4, 118 Oct 25 09:33 ttyw6
-crw-rw-rw-  1 root      wheel         4, 119 Oct 25 09:33 ttyw7
-crw-rw-rw-  1 root      wheel         4, 120 Oct 25 09:33 ttyw8
-crw-rw-rw-  1 root      wheel         4, 121 Oct 25 09:33 ttyw9
-crw-rw-rw-  1 root      wheel         4, 122 Oct 25 09:33 ttywa
-crw-rw-rw-  1 root      wheel         4, 123 Oct 25 09:33 ttywb
-crw-rw-rw-  1 root      wheel         4, 124 Oct 25 09:33 ttywc
-crw-rw-rw-  1 root      wheel         4, 125 Oct 25 09:33 ttywd
-crw-rw-rw-  1 root      wheel         4, 126 Oct 25 09:33 ttywe
-crw-rw-rw-  1 root      wheel         4, 127 Oct 25 09:33 ttywf
-crw-rw-rw-  1 root      wheel        11,   1 Oct 25 09:33 urandom
-crw-------  1 root      wheel        33,   0 Oct 25 09:34 vboxdrv
-crw-rw-rw-  1 root      wheel        33,   1 Oct 25 09:34 vboxdrvu
-crw-------  1 root      wheel        34,   0 Oct 25 09:34 vboxnetctl
-crw-rw-rw-  1 root      wheel         3,   3 Oct 25 09:33 zero
-
-test:
-total 0
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 2
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 A3
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 a
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 b
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 c
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 d
-drwxr-xr-x  4 nle-bret  2015_paris  136 Oct 27 12:06 dir
-drwxr-xr-x  3 nle-bret  2015_paris  102 Oct 27 12:06 dir2
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 e
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 f
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 lol
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 sd3
--rw-r--r--  1 nle-bret  2015_paris    0 Dec 10  2013 sd4
+afsc_type5
+auditpipe
+auditsessions
+autofs
+autofs_control
+autofs_homedirmounter
+autofs_notrigger
+autofs_nowait
+bpf0
+bpf1
+bpf2
+bpf3
+bpf4
+console
+cu.Bluetooth-Incoming-Port
+disk0
+disk0s1
+disk0s2
+disk0s3
+disk1
+disk2
+disk2s1
+disk3
+disk3s1
+disk3s2
+dtrace
+dtracehelper
+fbt
+fd
+fsevents
+io8log
+io8logmt
+io8logtemp
+klog
+lockstat
+machtrace
+nsmb0
+null
+pf
+pfm
+profile
+ptmx
+ptyp0
+ptyp1
+ptyp2
+ptyp3
+ptyp4
+ptyp5
+ptyp6
+ptyp7
+ptyp8
+ptyp9
+ptypa
+ptypb
+ptypc
+ptypd
+ptype
+ptypf
+ptyq0
+ptyq1
+ptyq2
+ptyq3
+ptyq4
+ptyq5
+ptyq6
+ptyq7
+ptyq8
+ptyq9
+ptyqa
+ptyqb
+ptyqc
+ptyqd
+ptyqe
+ptyqf
+ptyr0
+ptyr1
+ptyr2
+ptyr3
+ptyr4
+ptyr5
+ptyr6
+ptyr7
+ptyr8
+ptyr9
+ptyra
+ptyrb
+ptyrc
+ptyrd
+ptyre
+ptyrf
+ptys0
+ptys1
+ptys2
+ptys3
+ptys4
+ptys5
+ptys6
+ptys7
+ptys8
+ptys9
+ptysa
+ptysb
+ptysc
+ptysd
+ptyse
+ptysf
+ptyt0
+ptyt1
+ptyt2
+ptyt3
+ptyt4
+ptyt5
+ptyt6
+ptyt7
+ptyt8
+ptyt9
+ptyta
+ptytb
+ptytc
+ptytd
+ptyte
+ptytf
+ptyu0
+ptyu1
+ptyu2
+ptyu3
+ptyu4
+ptyu5
+ptyu6
+ptyu7
+ptyu8
+ptyu9
+ptyua
+ptyub
+ptyuc
+ptyud
+ptyue
+ptyuf
+ptyv0
+ptyv1
+ptyv2
+ptyv3
+ptyv4
+ptyv5
+ptyv6
+ptyv7
+ptyv8
+ptyv9
+ptyva
+ptyvb
+ptyvc
+ptyvd
+ptyve
+ptyvf
+ptyw0
+ptyw1
+ptyw2
+ptyw3
+ptyw4
+ptyw5
+ptyw6
+ptyw7
+ptyw8
+ptyw9
+ptywa
+ptywb
+ptywc
+ptywd
+ptywe
+ptywf
+random
+rdisk0
+rdisk0s1
+rdisk0s2
+rdisk0s3
+rdisk1
+rdisk2
+rdisk2s1
+rdisk3
+rdisk3s1
+rdisk3s2
+stderr
+stdin
+stdout
+systrace
+tty
+tty.Bluetooth-Incoming-Port
+ttyp0
+ttyp1
+ttyp2
+ttyp3
+ttyp4
+ttyp5
+ttyp6
+ttyp7
+ttyp8
+ttyp9
+ttypa
+ttypb
+ttypc
+ttypd
+ttype
+ttypf
+ttyq0
+ttyq1
+ttyq2
+ttyq3
+ttyq4
+ttyq5
+ttyq6
+ttyq7
+ttyq8
+ttyq9
+ttyqa
+ttyqb
+ttyqc
+ttyqd
+ttyqe
+ttyqf
+ttyr0
+ttyr1
+ttyr2
+ttyr3
+ttyr4
+ttyr5
+ttyr6
+ttyr7
+ttyr8
+ttyr9
+ttyra
+ttyrb
+ttyrc
+ttyrd
+ttyre
+ttyrf
+ttys0
+ttys000
+ttys1
+ttys2
+ttys3
+ttys4
+ttys5
+ttys6
+ttys7
+ttys8
+ttys9
+ttysa
+ttysb
+ttysc
+ttysd
+ttyse
+ttysf
+ttyt0
+ttyt1
+ttyt2
+ttyt3
+ttyt4
+ttyt5
+ttyt6
+ttyt7
+ttyt8
+ttyt9
+ttyta
+ttytb
+ttytc
+ttytd
+ttyte
+ttytf
+ttyu0
+ttyu1
+ttyu2
+ttyu3
+ttyu4
+ttyu5
+ttyu6
+ttyu7
+ttyu8
+ttyu9
+ttyua
+ttyub
+ttyuc
+ttyud
+ttyue
+ttyuf
+ttyv0
+ttyv1
+ttyv2
+ttyv3
+ttyv4
+ttyv5
+ttyv6
+ttyv7
+ttyv8
+ttyv9
+ttyva
+ttyvb
+ttyvc
+ttyvd
+ttyve
+ttyvf
+ttyw0
+ttyw1
+ttyw2
+ttyw3
+ttyw4
+ttyw5
+ttyw6
+ttyw7
+ttyw8
+ttyw9
+ttywa
+ttywb
+ttywc
+ttywd
+ttywe
+ttywf
+urandom
+xcpm
+zero

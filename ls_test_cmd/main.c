@@ -49,6 +49,7 @@ void	test0(void)
 	cmd("", "file3 test test file1 file2");
 	cmd("", "/etc/resolv.conf /dev file1 test file2");
 	cmd("", "/etc");
+	cmd("", "/dev");
 }
 
 void	test1(void)
@@ -71,6 +72,6 @@ int		main(void)
 {
 	system("make -C ../");
 	test0();
-	test1();
+	//test1();
 	return (0);
 }
