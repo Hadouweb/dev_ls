@@ -59,14 +59,14 @@ void		ls_print_adjust_space_right(char *str, int size)
 	node = NULL;
 }*/
 
-void		ls_print_adjust_size(t_entity *e)
+void		ls_print_adjust_size(t_entity *e, t_max_size ms)
 {
 	t_entity_full *e_full;
 
 	e_full = e->entity_full;
 	if (e_full->size != NULL)
 	{
-		ls_print_adjust_space_left(e_full->size, e->ms.size);
+		ls_print_adjust_space_left(e_full->size, ms.size);
 	}
 	else
 	{
@@ -76,22 +76,23 @@ void		ls_print_adjust_size(t_entity *e)
 	}
 }
 
-void		ls_print_line_opt_l(t_entity *e)
+void		ls_print_line_opt_l(t_entity *e, t_max_size ms)
 {
 	t_entity_full *e_full;
 
+	//ls_debug_max_size(ms);
 	e_full = e->entity_full;
 	ft_putstr(e_full->mode);
-	ls_print_adjust_space_left(e_full->nb_link, e->ms.nb_link);
+	ls_print_adjust_space_left(e_full->nb_link, ms.nb_link);
 	ft_putchar(' ');
-	ls_print_adjust_space_right(e_full->user, e->ms.user + 1);
-	ls_print_adjust_space_right(e_full->group, e->ms.group - 1);
-	ls_print_adjust_size(e);
-	ls_print_adjust_space_left(e_full->month, e->ms.month);
-	ls_print_adjust_space_left(e_full->day, e->ms.day);
-	ls_print_adjust_space_left(e_full->hour_year, e->ms.hour_year);
+	ls_print_adjust_space_right(e_full->user, ms.user + 1);
+	ls_print_adjust_space_right(e_full->group, ms.group - 1);
+	ls_print_adjust_size(e, ms);
+	ls_print_adjust_space_left(e_full->month, ms.month);
+	ls_print_adjust_space_left(e_full->day, ms.day);
+	ls_print_adjust_space_left(e_full->hour_year, ms.hour_year);
 	ft_putchar(' ');
-	ft_putstr(e_full->name);
+	ft_putstr(e->name);
 	ft_putchar('\n');
 }
 

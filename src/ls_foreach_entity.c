@@ -118,7 +118,7 @@ void		ls_set_child(t_entity *e, t_listd *lst_child)
 	l = e->child;
 	while (l)
 	{
-		ls_set_option_l((t_entity*)l->content);
+		ls_set_option_l((t_entity*)l->content, &e->ms);
 		l = l->next;
 	}
 }
@@ -130,7 +130,7 @@ void		ls_exec_flag(t_app *app, t_entity *e)
 		if (S_ISDIR(e->file.st_mode))
 			ls_set_child(e, ls_get_entity_dir(app, e->name, e));
 		else
-			ls_set_option_l(e);
+			ls_set_option_l(e, &e->ms);
 	}
 }
 
@@ -140,10 +140,11 @@ void		ls_print_child(t_app *app, t_entity *e)
 
 	l = e->child;
 	//ft_lstd_print(l, ls_debug_print_entity_full, 1);
+	//ls_debug_max_size(e->ms);
 	while (l)
 	{
 		if (app->opt & OPT_l) {
-			ls_print_line_opt_l((t_entity *) l->content);
+			ls_print_line_opt_l((t_entity *) l->content, e->ms);
 		}
 		l = l->next;
 	}
@@ -158,7 +159,7 @@ void		ls_print_entity_root(t_app *app, t_entity *e)
 			ft_putchar('\n');
 			ls_print_child(app, e);
 		} else
-			ls_print_line_opt_l(e);
+			ls_print_line_opt_l(e, e->ms);
 	}
 	//ls_debug_max_size(app);
 }
@@ -173,6 +174,7 @@ void		ls_foreach_entity(t_app *app)
 	{
 		e = (t_entity*)l->content;
 		ls_exec_flag(app, e);
+		//ft_lstd_print(e->child, ls_debug_print_content, 0);
 		l = l->next;
 	}
 	//ft_lstd_print(app->entity, ls_debug_print_entity_full, 0);

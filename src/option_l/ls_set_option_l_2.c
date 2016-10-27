@@ -12,15 +12,17 @@
 
 #include "ft_ls.h"
 
-void		ls_set_nb_link(t_entity *e, int st_nlink)
+void		ls_set_nb_link(t_entity *e, t_max_size *ms)
 {
 	t_entity_full 	*e_full;
 	int				size;
+	int 			st_nlink;
 
+	st_nlink = e->file.st_nlink;
 	e_full = e->entity_full;
 	e_full->nb_link = ft_itoa(st_nlink);
-	if ((size = ft_strlen(e_full->nb_link)) > e->ms.nb_link)
-		e->ms.nb_link = size;
+	if ((size = ft_strlen(e_full->nb_link)) > ms->nb_link)
+		ms->nb_link = size;
 }
 
 /*void		ls_push_entity(t_entity *e, char *path, char *link)

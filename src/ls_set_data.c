@@ -52,16 +52,19 @@ int		ls_set_filestat(t_entity *e)
 	return ret;
 }
 
-void	ls_set_option_l(t_entity *e)
+void	ls_set_option_l(t_entity *e, t_max_size *ms)
 {
+	if (ms)
+		;
+
 	if ((e->entity_full = (t_entity_full*)ft_memalloc(sizeof(t_entity_full))) == NULL)
 		ls_error("Error: malloc");
-	ls_set_mode(e, e->file.st_mode);
-	ls_set_nb_link(e, e->file.st_nlink);
-	ls_set_user(e, e->file.st_uid);
-	ls_set_group(e, e->file.st_gid);
-	ls_set_size(e, e->file);
-	ls_set_time(e, e->file.st_mtime);
+	ls_set_mode(e);
+	ls_set_nb_link(e, ms);
+	ls_set_user(e, ms);
+	ls_set_group(e, ms);
+	ls_set_size(e, ms);
+	ls_set_time(e, ms);
 }
 
 t_listd	*ls_get_entity_dir(t_app *app, char *name, t_entity *parent)

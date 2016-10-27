@@ -85,7 +85,7 @@ void			ls_sort_entity(t_app *app, t_listd **lst);
 void			ls_sort(t_app *app, t_listd **lst);
 
 int				ls_set_filestat(t_entity *e);
-void			ls_set_option_l(t_entity *path);
+void			ls_set_option_l(t_entity *path, t_max_size *ms);
 t_listd			*ls_get_entity_dir(t_app *app, char *name, t_entity *parent);
 
 void			ls_foreach_entity(t_app *app);
@@ -103,14 +103,14 @@ void			ls_error(char *str);
 
 void			ls_print_stat_debug(struct stat file);
 void			ls_debug_path(void *content);
-void			ls_debug_max_size(t_entity *e);
+void			ls_debug_max_size(t_max_size ms);
 void			ls_debug_prepared_data(void *content);
 void			ls_print_dirent_debug(struct dirent *dp);
 void			ls_print_group_debug(struct group *group);
 void			ls_print_user_debug(struct passwd *user);
 void			ls_debug_print_content(void *content);
 void			ls_debug_print_entity_full(void *content);
-void			ls_print_line_opt_l(t_entity *e);
+void			ls_print_line_opt_l(t_entity *e, t_max_size ms);
 void			ls_debug_swap(t_listd *a, t_listd *b);
 
 int				ls_major(int st_rdev);
@@ -118,20 +118,20 @@ int				ls_minor(int st_rdev);
 char			*ls_get_link(char *name);
 int				ls_diff_six_month(time_t t);
 
-void			ls_set_user(t_entity *e, int st_uid);
-void			ls_set_group(t_entity *e, int st_gid);
-void			ls_set_size(t_entity *e, struct stat file);
-void			ls_set_time(t_entity *e, const time_t t);
-void			ls_set_nb_link(t_entity *e, int st_nlink);
+void			ls_set_user(t_entity *e, t_max_size *ms);
+void			ls_set_group(t_entity *e, t_max_size *ms);
+void			ls_set_size(t_entity *e, t_max_size *ms);
+void			ls_set_time(t_entity *e, t_max_size *ms);
+void			ls_set_nb_link(t_entity *e, t_max_size *ms);
 void			ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst);
 
 void			ls_print_adjust_space_left(char *str, int size);
 void			ls_print_adjust_space_right(char *str, int size);
 void			ls_clear_node_prepared(t_listd *node);
-void			ls_print_adjust_size(t_entity *e);
+void			ls_print_adjust_size(t_entity *e, t_max_size ms);
 void			ls_print_option_l(t_app *app);
 
-void			ls_set_mode(t_entity *e, int st_mode);
+void			ls_set_mode(t_entity *e);
 void 			ls_print_with_option_R(t_app *app);
 void			ls_print_line(t_app *app, t_entity *path);
 void			ls_set_stack(t_app *app, t_entity *path);

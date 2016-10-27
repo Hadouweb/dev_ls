@@ -75,16 +75,16 @@ void	ls_debug_entity(void *content)
 	ls_print_stat_debug(e->file);
 }
 
-void	ls_debug_max_size(t_entity *e)
+void	ls_debug_max_size(t_max_size ms)
 {
-	printf("size nb_link : %d\n", e->ms.nb_link);
-	printf("size user : %d\n", e->ms.user);
-	printf("size group : %d\n", e->ms.group);
-	printf("size size : %d\n", e->ms.size);
-	printf("size month : %d\n", e->ms.month);
-	printf("size day : %d\n", e->ms.day);
-	printf("size hour_year : %d\n", e->ms.hour_year);
-	printf("size name : %d\n", e->ms.name);
+	printf("size nb_link : %d\n", ms.nb_link);
+	printf("size user : %d\n", ms.user);
+	printf("size group : %d\n", ms.group);
+	printf("size size : %d\n", ms.size);
+	printf("size month : %d\n", ms.month);
+	printf("size day : %d\n", ms.day);
+	printf("size hour_year : %d\n", ms.hour_year);
+	printf("size name : %d\n", ms.name);
 }
 
 void	ls_debug_prepared_data(void *content)
