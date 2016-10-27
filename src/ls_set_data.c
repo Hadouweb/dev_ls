@@ -31,21 +31,44 @@ void	ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst)
 	free(e);
 }
 
+char 	*ls_update_link(t_entity *e)
+{
+	char 	*path;
+	DIR		*dir;
+	//char 	*parent;
+
+	path = e->rpath;
+	dir = opendir("/etc/private/etc");
+	if (dir)
+		printf("Is a directory\n");
+	printf("rpath:[%s] name:[%s] link:[%s]\n", e->rpath, e->name, e->link);
+
+	printf("/%d\n", e->file.st_dev);
+
+	return path;
+}
+
 int		ls_set_filestat(t_entity *e)
 {
 	int		ret;
+	char 	*path;
 
-	ret = -1;
-	e->link = ls_get_link(e->rpath);
+	//ret = -1;
+	path = e->rpath;
+	e->link = ls_get_link(path);
 	errno = 0;
 	if (e->link != NULL) {
-		ret = lstat(e->rpath, &e->file);
+		path = ls_update_link(e);
+		ret = lstat(path, &e->file);
 	} else
-		ret = stat(e->rpath, &e->file);
+		ret = stat(path, &e->file);
+
+	//printf("%s %s\n", path, e->link);
+
 	if (errno != 0)
 	{
 		ft_putstr("ls: ");
-		perror(e->rpath);
+		perror(path);
 	}
 	if (e->e_parent != NULL)
 		e->e_parent->ms.total_folder += e->file.st_blocks;

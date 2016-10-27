@@ -84,6 +84,7 @@ t_listd			*ls_get_node_cmp_time(t_listd **lst, t_entity *path);
 void			ls_push_after_sort(t_listd **lst, t_entity *path, t_app *app);
 void			ls_sort_entity(t_app *app, t_listd **lst);
 void			ls_sort(t_app *app, t_listd **lst);
+void			ls_sort_entity_root(t_app *app);
 
 int				ls_set_filestat(t_entity *e);
 void			ls_set_option_l(t_entity *path, t_max_size *ms);

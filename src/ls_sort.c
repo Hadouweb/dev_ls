@@ -52,6 +52,27 @@ static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 	return (0);
 }
 
+void		ls_sort_entity_root(t_app *app)
+{
+	t_listd *l;
+	int 	swap;
+
+	l = app->entity;
+
+	swap = 1;
+	while (swap)
+	{
+		l = app->entity;
+		swap = 0;
+		while (l && l->next)
+		{
+			if (ls_cmp_file_type(l, l->next) == 1)
+				swap = ls_swap(l, l->next);
+			l = l->next;
+		}
+	}
+}
+
 void		ls_sort_entity(t_app *app, t_listd **lst)
 {
 	t_listd	*l;
