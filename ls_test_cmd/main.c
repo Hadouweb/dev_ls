@@ -55,6 +55,17 @@ void	test0(void)
 void	test1(void)
 {
 	printf("\033[035m****************** test1 ******************\033[0m\n");
+	cmd("a", "test");
+	cmd("a", "test test");
+	cmd("a", "file3 test test file1 file2");
+	cmd("a", "/etc/resolv.conf /dev file1 test file2");
+	cmd("a", "/etc");
+	cmd("a", "/dev");
+}
+
+void	test2(void)
+{
+	printf("\033[035m****************** test2 ******************\033[0m\n");
 	cmd("l", "test");
 	cmd("l", "test test");
 	cmd("l", "test test file1 file2");
@@ -65,13 +76,28 @@ void	test1(void)
 	cmd("l", "/etc/");
 	cmd("l", "/etc/resolv.conf");
 	cmd("l", "/dev");
+	cmd("l", "link");
 	cmd("l", "/etc/resolv.conf /dev file1 test file2");
+}
+
+void	test3(void)
+{
+	printf("\033[035m****************** test3 ******************\033[0m\n");
+	cmd("t", "test");
+	cmd("t", "test test");
+	cmd("t", "file3 test test file1 file2");
+	cmd("t", "fileFUTUR /etc/resolv.conf file1 test file2 fileOLD");
+	//cmd("t", "../ls_test_cmd/link/a file1 file2");
+	//cmd("t", "/etc");
+	//cmd("t", "/dev");
 }
 
 int		main(void)
 {
 	system("make -C ../");
 	test0();
-	//test1();
+	test1();
+	//test2();
+	test3();
 	return (0);
 }

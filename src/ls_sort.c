@@ -45,10 +45,8 @@ static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 	path_b = (t_entity*)b->content;
 	if (S_ISDIR(path_a->file.st_mode) && !S_ISDIR(path_b->file.st_mode))
 		return (1);
-	else if (!S_ISDIR(path_a->file.st_mode) && !S_ISDIR(path_b->file.st_mode))
-		return (-1);
-	else if (S_ISDIR(path_a->file.st_mode) && S_ISDIR(path_b->file.st_mode))
-		return (-1);
+	//else if (S_ISREG(path_a->file.st_mode) && S_ISLNK(path_b->file.st_mode))
+	//	return (1);
 	return (0);
 }
 
