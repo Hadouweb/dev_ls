@@ -25,18 +25,18 @@ void		ls_set_nb_link(t_entity *e, t_max_size *ms)
 		ms->nb_link = size;
 }
 
-/*void		ls_push_entity(t_entity *e, char *path, char *link)
+void		ls_set_link(t_entity *e)
 {
-	t_entity_full 	*e_full;
-	int				size;
+	//t_entity_full 	*e_full;
+	//int				size;
 
-	e_full = e->entity_full;
-	e_full->name = ft_strdup(path);
-	if (link != NULL)
+	//e_full = e->entity_full;
+	//e->name = ft_strdup(e->name);
+	if (e->link != NULL)
 	{
-		e_full->name = ft_strjoin_free_s1(e_full->name, " -> ");
-		e_full->name = ft_strjoin_free_s1(e_full->name, link);
+		e->name = ft_strjoin_free_s1(e->name, " -> ");
+		e->name = ft_strjoin_free_s1(e->name, e->link);
 	}
-	if ((size = ft_strlen(e_full->name)) > e->ms.name)
-		e->ms.name = size;
-}*/
+	//if ((size = ft_strlen(e_full->name)) > e->ms.name)
+	//	e->ms.name = size;
+}

@@ -31,7 +31,7 @@ int		main(int ac, char **av)
 			else
 			{
 				ls_push_entity(&app, NULL, av[i], &app.entity);
-				app.nb_entity++;
+				app.nb_param++;
 			}
 			if (ft_strcmp(av[i], "--") == 0 || ft_strcmp(av[i], "-") == 0)
 				end_option = 1;
@@ -39,7 +39,7 @@ int		main(int ac, char **av)
 		}
 	}
 	//ft_lstd_print(app.entity, ls_debug_print_content, 0);
-	if (app.nb_entity == 0)
+	if (app.nb_param == 0)
 		ls_push_entity(&app, NULL, ".", &app.entity);
 	//ls_sort_entity(&app, &app.lst)
 	ls_foreach_entity(&app);

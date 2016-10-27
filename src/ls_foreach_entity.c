@@ -130,7 +130,7 @@ void		ls_exec_flag(t_app *app, t_entity *e)
 		if (S_ISDIR(e->file.st_mode))
 			ls_set_child(e, ls_get_entity_dir(app, e->name, e));
 		else
-			ls_set_option_l(e, &e->ms);
+			ls_set_option_l(e, &app->root_ms);
 	}
 }
 
@@ -144,7 +144,7 @@ void		ls_print_child(t_app *app, t_entity *e)
 	while (l)
 	{
 		if (app->opt & OPT_l) {
-			ls_print_line_opt_l((t_entity *) l->content, e->ms);
+			ls_print_line_opt_l((t_entity *)l->content, e->ms);
 		}
 		l = l->next;
 	}
@@ -152,14 +152,24 @@ void		ls_print_child(t_app *app, t_entity *e)
 
 void		ls_print_entity_root(t_app *app, t_entity *e)
 {
+	if (S_ISDIR(e->file.st_mode)) {
+		if (app->token == 1)
+			ft_putchar('\n');
+	}
+	if (app->token == 0)
+		app->token = 1;
 	if (app->opt & OPT_l) {
 		if (S_ISDIR(e->file.st_mode)) {
+			if (app->nb_param > 1) {
+				ft_putstr(e->name);
+				ft_putendl(":");
+			}
 			ft_putstr("total ");
 			ft_putnbr(e->ms.total_folder);
 			ft_putchar('\n');
 			ls_print_child(app, e);
 		} else
-			ls_print_line_opt_l(e, e->ms);
+			ls_print_line_opt_l(e, app->root_ms);
 	}
 	//ls_debug_max_size(app);
 }

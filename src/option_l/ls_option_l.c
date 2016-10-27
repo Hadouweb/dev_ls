@@ -90,8 +90,10 @@ void		ls_print_line_opt_l(t_entity *e, t_max_size ms)
 	ls_print_adjust_size(e, ms);
 	ls_print_adjust_space_left(e_full->month, ms.month);
 	ls_print_adjust_space_left(e_full->day, ms.day);
-	ls_print_adjust_space_left(e_full->hour_year, ms.hour_year);
+	ls_print_adjust_space_left(e_full->hour_year, 5);
 	ft_putchar(' ');
+	if (e->link != NULL)
+		ls_set_link(e);
 	ft_putstr(e->name);
 	ft_putchar('\n');
 }

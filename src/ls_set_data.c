@@ -38,9 +38,9 @@ int		ls_set_filestat(t_entity *e)
 	ret = -1;
 	e->link = ls_get_link(e->rpath);
 	errno = 0;
-	if (e->link != NULL)
+	if (e->link != NULL) {
 		ret = lstat(e->rpath, &e->file);
-	else
+	} else
 		ret = stat(e->rpath, &e->file);
 	if (errno != 0)
 	{
@@ -54,9 +54,6 @@ int		ls_set_filestat(t_entity *e)
 
 void	ls_set_option_l(t_entity *e, t_max_size *ms)
 {
-	if (ms)
-		;
-
 	if ((e->entity_full = (t_entity_full*)ft_memalloc(sizeof(t_entity_full))) == NULL)
 		ls_error("Error: malloc");
 	ls_set_mode(e);

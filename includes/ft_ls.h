@@ -70,7 +70,8 @@ typedef struct  	s_app
 	t_listd			*stack;
 	t_col			col;
 	int 			token;
-	int 			nb_entity;
+	int 			nb_param;
+	t_max_size		root_ms;
 }					t_app;
 
 DIR				*ls_opendir(char *file);
@@ -135,5 +136,6 @@ void			ls_set_mode(t_entity *e);
 void 			ls_print_with_option_R(t_app *app);
 void			ls_print_line(t_app *app, t_entity *path);
 void			ls_set_stack(t_app *app, t_entity *path);
+void			ls_set_link(t_entity *e);
 
 #endif
