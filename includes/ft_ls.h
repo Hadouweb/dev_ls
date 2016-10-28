@@ -139,5 +139,7 @@ void 			ls_print_with_option_R(t_app *app);
 void			ls_print_line(t_app *app, t_entity *path);
 void			ls_set_stack(t_app *app, t_entity *path);
 void			ls_set_link(t_entity *e);
+void			ls_print_entity_if_exist(t_app *app, t_entity *e);
+void			ls_print_child(t_app *app, t_entity *e);
 
 #endif

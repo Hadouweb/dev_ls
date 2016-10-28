@@ -138,7 +138,94 @@ void		ls_exec_flag(t_app *app, t_entity *e)
 	}
 }
 
+void		ls_push_stack(t_app *app, t_entity *e)
+{
+	char *tmp;
+
+	//printf("___%s %s %s\n", e->name, e->rpath, e->e_parent->name);
+
+	tmp = e->name;
+	//e->name = ft_strjoin(e->e_parent->name, ft_strjoin("/", e->name));
+	//ft_strdel(&tmp);
+
+	ls_push_entity(app, e->e_parent, e->name, &app->stack);
+	ft_lstd_print(app->stack, ls_debug_print_content, 0);
+	//printf("___%s %s %s\n", e->name, e->rpath, e->e_parent->name);
+}
+
+void		ls_print_entity_stack(t_app *app, t_entity *e)
+{
+	if (app->opt & OPT_l && e->errno_code == 0) {
+		if (S_ISDIR(e->file.st_mode)) {
+			if (app->nb_param > 1) {
+				ft_putstr(e->name);
+				ft_putendl(":");
+			}
+			ft_putstr("total ");
+			ft_putnbr(e->ms.total_folder);
+			ft_putchar('\n');
+			ls_print_child(app, e);
+		} else
+			ls_print_line_opt_l(e, app->root_ms);
+	} else {
+		if (S_ISDIR(e->file.st_mode)) {
+			ls_print_child(app, e);
+		} else
+			ls_print_entity_if_exist(app, e);
+	}
+}
+
+void		ls_run_stack(t_app *app)
+{
+	t_listd 	*l;
+	t_entity	*e;
+
+	l = app->stack;
+	while (l)
+	{
+		e = (t_entity *)l->content;
+		e->name = e->rpath;
+		ls_exec_flag(app, e);
+		ls_print_entity_stack(app, e);
+		l = l->next;
+	}
+}
+
+void		ls_print_entity_if_exist(t_app *app, t_entity *e)
+{
+	if (e->errno_code != 0)
+	{
+		ft_putstr_fd("ls: ", 2);
+		errno = e->errno_code;
+		perror(e->name);
+		errno = 0;
+	} else {
+		if ((app->opt & OPT_R) && S_ISDIR(e->file.st_mode))
+			ls_push_stack(app, e);
+		ft_putendl(e->name);
+	}
+}
+
 void		ls_print_child(t_app *app, t_entity *e)
+{
+	t_listd 	*l;
+
+	l = e->child;
+	//ft_lstd_print(l, ls_debug_print_entity_full, 1);
+	//ls_debug_max_size(e->ms);
+	while (l)
+	{
+		if ((app->opt & OPT_R) && S_ISDIR(e->file.st_mode))
+			ls_push_stack(app, e);
+		if (app->opt & OPT_l) {
+			ls_print_line_opt_l((t_entity *)l->content, e->ms);
+		} else
+			ls_print_entity_if_exist(app, (t_entity *)l->content);
+		l = l->next;
+	}
+}
+
+void		ls_print_child_root(t_app *app, t_entity *e)
 {
 	t_listd 	*l;
 
@@ -150,21 +237,9 @@ void		ls_print_child(t_app *app, t_entity *e)
 		if (app->opt & OPT_l) {
 			ls_print_line_opt_l((t_entity *)l->content, e->ms);
 		} else
-			ft_putendl(((t_entity *)l->content)->name);
+			ls_print_entity_if_exist(app, (t_entity *)l->content);
 		l = l->next;
 	}
-}
-
-void		ls_print_entity_if_exist(t_entity *e)
-{
-	if (e->errno_code != 0)
-	{
-		ft_putstr_fd("ls: ", 2);
-		errno = e->errno_code;
-		perror(e->name);
-		errno = 0;
-	} else
-		ft_putendl(e->name);
 }
 
 void		ls_print_entity_root(t_app *app, t_entity *e)
@@ -184,7 +259,7 @@ void		ls_print_entity_root(t_app *app, t_entity *e)
 			ft_putstr("total ");
 			ft_putnbr(e->ms.total_folder);
 			ft_putchar('\n');
-			ls_print_child(app, e);
+			ls_print_child_root(app, e);
 		} else
 			ls_print_line_opt_l(e, app->root_ms);
 	} else {
@@ -193,10 +268,12 @@ void		ls_print_entity_root(t_app *app, t_entity *e)
 				ft_putstr(e->name);
 				ft_putendl(":");
 			}
-			ls_print_child(app, e);
+			ls_print_child_root(app, e);
 		} else
-			ls_print_entity_if_exist(e);
+			ls_print_entity_if_exist(app, e);
 	}
+	if (app->opt & OPT_R)
+		ls_run_stack(app);
 	//ls_debug_max_size(app);
 }
 
