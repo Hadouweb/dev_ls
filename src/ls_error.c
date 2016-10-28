@@ -14,6 +14,7 @@
 
 void	ls_error_errno(char *str)
 {
+	ft_putstr("ls: ");
 	if (str != NULL)
 		perror(str);
 	else

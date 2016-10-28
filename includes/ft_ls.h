@@ -56,6 +56,7 @@ typedef struct 		s_entity
 	struct s_entity	*e_parent;
 	char 			*rpath;
 	char			*link;
+	int				errno_code;
 }					t_entity;
 
 typedef struct 		s_col

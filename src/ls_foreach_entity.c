@@ -155,6 +155,18 @@ void		ls_print_child(t_app *app, t_entity *e)
 	}
 }
 
+void		ls_print_entity_if_exist(t_entity *e)
+{
+	if (e->errno_code != 0)
+	{
+		ft_putstr_fd("ls: ", 2);
+		errno = e->errno_code;
+		perror(e->name);
+		errno = 0;
+	} else
+		ft_putendl(e->name);
+}
+
 void		ls_print_entity_root(t_app *app, t_entity *e)
 {
 	if (S_ISDIR(e->file.st_mode)) {
@@ -163,7 +175,7 @@ void		ls_print_entity_root(t_app *app, t_entity *e)
 	}
 	if (app->token == 0)
 		app->token = 1;
-	if (app->opt & OPT_l) {
+	if (app->opt & OPT_l && e->errno_code == 0) {
 		if (S_ISDIR(e->file.st_mode)) {
 			if (app->nb_param > 1) {
 				ft_putstr(e->name);
@@ -183,7 +195,7 @@ void		ls_print_entity_root(t_app *app, t_entity *e)
 			}
 			ls_print_child(app, e);
 		} else
-			ft_putendl(e->name);
+			ls_print_entity_if_exist(e);
 	}
 	//ls_debug_max_size(app);
 }

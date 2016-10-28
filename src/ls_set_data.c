@@ -26,8 +26,8 @@ void	ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst)
 		e->rpath = ft_strjoin_free_s1(ft_strjoin(parent->rpath, "/"), e->name);
 		e->e_parent = parent;
 	}
-	if (ls_set_filestat(app, e) == 0)
-		ls_push_after_sort(lst, e, app);
+	ls_set_filestat(app, e);
+	ls_push_after_sort(lst, e, app);
 	free(e);
 }
 
@@ -77,8 +77,8 @@ int		ls_set_filestat(t_app *app, t_entity *e)
 
 	if (errno != 0)
 	{
-		ft_putstr("ls: ");
-		perror(path);
+		e->errno_code = errno;
+		e->name = path;
 	}
 	if (e->e_parent != NULL)
 		e->e_parent->ms.total_folder += e->file.st_blocks;

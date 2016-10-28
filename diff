@@ -1,0 +1,12 @@
+14,24d13
+< 
+< test/dir:
+< subdir
+< subfile
+< 
+< test/dir/subdir:
+< bnoexist
+< subsubfile
+< 
+< test/dir2:
+< file
