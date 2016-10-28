@@ -1,4 +1,16 @@
-14,24d13
+6a7,9
+> [033mcontent : [0m[dir test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir test]	[035msize : [0m[240] 
+7a11,17
+> [033mcontent : [0m[dir test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir2 test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir2 test]	[035msize : [0m[240] 
+> [033mcontent : [0m[dir2 test]	[035msize : [0m[240] 
+14,24d23
 < 
 < test/dir:
 < subdir

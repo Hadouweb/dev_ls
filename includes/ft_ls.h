@@ -85,11 +85,11 @@ t_listd			*ls_get_node_cmp_time(t_listd **lst, t_entity *path);
 void			ls_push_after_sort(t_listd **lst, t_entity *path, t_app *app);
 void			ls_sort_entity(t_app *app, t_listd **lst);
 void			ls_sort(t_app *app, t_listd **lst);
-void			ls_sort_entity_root(t_app *app);
+void			ls_sort_entity_param(t_app *app);
 
 int				ls_set_filestat(t_app *app, t_entity *e);
 void			ls_set_option_l(t_entity *path, t_max_size *ms);
-t_listd			*ls_get_entity_dir(t_app *app, char *name, t_entity *parent);
+t_listd			*ls_get_entity_child(t_app *app, char *name, t_entity *parent);
 
 void			ls_foreach_entity(t_app *app);
 
@@ -141,5 +141,13 @@ void			ls_set_stack(t_app *app, t_entity *path);
 void			ls_set_link(t_entity *e);
 void			ls_print_entity_if_exist(t_app *app, t_entity *e);
 void			ls_print_child(t_app *app, t_entity *e);
+void			ls_print_child2(t_app *app, t_entity *e);
+
+void		ls_run_stack(t_app *app);
+void		ls_set_entity_param(t_app *app, t_entity *e);
+void		ls_push_stack(t_app *app, t_entity *e);
+void		ls_print_entity_stack(t_app *app, t_entity *e);
+void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child, int token);
+void		ls_set_child2(t_app *app, t_entity *e, t_listd *lst_child);
 
 #endif

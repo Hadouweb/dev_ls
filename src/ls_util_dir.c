@@ -18,6 +18,7 @@ DIR		*ls_opendir(char *file)
 
 	errno = 0;
 	dir = opendir(file);
+	printf("ls_opendir: %s\n", file);
 	if (errno != 0)
 		ls_error_errno("Error in ls_opendir ");
 	return (dir);

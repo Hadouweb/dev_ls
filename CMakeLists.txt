@@ -113,6 +113,7 @@ set(SOURCE_FILES
     src/ls_option.c
     src/ls_print_folder.c
     src/ls_foreach_entity.c
+    src/ls_stack_opt_r.c.c
     src/ls_set_data.c
     src/ls_sort.c
     src/ls_util_dir.c

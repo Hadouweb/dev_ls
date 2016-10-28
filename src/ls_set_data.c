@@ -23,8 +23,11 @@ void	ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst)
 		e->e_parent = NULL;
 		e->rpath = e->name;
 	} else {
-		e->rpath = ft_strjoin_free_s1(ft_strjoin(parent->rpath, "/"), e->name);
 		e->e_parent = parent;
+		//printf("1.5___%s %s %s\n", e->name, e->rpath, e->e_parent->name);
+		e->rpath = ft_strjoin_free_s1(ft_strjoin(parent->rpath, "/"), e->name);
+		//printf("2___%s %s %s\n", e->name, e->rpath, e->e_parent->name);
+
 	}
 	ls_set_filestat(app, e);
 	ls_push_after_sort(lst, e, app);
@@ -97,16 +100,16 @@ void	ls_set_option_l(t_entity *e, t_max_size *ms)
 	ls_set_time(e, ms);
 }
 
-t_listd	*ls_get_entity_dir(t_app *app, char *name, t_entity *parent)
+t_listd	*ls_get_entity_child(t_app *app, char *name, t_entity *parent)
 {
 	DIR		*dir;
 	char	*dir_path;
 	t_listd	*lst;
 
 	lst = NULL;
-	if (name[ft_strlen(name) - 1] != '/')
-		dir_path = ft_stradd_char(&name, '/');
-	else
+	//if (name[ft_strlen(name) - 1] != '/')
+	//	dir_path = ft_stradd_char(&name, '/');
+	//else
 		dir_path = ft_strdup(name);
 	dir = ls_opendir(dir_path);
 	if (dir != NULL) {

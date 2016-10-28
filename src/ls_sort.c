@@ -50,7 +50,7 @@ static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 	return (0);
 }
 
-void		ls_sort_entity_root(t_app *app)
+void		ls_sort_entity_param(t_app *app)
 {
 	t_listd *l;
 	int 	swap;

@@ -36,7 +36,7 @@ void	cmd(char *cmd, char *param)
 	system("diff ../output1 ../output2 > ../diff");
 	if (getdiff() > 0) {
 		printf("\033[031m[ Error    ]\033[0m ft_ls %s\n", str_cmd);
-		system("cat ../diff");
+		//system("cat ../diff");
 	} else
 		printf("\033[032m[ Success  ]\033[0m ft_ls %s\n", str_cmd);
 }
@@ -140,12 +140,12 @@ void	test7(void)
 int		main(void)
 {
 	system("make -C ../");
-	//test0();
-	//test1();
-	//test2();
-	//test3();
-	//test4();
-	//test5();
+	test0();
+	test1();
+	test2();
+	test3();
+	test4();
+	test5();
 	//test6();
 	test7();
 	return (0);
