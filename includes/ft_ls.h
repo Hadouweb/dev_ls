@@ -86,7 +86,7 @@ void			ls_sort_entity(t_app *app, t_listd **lst);
 void			ls_sort(t_app *app, t_listd **lst);
 void			ls_sort_entity_root(t_app *app);
 
-int				ls_set_filestat(t_entity *e);
+int				ls_set_filestat(t_app *app, t_entity *e);
 void			ls_set_option_l(t_entity *path, t_max_size *ms);
 t_listd			*ls_get_entity_dir(t_app *app, char *name, t_entity *parent);
 

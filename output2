@@ -1,8 +1,8 @@
 fileFUTUR
-file1
-file2
-/etc/resolv.conf
 fileOLD
+file2
+file1
+/etc/resolv.conf
 
 test:
 2

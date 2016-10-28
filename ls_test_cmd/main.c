@@ -97,7 +97,7 @@ int		main(void)
 	system("make -C ../");
 	test0();
 	test1();
-	//test2();
+	test2();
 	test3();
 	return (0);
 }

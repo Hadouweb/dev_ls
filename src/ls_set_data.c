@@ -26,7 +26,7 @@ void	ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst)
 		e->rpath = ft_strjoin_free_s1(ft_strjoin(parent->rpath, "/"), e->name);
 		e->e_parent = parent;
 	}
-	if (ls_set_filestat(e) == 0)
+	if (ls_set_filestat(app, e) == 0)
 		ls_push_after_sort(lst, e, app);
 	free(e);
 }
@@ -56,7 +56,7 @@ char 	*ls_update_link(t_entity *e)
 	return e->rpath;
 }
 
-int		ls_set_filestat(t_entity *e)
+int		ls_set_filestat(t_app *app, t_entity *e)
 {
 	int		ret;
 	char 	*path;
@@ -66,7 +66,8 @@ int		ls_set_filestat(t_entity *e)
 	e->link = ls_get_link(path);
 	errno = 0;
 	if (e->link != NULL) {
-		path = ls_update_link(e);
+		if (!(app->opt & OPT_l))
+			path = ls_update_link(e);
 		errno = 0;
 		ret = lstat(path, &e->file);
 	} else
