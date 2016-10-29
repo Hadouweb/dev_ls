@@ -123,6 +123,7 @@ void		ls_print_entity(t_app *app, t_entity *e)
 		else
 			ls_print_no_option(app, e);
 	}
+	free(e);
 	if (e->errno_code == 0)
 		app->token = 1;
 }
