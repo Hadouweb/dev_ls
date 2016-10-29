@@ -40,20 +40,24 @@ t_listd	*ls_get_node_cmp_time(t_listd **lst, t_entity *path)
 	return NULL;
 }
 
-t_listd	*ls_get_node_cmp(t_listd **lst, t_entity *path)
+t_listd	*ls_get_node_cmp(t_app *app, t_listd **lst, t_entity *e)
 {
 	t_listd 		*l;
 	t_entity 		*path_cmp;
+	int 			cmp;
 
 	l = *lst;
 	while (l)
 	{
 		path_cmp = (t_entity*)l->content;
-		if (ft_strcmp(path->name, path_cmp->name) != 0)
+		if (app->opt & OPT_r && e->errno_code == 0)
+			cmp = ft_strcmp(path_cmp->name, e->name);
+		else
+			cmp = ft_strcmp(e->name, path_cmp->name);
+		//printf("%s %s %d\n", path->name, path_cmp->name, cmp);
+		if (cmp != 0)
 		{
-			//if (!S_ISDIR(path->file.st_mode) && S_ISDIR(path_cmp->file.st_mode))
-			//	return l;
-			if (ft_strcmp(path->name, path_cmp->name) < 0)
+			if (cmp < 0)
 				return l;
 		}
 		l = l->next;

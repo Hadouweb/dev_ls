@@ -81,7 +81,7 @@ DIR				*ls_opendir(char *file);
 void			ls_readdir(DIR *dir, t_listd **lst, t_app *app, t_entity *parent);
 void			ls_closedir(DIR *dir);
 
-t_listd			*ls_get_node_cmp(t_listd **lst, t_entity *path);
+t_listd			*ls_get_node_cmp(t_app *app, t_listd **lst, t_entity *path);
 t_listd			*ls_get_node_cmp_time(t_listd **lst, t_entity *path);
 
 void			ls_push_after_sort(t_listd **lst, t_entity *path, t_app *app);

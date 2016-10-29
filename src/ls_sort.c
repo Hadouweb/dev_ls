@@ -32,7 +32,6 @@ static int	ls_lstcmp(t_listd *a, t_listd *b, t_app *app)
 		;
 	path_a = (t_entity*)a->content;
 	path_b = (t_entity*)b->content;
-
 	return (ft_strcmp(path_a->name, path_b->name));
 }
 
@@ -100,16 +99,12 @@ void	ls_push_after_sort(t_listd **lst, t_entity *e, t_app *app)
 	t_listd *node;
 
 	node = NULL;
-	if (app->opt & OPT_t) {
+	if (app->opt & OPT_t)
 		node = ls_get_node_cmp_time(lst, e);
-	}
-	else {
-		node = ls_get_node_cmp(lst, e);
-	}
+	else
+		node = ls_get_node_cmp(app, lst, e);
 	if (node != NULL)
-	{
 		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) e, sizeof(t_entity)));
-	} else {
+	else
 		ft_lstd_pushback(lst, (void *) e, sizeof(t_entity));
-	}
 }

@@ -38,7 +38,7 @@ void	cmd(char *cmd, char *param)
 	system("diff ../output1 ../output2 > ../diff");
 	if (getdiff() > 0) {
 		printf("\033[031m[ Error    ]\033[0m ft_ls %s\n", str_cmd);
-		//system("cat ../diff");
+		system("cat ../diff");
 		exit(1);
 	} else
 		printf("\033[032m[ Success  ]\033[0m ft_ls %s\n", str_cmd);
@@ -152,16 +152,29 @@ void	test7(void)
 	cmd("lRat", "file2 test/noexist fileanoexist error_dir file1 test link");
 }
 
+void	test8(void)
+{
+	printf("\033[035m****************** test8 ******************\033[0m\n");
+	cmd("r", "c test file1 c b");
+	//cmd("r", "file2 test/noexist fileanoexist file1 test link error_dir");
+	cmd("r", "fileFUTUR /etc/resolv.conf file1 test file2 fileOLD");
+	cmd("r", "../ls_test_cmd/link/a file1 file2");
+	cmd("r", "file2 test/noexist fileanoexist error_dir file1 test link");
+	cmd("r", "fileFUTUR /etc/resolv.conf file1 test file2 fileOLD");
+	cmd("rR", "c test file1 c b");
+}
+
 int		main(void)
 {
 	system("make -C ../");
-	test0();
-	test1();
-	test2();
-	test3();
-	test4();
-	test5();
+	//test0();
+	//test1();
+	//test2();
+	//test3();
+	//test4();
+	//test5();
 	//test6();
-	test7();
+	//test7();
+	test8();
 	return (0);
 }
