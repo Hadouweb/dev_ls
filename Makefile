@@ -16,7 +16,6 @@ SRC = 	$(SRCPATH)/main.c\
 		$(SRCPATH)/ls_util_dir.c\
 		$(SRCPATH)/ls_error.c\
 		$(SRCPATH)/ls_get_data.c\
-		$(SRCPATH)/ls_stack_opt_r.c\
 		$(SRCPATH)/ls_debug.c\
 		$(SRCPATH)/ls_option.c\
 		$(SRCPATH)/ls_sort.c\

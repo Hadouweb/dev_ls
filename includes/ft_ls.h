@@ -141,13 +141,11 @@ void			ls_set_stack(t_app *app, t_entity *path);
 void			ls_set_link(t_entity *e);
 void			ls_print_entity_if_exist(t_app *app, t_entity *e);
 void			ls_print_child(t_app *app, t_entity *e);
-void			ls_print_child2(t_app *app, t_entity *e);
 
 void		ls_run_stack(t_app *app);
 void		ls_set_entity_param(t_app *app, t_entity *e);
 void		ls_push_stack(t_app *app, t_entity *e);
 void		ls_print_entity_stack(t_app *app, t_entity *e);
-void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child, int token);
-void		ls_set_child2(t_app *app, t_entity *e, t_listd *lst_child);
+void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child);
 
 #endif

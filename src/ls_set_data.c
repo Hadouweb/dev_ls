@@ -69,7 +69,7 @@ int		ls_set_filestat(t_app *app, t_entity *e)
 	e->link = ls_get_link(path);
 	errno = 0;
 	if (e->link != NULL) {
-		if (!(app->opt & OPT_l))
+		if (!(app->opt & OPT_l) && !app->opt & OPT_R)
 			path = ls_update_link(e);
 		errno = 0;
 		ret = lstat(path, &e->file);
