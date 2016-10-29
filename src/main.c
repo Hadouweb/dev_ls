@@ -22,6 +22,7 @@ int		main(int ac, char **av)
 	i = 1;
 	end_option = 0;
 	ft_bzero(&app, sizeof(t_app));
+	app.param_mode = 1;
 	if (ac > 1)
 	{
 		while (i < ac)
@@ -38,6 +39,7 @@ int		main(int ac, char **av)
 			i++;
 		}
 	}
+	app.param_mode = 0;
 	//ft_lstd_print(app.entity, ls_debug_print_content, 0);
 	if (app.nb_param == 0)
 		ls_push_entity(&app, NULL, ".", &app.entity);

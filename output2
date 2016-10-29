@@ -1,320 +1,86 @@
-ttys000
-ptmx
-null
-random
-io8logtemp
-disk2
-rdisk2
-tty
-io8log
-disk1
-rdisk1
-bpf1
-bpf2
-nsmb0
-vboxnetctl
-autofs
-autofs_control
-autofs_homedirmounter
-autofs_notrigger
-autofs_nowait
-vboxdrv
-vboxdrvu
-cu.Bluetooth-Incoming-Port
-tty.Bluetooth-Incoming-Port
-console
-.
-afsc_type5
-auditpipe
-auditsessions
-bpf0
-bpf3
-disk0
-disk0s1
-disk0s2
-disk0s3
-disk0s4
-disk0s5
-dtrace
-dtracehelper
-fbt
-fd
-fsevents
-io8logmt
-klog
-lockstat
-machtrace
-pf
-pfm
-pmCPU
-profile
-ptyp0
-ptyp1
-ptyp2
-ptyp3
-ptyp4
-ptyp5
-ptyp6
-ptyp7
-ptyp8
-ptyp9
-ptypa
-ptypb
-ptypc
-ptypd
-ptype
-ptypf
-ptyq0
-ptyq1
-ptyq2
-ptyq3
-ptyq4
-ptyq5
-ptyq6
-ptyq7
-ptyq8
-ptyq9
-ptyqa
-ptyqb
-ptyqc
-ptyqd
-ptyqe
-ptyqf
-ptyr0
-ptyr1
-ptyr2
-ptyr3
-ptyr4
-ptyr5
-ptyr6
-ptyr7
-ptyr8
-ptyr9
-ptyra
-ptyrb
-ptyrc
-ptyrd
-ptyre
-ptyrf
-ptys0
-ptys1
-ptys2
-ptys3
-ptys4
-ptys5
-ptys6
-ptys7
-ptys8
-ptys9
-ptysa
-ptysb
-ptysc
-ptysd
-ptyse
-ptysf
-ptyt0
-ptyt1
-ptyt2
-ptyt3
-ptyt4
-ptyt5
-ptyt6
-ptyt7
-ptyt8
-ptyt9
-ptyta
-ptytb
-ptytc
-ptytd
-ptyte
-ptytf
-ptyu0
-ptyu1
-ptyu2
-ptyu3
-ptyu4
-ptyu5
-ptyu6
-ptyu7
-ptyu8
-ptyu9
-ptyua
-ptyub
-ptyuc
-ptyud
-ptyue
-ptyuf
-ptyv0
-ptyv1
-ptyv2
-ptyv3
-ptyv4
-ptyv5
-ptyv6
-ptyv7
-ptyv8
-ptyv9
-ptyva
-ptyvb
-ptyvc
-ptyvd
-ptyve
-ptyvf
-ptyw0
-ptyw1
-ptyw2
-ptyw3
-ptyw4
-ptyw5
-ptyw6
-ptyw7
-ptyw8
-ptyw9
-ptywa
-ptywb
-ptywc
-ptywd
-ptywe
-ptywf
-rdisk0
-rdisk0s1
-rdisk0s2
-rdisk0s3
-rdisk0s4
-rdisk0s5
-sdt
-stderr
-stdin
-stdout
-systrace
-ttyp0
-ttyp1
-ttyp2
-ttyp3
-ttyp4
-ttyp5
-ttyp6
-ttyp7
-ttyp8
-ttyp9
-ttypa
-ttypb
-ttypc
-ttypd
-ttype
-ttypf
-ttyq0
-ttyq1
-ttyq2
-ttyq3
-ttyq4
-ttyq5
-ttyq6
-ttyq7
-ttyq8
-ttyq9
-ttyqa
-ttyqb
-ttyqc
-ttyqd
-ttyqe
-ttyqf
-ttyr0
-ttyr1
-ttyr2
-ttyr3
-ttyr4
-ttyr5
-ttyr6
-ttyr7
-ttyr8
-ttyr9
-ttyra
-ttyrb
-ttyrc
-ttyrd
-ttyre
-ttyrf
-ttys0
-ttys1
-ttys2
-ttys3
-ttys4
-ttys5
-ttys6
-ttys7
-ttys8
-ttys9
-ttysa
-ttysb
-ttysc
-ttysd
-ttyse
-ttysf
-ttyt0
-ttyt1
-ttyt2
-ttyt3
-ttyt4
-ttyt5
-ttyt6
-ttyt7
-ttyt8
-ttyt9
-ttyta
-ttytb
-ttytc
-ttytd
-ttyte
-ttytf
-ttyu0
-ttyu1
-ttyu2
-ttyu3
-ttyu4
-ttyu5
-ttyu6
-ttyu7
-ttyu8
-ttyu9
-ttyua
-ttyub
-ttyuc
-ttyud
-ttyue
-ttyuf
-ttyv0
-ttyv1
-ttyv2
-ttyv3
-ttyv4
-ttyv5
-ttyv6
-ttyv7
-ttyv8
-ttyv9
-ttyva
-ttyvb
-ttyvc
-ttyvd
-ttyve
-ttyvf
-ttyw0
-ttyw1
-ttyw2
-ttyw3
-ttyw4
-ttyw5
-ttyw6
-ttyw7
-ttyw8
-ttyw9
-ttywa
-ttywb
-ttywc
-ttywd
-ttywe
-ttywf
-urandom
-zero
-..
+-rw-r--r--  1 nle-bret  2015_paris  0 Oct 27 13:26 file2
+-rw-r--r--  1 nle-bret  2015_paris  0 Oct 27 13:26 file1
+
+error_dir:
+total 8
+drwxr-xr-x  20 nle-bret  2015_paris  680 Oct 29 18:02 ..
+drwxr-xr-x  19 nle-bret  2015_paris  646 Oct 28 10:52 .
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file1
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file10
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file2
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file3
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file4
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file5
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file6
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file7
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file8
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file9
+d---------   2 nle-bret  2015_paris   68 Oct 28 10:51 linknotpermi
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 z
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 a
+lrwxr-xr-x   1 nle-bret  2015_paris   12 Oct 28 10:50 lol -> linknotpermi
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:50 f______________________________________________________ol_______________________________________lol_______________
+d--x------   3 nle-bret  2015_paris  102 Oct 28 10:49 notpermi2
+d---------   2 nle-bret  2015_paris   68 Oct 28 10:49 notpermi
+
+error_dir/linknotpermi:
+
+error_dir/notpermi2:
+
+error_dir/notpermi:
+
+link:
+total 48
+drwxr-xr-x  20 nle-bret  2015_paris  680 Oct 29 18:02 ..
+drwxr-xr-x   8 nle-bret  2015_paris  272 Oct 28 10:13 .
+lrwxr-xr-x   1 nle-bret  2015_paris   19 Oct 28 10:13 .l3dqsd -> /usr/X11/bin/Xephyr
+lrwxr-xr-x   1 nle-bret  2015_paris   19 Oct 28 10:13 a -> /usr/X11/bin/Xephyr
+lrwxr-xr-x   1 nle-bret  2015_paris    8 Oct 28 10:13 l2 -> /usr/X11
+lrwxr-xr-x   1 nle-bret  2015_paris   16 Oct 28 10:13 lol -> /etc/resolv.conf
+lrwxr-xr-x   1 nle-bret  2015_paris    4 Oct 28 10:13 lol2 -> /etc
+lrwxr-xr-x   1 nle-bret  2015_paris   19 Oct 28 10:13 z -> /usr/X11/bin/Xephyr
+
+test:
+total 0
+drwxr-xr-x  20 nle-bret  2015_paris  680 Oct 29 18:02 ..
+drwxr-xr-x   5 nle-bret  2015_paris  170 Oct 29 11:38 dir
+drwxr-xr-x  16 nle-bret  2015_paris  544 Oct 28 10:13 .
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:13 .lol
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 2
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 A3
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 a
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 b
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 c
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 d
+drwxr-xr-x   3 nle-bret  2015_paris  102 Oct 27 12:06 dir2
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 e
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 f
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 lol
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 sd3
+-rw-r--r--   1 nle-bret  2015_paris    0 Dec 10  2013 sd4
+
+test/dir:
+total 8
+drwxr-xr-x   5 nle-bret  2015_paris  170 Oct 29 11:38 .
+lrwxr-xr-x   1 nle-bret  2015_paris   10 Oct 29 11:38 lol -> ../../test
+drwxr-xr-x   4 nle-bret  2015_paris  136 Oct 28 10:39 subdir
+drwxr-xr-x  16 nle-bret  2015_paris  544 Oct 28 10:13 ..
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 subfile
+
+test/dir/subdir:
+total 0
+drwxr-xr-x  5 nle-bret  2015_paris  170 Oct 29 11:38 ..
+drwxr-xr-x  4 nle-bret  2015_paris  136 Oct 28 10:39 .
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 28 10:39 bnoexist
+-rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 subsubfile
+
+test/dir2:
+total 0
+drwxr-xr-x  16 nle-bret  2015_paris  544 Oct 28 10:13 ..
+drwxr-xr-x   3 nle-bret  2015_paris  102 Oct 27 12:06 .
+-rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 file
+ls: fileanoexist: No such file or directory
+ls: test/noexist: No such file or directory
+ls: linknotpermi: Permission denied
+ls: notpermi2: Permission denied
+ls: notpermi: Permission denied

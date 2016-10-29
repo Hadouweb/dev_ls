@@ -74,6 +74,7 @@ typedef struct  	s_app
 	int 			nb_param;
 	int 			nb_dir_param;
 	t_max_size		root_ms;
+	unsigned char	param_mode;
 }					t_app;
 
 DIR				*ls_opendir(char *file);
