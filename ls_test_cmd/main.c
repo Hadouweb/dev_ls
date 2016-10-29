@@ -162,6 +162,7 @@ void	test8(void)
 	cmd("r", "file2 test/noexist fileanoexist error_dir file1 test link");
 	cmd("r", "fileFUTUR /etc/resolv.conf file1 test file2 fileOLD");
 	cmd("rR", "c test file1 c b");
+	cmd("rRat", "recu a c b b c a c a b recu");
 }
 
 int		main(void)

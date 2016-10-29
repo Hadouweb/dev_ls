@@ -1,32 +1,12 @@
+c
+c
+c
 file1
-c
-c
 b
-
-test:
-sd4
-sd3
-lol
-future
-f
-e
-dir2
-dir
-d
-c
 b
-a
-A3
-2
-
-test/dir2:
-file
-
-test/dir:
-subfile
-subdir
-lol
-
-test/dir/subdir:
-subsubfile
-bnoexist
+b
+ls: a: No such file or directory
+ls: a: No such file or directory
+ls: a: No such file or directory
+ls: recu: No such file or directory
+ls: recu: No such file or directory
