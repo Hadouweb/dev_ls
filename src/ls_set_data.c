@@ -16,6 +16,10 @@ void	ls_push_entity(t_app *app, t_entity *parent, char *name, t_listd **lst)
 {
 	t_entity	*e;
 
+	if (ft_strcmp(name, "\0") == 0) {
+		ft_putstr_fd("ls: fts_open: No such file or directory\n", 2);
+		exit(1);
+	}
 	if ((e = (t_entity*)ft_memalloc(sizeof(t_entity))) == NULL)
 		ls_error("Error: malloc");
 	e->name = ft_strdup(name);
@@ -39,21 +43,25 @@ char 	*ls_update_link(t_entity *e)
 	char 	*rpath;
 	char 	*str;
 	int 	i;
+	int		find;
 
 	rpath = e->rpath;
-	i = ft_strlen(rpath);
-
-	while (rpath[i - 1])
+	i = ft_strlen(rpath) - 1;
+	find = 0;
+	while (rpath[i])
 	{
-		if (rpath[i] == '/')
+		if (rpath[i] == '/') {
+			find = 1;
 			break;
+		}
 		i--;
 	}
 	if (i > 0)
 		str = ft_strjoin_free_s1(ft_strndup(rpath, i + 1), e->link);
-	else
+	else if (find)
 		str = ft_strjoin("/", e->link);
-	//printf("str:[%s] name:[%s] link:[%s]\n", str, e->name, e->link);
+	else
+		str = e->link;
 	if (opendir(str) != NULL)
 		return str;
 	return e->rpath;
@@ -69,8 +77,10 @@ int		ls_set_filestat(t_app *app, t_entity *e)
 	e->link = ls_get_link(path);
 	errno = 0;
 	if (e->link != NULL) {
-		if (!(app->opt & OPT_l) && (!(app->opt & OPT_R) || app->param_mode == 1))
+		if (!(app->opt & OPT_l) && (!(app->opt & OPT_R) || app->param_mode == 1)) {
+			//printf("__here 1\n");
 			path = ls_update_link(e);
+		}
 		errno = 0;
 		ret = lstat(path, &e->file);
 	} else

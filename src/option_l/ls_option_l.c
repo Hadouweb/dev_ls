@@ -89,7 +89,11 @@ void		ls_print_line_opt_l(t_entity *e, t_max_size ms)
 	ls_print_adjust_space_right(e_full->group, ms.group - 1);
 	ls_print_adjust_size(e, ms);
 	ls_print_adjust_space_left(e_full->month, ms.month);
+	if (ms.day < 2)
+		ms.day = 2;
 	ls_print_adjust_space_left(e_full->day, ms.day);
+	if (ft_strlen(e_full->hour_year) > 5)
+		ft_putchar(' ');
 	ls_print_adjust_space_left(e_full->hour_year, 5);
 	ft_putchar(' ');
 	if (e->link != NULL)

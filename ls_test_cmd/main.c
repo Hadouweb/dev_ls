@@ -54,6 +54,7 @@ void	test0(void)
 	cmd("", "/etc");
 	cmd("", "/dev");
 	cmd("", "file1 testnoexist filenoexist file2 test");
+	cmd("", "newtest");
 }
 
 void	test1(void)
@@ -83,6 +84,7 @@ void	test2(void)
 	cmd("l", "/etc/resolv.conf");
 	cmd("l", "/dev");
 	cmd("l", "link");
+	cmd("l", "newtest");
 	cmd("l", "/etc/resolv.conf /dev file1 test file2");
 }
 
@@ -116,8 +118,11 @@ void	test5(void)
 	printf("\033[035m****************** test5 ******************\033[0m\n");
 	cmd("a", "file2 test/noexist fileanoexist file1 test link error_dir");
 	cmd("l", "file2 test/noexist fileanoexist error_dir file1 test link");
+	cmd("l", "test/futur");
+	cmd("l", "test");
 	cmd("t", "file2 test/noexist error_dir fileanoexist file1 test link");
-	cmd("", "error_dir file2 test/noexist fileanoexist file1 test link");
+	cmd("", "file2 test/noexist error_dir fileanoexist file1 test link");
+	cmd("l", "file2 test/noexist error_dir fileanoexist file1 test link");
 }
 
 void	test6(void)

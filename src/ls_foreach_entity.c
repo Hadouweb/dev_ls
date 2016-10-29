@@ -81,7 +81,7 @@ void		ls_print_child(t_app *app, t_entity *e)
 		ls_error_errno(e->name);
 		errno = 0;
 	}
-	if (app->opt & OPT_l && e->errno_code == 0) {
+	if (app->opt & OPT_l && e->errno_code == 0 && ft_lstsize((t_list*)e->child) > 0) {
 		ft_putstr("total ");
 		ft_putnbr(e->ms.total_folder);
 		ft_putchar('\n');
@@ -113,7 +113,7 @@ void		ls_print_child(t_app *app, t_entity *e)
 
 void		ls_print_entity(t_app *app, t_entity *e)
 {
-
+	
 	if (S_ISDIR(e->file.st_mode)) {
 		ls_print_child(app, e);
 	}
@@ -123,7 +123,8 @@ void		ls_print_entity(t_app *app, t_entity *e)
 		else
 			ls_print_no_option(app, e);
 	}
-	app->token = 1;
+	if (e->errno_code == 0)
+		app->token = 1;
 }
 
 void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child)

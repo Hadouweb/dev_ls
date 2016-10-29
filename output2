@@ -1,86 +1,46 @@
--rw-r--r--  1 nle-bret  2015_paris  0 Oct 27 13:26 file2
--rw-r--r--  1 nle-bret  2015_paris  0 Oct 27 13:26 file1
-
-error_dir:
-total 8
-drwxr-xr-x  20 nle-bret  2015_paris  680 Oct 29 18:02 ..
-drwxr-xr-x  19 nle-bret  2015_paris  646 Oct 28 10:52 .
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file1
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file10
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file2
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file3
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file4
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file5
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file6
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file7
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file8
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 file9
-d---------   2 nle-bret  2015_paris   68 Oct 28 10:51 linknotpermi
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 z
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:51 a
-lrwxr-xr-x   1 nle-bret  2015_paris   12 Oct 28 10:50 lol -> linknotpermi
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:50 f______________________________________________________ol_______________________________________lol_______________
-d--x------   3 nle-bret  2015_paris  102 Oct 28 10:49 notpermi2
-d---------   2 nle-bret  2015_paris   68 Oct 28 10:49 notpermi
-
-error_dir/linknotpermi:
-
-error_dir/notpermi2:
-
-error_dir/notpermi:
-
-link:
-total 48
-drwxr-xr-x  20 nle-bret  2015_paris  680 Oct 29 18:02 ..
-drwxr-xr-x   8 nle-bret  2015_paris  272 Oct 28 10:13 .
-lrwxr-xr-x   1 nle-bret  2015_paris   19 Oct 28 10:13 .l3dqsd -> /usr/X11/bin/Xephyr
-lrwxr-xr-x   1 nle-bret  2015_paris   19 Oct 28 10:13 a -> /usr/X11/bin/Xephyr
-lrwxr-xr-x   1 nle-bret  2015_paris    8 Oct 28 10:13 l2 -> /usr/X11
-lrwxr-xr-x   1 nle-bret  2015_paris   16 Oct 28 10:13 lol -> /etc/resolv.conf
-lrwxr-xr-x   1 nle-bret  2015_paris    4 Oct 28 10:13 lol2 -> /etc
-lrwxr-xr-x   1 nle-bret  2015_paris   19 Oct 28 10:13 z -> /usr/X11/bin/Xephyr
+file2
+file1
 
 test:
-total 0
-drwxr-xr-x  20 nle-bret  2015_paris  680 Oct 29 18:02 ..
-drwxr-xr-x   5 nle-bret  2015_paris  170 Oct 29 11:38 dir
-drwxr-xr-x  16 nle-bret  2015_paris  544 Oct 28 10:13 .
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 28 10:13 .lol
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 2
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 A3
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 a
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 b
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 c
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 d
-drwxr-xr-x   3 nle-bret  2015_paris  102 Oct 27 12:06 dir2
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 e
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 f
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 lol
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 sd3
--rw-r--r--   1 nle-bret  2015_paris    0 Dec 10  2013 sd4
+future
+dir
+2
+A3
+a
+b
+c
+d
+dir2
+e
+f
+lol
+sd3
+sd4
 
-test/dir:
-total 8
-drwxr-xr-x   5 nle-bret  2015_paris  170 Oct 29 11:38 .
-lrwxr-xr-x   1 nle-bret  2015_paris   10 Oct 29 11:38 lol -> ../../test
-drwxr-xr-x   4 nle-bret  2015_paris  136 Oct 28 10:39 subdir
-drwxr-xr-x  16 nle-bret  2015_paris  544 Oct 28 10:13 ..
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 subfile
+error_dir:
+file1
+file10
+file2
+file3
+file4
+file5
+file6
+file7
+file8
+file9
+linknotpermi
+z
+a
+lol
+f______________________________________________________ol_______________________________________lol_______________
+notpermi2
+notpermi
 
-test/dir/subdir:
-total 0
-drwxr-xr-x  5 nle-bret  2015_paris  170 Oct 29 11:38 ..
-drwxr-xr-x  4 nle-bret  2015_paris  136 Oct 28 10:39 .
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 28 10:39 bnoexist
--rw-r--r--  1 nle-bret  2015_paris    0 Oct 27 12:06 subsubfile
-
-test/dir2:
-total 0
-drwxr-xr-x  16 nle-bret  2015_paris  544 Oct 28 10:13 ..
-drwxr-xr-x   3 nle-bret  2015_paris  102 Oct 27 12:06 .
--rw-r--r--   1 nle-bret  2015_paris    0 Oct 27 12:06 file
+link:
+a
+l2
+lol
+lol2
+z
 ls: fileanoexist: No such file or directory
 ls: test/noexist: No such file or directory
-ls: linknotpermi: Permission denied
-ls: notpermi2: Permission denied
-ls: notpermi: Permission denied

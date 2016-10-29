@@ -78,6 +78,19 @@ void		ls_set_size(t_entity *e, t_max_size *ms)
 	}
 }
 
+char 		*ls_format_hour_year(char *str)
+{
+	int 	i;
+	char 	*str_format;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	str_format = ft_strndup(str, i);
+	str_format = ft_strjoin(" ", str_format);
+	return (str_format);
+}
+
 void		ls_set_time(t_entity *e, t_max_size *ms)
 {
 	t_entity_full	*e_full;
@@ -92,8 +105,9 @@ void		ls_set_time(t_entity *e, t_max_size *ms)
 	split = ft_strsplit(str_time, ' ');
 	e_full->month = ft_strdup(split[1]);
 	e_full->day = ft_strdup(split[2]);
+
 	if (dm)
-		e_full->hour_year = ft_strndup(split[4], 4);
+		e_full->hour_year = ls_format_hour_year(split[4]);
 	else
 		e_full->hour_year = ft_strndup(split[3], 5);
 	ft_free_tab(split);
