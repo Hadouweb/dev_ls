@@ -4,8 +4,6 @@ file1
 file2
 
 error_dir:
-.
-..
 a
 f______________________________________________________ol_______________________________________lol_______________
 file1
@@ -24,10 +22,16 @@ notpermi
 notpermi2
 z
 
+error_dir/linknotpermi:
+ls: linknotpermi: Permission denied
+
+error_dir/notpermi:
+ls: notpermi: Permission denied
+
+error_dir/notpermi2:
+ls: notpermi2: Permission denied
+
 link:
-.
-..
-.l3dqsd
 a
 l2
 lol
@@ -35,9 +39,6 @@ lol2
 z
 
 test:
-.
-..
-.lol
 2
 A3
 a
@@ -51,3 +52,15 @@ f
 lol
 sd3
 sd4
+
+test/dir:
+lol
+subdir
+subfile
+
+test/dir/subdir:
+bnoexist
+subsubfile
+
+test/dir2:
+file

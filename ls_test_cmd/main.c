@@ -25,8 +25,8 @@ void	cmd(char *cmd, char *param)
 	else
 		sprintf(str_cmd, "%s%s", cmd, param);
 
-	sprintf(str2, "../ft_ls %s 2> ../output2 >> ../output2", str_cmd);
-	sprintf(str1, "ls -1%s %s 2> ../output1 >> ../output1", cmd, param);
+	sprintf(str1, "ls -1%s %s > ../output1 2>&1", cmd, param);
+	sprintf(str2, "../ft_ls %s > ../output2 2>&1", str_cmd);
 
 	//rintf("%s\n", str1);
 	//printf("%s\n", str2);
@@ -37,6 +37,7 @@ void	cmd(char *cmd, char *param)
 	if (getdiff() > 0) {
 		printf("\033[031m[ Error    ]\033[0m ft_ls %s\n", str_cmd);
 		//system("cat ../diff");
+		exit(1);
 	} else
 		printf("\033[032m[ Success  ]\033[0m ft_ls %s\n", str_cmd);
 }
@@ -75,7 +76,7 @@ void	test2(void)
 	cmd("l", "file1 file2");
 	cmd("l", "file1");
 	cmd("l", "");
-	cmd("l", "/etc");
+	//cmd("l", "/etc");
 	cmd("l", "/etc/");
 	cmd("l", "/etc/resolv.conf");
 	cmd("l", "/dev");
@@ -117,7 +118,7 @@ void	test5(void)
 	cmd("", "error_dir file2 test/noexist fileanoexist file1 test link");
 }
 
-/*void	test6(void)
+void	test6(void)
 {
 	printf("\033[035m****************** test6 ******************\033[0m\n");
 	cmd("alrt", "file2 test/noexist fileanoexist file1 test link error_dir");
@@ -129,12 +130,15 @@ void	test5(void)
 	//cmd("tlar", "/etc/resolv.conf");
 	//cmd("rtrl", "/dev");
 	//cmd("rtla", "/test/.lol");
-}*/
+}
 
 void	test7(void)
 {
 	printf("\033[035m****************** test7 ******************\033[0m\n");
 	cmd("R", "test");
+	cmd("R", "test test");
+	cmd("R", "file1 test test file2");
+	cmd("R", "file2 test/noexist fileanoexist file1 test link error_dir");
 }
 
 int		main(void)

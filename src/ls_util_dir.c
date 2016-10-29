@@ -12,6 +12,27 @@
 
 #include "ft_ls.h"
 
+char 	*ls_format_name_error(char *file)
+{
+	int		size;
+	char 	*tmp;
+
+	tmp = file;
+	size = ft_strlen(file);
+	if (file[size - 1] == '/')
+		file[size - 1] = '\0';
+	size -= 2;
+	while (file[size] && file[size] != '/')
+	{
+		if (file[size] == '/')
+			break;
+		size--;
+	}
+	if (file[size] == '/' && file[size + 1])
+		size++;
+	return (&file[size]);
+}
+
 DIR		*ls_opendir(char *file)
 {
 	DIR		*dir;
@@ -19,8 +40,12 @@ DIR		*ls_opendir(char *file)
 	errno = 0;
 	dir = opendir(file);
 	//printf("ls_opendir: %s\n", file);
-	if (errno != 0)
-		ls_error_errno("Error in ls_opendir ");
+	if (errno != 0) {
+		//e->errno_code = errno;
+		//e->name = path;
+		//ls_error_errno(ls_format_name_error(file));
+		//errno = 0;
+	}
 	return (dir);
 }
 

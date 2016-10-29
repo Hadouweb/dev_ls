@@ -69,7 +69,7 @@ int		ls_set_filestat(t_app *app, t_entity *e)
 	e->link = ls_get_link(path);
 	errno = 0;
 	if (e->link != NULL) {
-		if (!(app->opt & OPT_l) && !app->opt & OPT_R)
+		if (!(app->opt & OPT_l) && !(app->opt & OPT_R))
 			path = ls_update_link(e);
 		errno = 0;
 		ret = lstat(path, &e->file);
@@ -107,11 +107,17 @@ t_listd	*ls_get_entity_child(t_app *app, char *name, t_entity *parent)
 	t_listd	*lst;
 
 	lst = NULL;
-	//if (name[ft_strlen(name) - 1] != '/')
-	//	dir_path = ft_stradd_char(&name, '/');
-	//else
+	if (name[ft_strlen(name) - 1] != '/')
+		dir_path = ft_stradd_char(&name, '/');
+	else
 		dir_path = ft_strdup(name);
+	errno = 0;
 	dir = ls_opendir(dir_path);
+	if (errno != 0)
+	{
+		parent->errno_code = errno;
+		errno = 0;
+	}
 	if (dir != NULL) {
 		ls_readdir(dir, &lst, app, parent);
 		ls_closedir(dir);

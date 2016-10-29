@@ -60,12 +60,28 @@ void		ls_print_child(t_app *app, t_entity *e)
 	//printf("print child Parent: %s and child:\n", e->name);
 	//ft_lstd_print(e->child, ls_debug_print_content, 0);
 	//printf("___________\n");
-	if (app->opt & OPT_l) {
-		ft_putchar('\n');
-		if (app->nb_param > 1 || app->opt & OPT_R) {
+	if (app->nb_param > 1 || app->opt & OPT_R) {
+		if (app->token == 1) {
+			ft_putchar('\n');
+			if (app->opt & OPT_R && app->nb_dir_param == 1) {
+				ft_putstr(e->rpath);
+				ft_putendl(":");
+			}
+		} else
+			app->token = 1;
+
+		if (!(app->opt & OPT_R) || app->nb_dir_param > 1) {
 			ft_putstr(e->rpath);
 			ft_putendl(":");
 		}
+	}
+	if (e->errno_code != 0)
+	{
+		errno = e->errno_code;
+		ls_error_errno(e->name);
+		errno = 0;
+	}
+	if (app->opt & OPT_l) {
 		ft_putstr("total ");
 		ft_putnbr(e->ms.total_folder);
 		ft_putchar('\n');
@@ -94,19 +110,17 @@ void		ls_print_child(t_app *app, t_entity *e)
 
 void		ls_print_entity(t_app *app, t_entity *e)
 {
-	if (S_ISDIR(e->file.st_mode)) {
-		if (app->token == 1)
-			ft_putchar('\n');
-	}
-	if (app->token == 0)
-		app->token = 1;
 
-	if (app->opt & OPT_l && e->errno_code == 0)
-		ls_print_opt_l(app, e);
-	if (app->opt == 0 || app->opt & OPT_a || app->opt & OPT_t)
-		ls_print_no_option(app, e);
-	if (app->opt & OPT_R && S_ISDIR(e->file.st_mode))
+	if (S_ISDIR(e->file.st_mode)) {
 		ls_print_child(app, e);
+	}
+	else {
+		if (app->opt & OPT_l && e->errno_code == 0)
+			ls_print_opt_l(app, e);
+		else
+			ls_print_no_option(app, e);
+	}
+	app->token = 1;
 }
 
 void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child)
@@ -131,6 +145,7 @@ void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child)
 void		ls_set_entity_param(t_app *app, t_entity *e)
 {
 	if (S_ISDIR(e->file.st_mode)) {
+		app->nb_dir_param++;
 		ls_set_child(app, e, ls_get_entity_child(app, e->name, e));
 	} else {
 		if (app->opt & OPT_l)

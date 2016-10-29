@@ -72,6 +72,7 @@ typedef struct  	s_app
 	t_col			col;
 	int 			token;
 	int 			nb_param;
+	int 			nb_dir_param;
 	t_max_size		root_ms;
 }					t_app;
 
