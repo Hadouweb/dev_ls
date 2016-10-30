@@ -18,8 +18,6 @@ struct passwd	*ls_get_user_data(int uid)
 
 	errno = 0;
 	user = getpwuid(uid);
-	if (errno != 0 || user == NULL)
-		;//ls_error_errno("Error in ls_get_user_data ");
 	return (user);
 }
 
@@ -29,31 +27,32 @@ struct group	*ls_get_group_data(int gid)
 
 	errno = 0;
 	group = getgrgid(gid);
-	if (errno != 0 || group == NULL)
-		;//ls_error_errno("Error in ls_get_group_data ");
 	return (group);
 }
 
-void DEBUG_print_file(char *name, struct stat *file)
+t_listd			*ls_get_entity_child(t_app *app, char *name, t_entity *parent)
 {
-	printf("Name %s | %ld\n", name, file->st_mtimespec.tv_sec);
-}
+	DIR		*dir;
+	char	*dir_path;
+	t_listd	*lst;
 
-/*int			ls_get_data_file(char *name, int is_link, struct stat *file)
-{
-	int			ret;
-
-	errno = 0;
-	ret = -1;
-	is_link = 0;
-	if (is_link)
-		ret = lstat(name, file);
+	lst = NULL;
+	if (name[ft_strlen(name) - 1] != '/')
+		dir_path = ft_stradd_char(&name, '/');
 	else
-		ret = stat(name, file);
+		dir_path = ft_strdup(name);
+	errno = 0;
+	dir = opendir(dir_path);
 	if (errno != 0)
 	{
-		ft_putstr("ls: ");
-		perror(name);
+		parent->errno_code = errno;
+		errno = 0;
 	}
-	return (ret);
-}*/
+	if (dir != NULL)
+	{
+		ls_readdir(dir, &lst, app, parent);
+		ls_closedir(dir);
+		ft_strdel(&dir_path);
+	}
+	return (lst);
+}

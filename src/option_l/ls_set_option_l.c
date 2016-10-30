@@ -17,7 +17,7 @@ void		ls_set_user(t_entity *e, t_max_size *ms)
 	t_entity_full	*e_full;
 	struct passwd	*user;
 	int				size;
-	int 			st_uid;
+	int				st_uid;
 
 	st_uid = e->file.st_uid;
 	e_full = e->entity_full;
@@ -34,8 +34,8 @@ void		ls_set_group(t_entity *e, t_max_size *ms)
 {
 	t_entity_full	*e_full;
 	struct group	*group;
-	int 			size;
-	int 			st_gid;
+	int				size;
+	int				st_gid;
 
 	st_gid = e->file.st_gid;
 	e_full = e->entity_full;
@@ -48,40 +48,10 @@ void		ls_set_group(t_entity *e, t_max_size *ms)
 		ms->group = size;
 }
 
-void		ls_set_size(t_entity *e, t_max_size *ms)
+char		*ls_format_hour_year(char *str)
 {
-	t_entity_full	*e_full;
-	int				nbr;
-	int				size;
-	struct stat 	file;
-
-	file = e->file;
-	e_full = e->entity_full;
-	nbr = 0;
-	if (S_ISCHR(file.st_mode) || S_ISBLK(file.st_mode))
-	{
-		nbr = ls_major(file.st_rdev);
-		e_full->major = ft_itoa(nbr);
-		nbr = ls_minor(file.st_rdev);
-		e_full->minor = ft_itoa(nbr);
-		e_full->size = NULL;
-		if ((size = 8) > ms->size)
-			ms->size = size;
-	}
-	else
-	{
-		e_full->size = ft_itoa(file.st_size);
-		e_full->major = NULL;
-		e_full->minor = NULL;
-		if ((size = ft_strlen(e_full->size)) > ms->size)
-			ms->size = size;
-	}
-}
-
-char 		*ls_format_hour_year(char *str)
-{
-	int 	i;
-	char 	*str_format;
+	int		i;
+	char	*str_format;
 
 	i = 0;
 	while (str[i] && str[i] != '\n')
@@ -105,7 +75,6 @@ void		ls_set_time(t_entity *e, t_max_size *ms)
 	split = ft_strsplit(str_time, ' ');
 	e_full->month = ft_strdup(split[1]);
 	e_full->day = ft_strdup(split[2]);
-
 	if (dm)
 		e_full->hour_year = ls_format_hour_year(split[4]);
 	else
@@ -117,4 +86,17 @@ void		ls_set_time(t_entity *e, t_max_size *ms)
 		ms->day = size;
 	if ((size = ft_strlen(e_full->hour_year)) > ms->hour_year)
 		ms->hour_year = size;
+}
+
+void		ls_set_option_l(t_entity *e, t_max_size *ms)
+{
+	if ((e->entity_full = (t_entity_full*)ft_memalloc(
+			sizeof(t_entity_full))) == NULL)
+		ls_error("Error: malloc");
+	ls_set_mode(e);
+	ls_set_nb_link(e, ms);
+	ls_set_user(e, ms);
+	ls_set_group(e, ms);
+	ls_set_size(e, ms);
+	ls_set_time(e, ms);
 }

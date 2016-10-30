@@ -50,7 +50,7 @@ static void	ls_stickybit_suid(char *u, char *g, char *o, int st_mode)
 void		ls_set_mode(t_entity *e)
 {
 	t_entity_full	*e_full;
-	int 			st_mode;
+	int				st_mode;
 
 	st_mode = e->file.st_mode;
 	e_full = e->entity_full;
@@ -66,6 +66,7 @@ void		ls_set_mode(t_entity *e)
 	e_full->mode[7] = st_mode & S_IROTH ? 'r' : e_full->mode[7];
 	e_full->mode[8] = st_mode & S_IWOTH ? 'w' : e_full->mode[8];
 	e_full->mode[9] = st_mode & S_IXOTH ? 'x' : e_full->mode[9];
-	ls_stickybit_suid(&e_full->mode[3], &e_full->mode[6], &e_full->mode[9], st_mode);
+	ls_stickybit_suid(&e_full->mode[3], &e_full->mode[6],
+	&e_full->mode[9], st_mode);
 	e_full->mode[10] = ' ';
 }

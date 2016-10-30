@@ -38,27 +38,6 @@ void		ls_print_adjust_space_right(char *str, int size)
 	}
 }
 
-/*void		ls_clear_node_prepared(t_listd *node)
-{
-	t_entity_full		*p;
-
-	p = (t_entity_full*)node->content;
-	ft_strdel(&p->nb_link);
-	if (p->size != NULL)
-		ft_strdel(&p->size);
-	else
-	{
-		ft_strdel(&p->major);
-		ft_strdel(&p->minor);
-	}
-	ft_strdel(&p->time);
-	ft_strdel(&p->name);
-	free(p);
-	p = NULL;
-	free(node);
-	node = NULL;
-}*/
-
 void		ls_print_adjust_size(t_entity *e, t_max_size ms)
 {
 	t_entity_full *e_full;
@@ -80,7 +59,6 @@ void		ls_print_line_opt_l(t_entity *e, t_max_size ms)
 {
 	t_entity_full *e_full;
 
-	//ls_debug_max_size(ms);
 	e_full = e->entity_full;
 	ft_putstr(e_full->mode);
 	ls_print_adjust_space_left(e_full->nb_link, ms.nb_link);
@@ -101,31 +79,3 @@ void		ls_print_line_opt_l(t_entity *e, t_max_size ms)
 	ft_putstr(e->name);
 	ft_putchar('\n');
 }
-
-/*void		ls_print_option_l(t_app *app)
-{
-	t_listd	*l;
-	t_listd	*tmp;
-
-	l = app->prepa;
-	while (l)
-	{
-		t_entity_full		*p;
-
-		p = (t_entity_full*)l->content;
-		ft_putstr(p->mode);
-		ls_print_adjust_space_left(p->nb_link, app->ms.nb_link);
-		ft_putchar(' ');
-		ls_print_adjust_space_right(p->user, app->ms.user + 1);
-		ls_print_adjust_space_right(p->group, app->ms.group - 1);
-		ls_print_adjust_size(p, app);
-		ls_print_adjust_space_left(p->time, app->ms.time);
-		ft_putchar(' ');
-		ft_putstr(p->name);
-		ft_putchar('\n');
-		tmp = l;
-		l = l->next;
-		ls_clear_node_prepared(tmp);
-	}
-	app->prepa = NULL;
-}*/

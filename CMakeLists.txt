@@ -3,8 +3,6 @@ project(ft_ls)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-#set(HEADER_FILES includes/ft_ls.h libft/includes/libft.h)
-
 include_directories(includes libft/includes)
 
 set(SOURCE_FILES
@@ -97,6 +95,7 @@ set(SOURCE_FILES
     libft/srcs/tab/ft_tabjoin.c
     libft/srcs/tab/ft_tablen.c
     libft/srcs/get_next_line.c
+    libft/srcs/str/ft_nblen.c
     libft/srcs/libft.a
     libft/auteur
     libft/Makefile
@@ -106,171 +105,17 @@ set(SOURCE_FILES
     src/option_l/ls_set_option_l.c
     src/option_l/ls_set_option_l_2.c
     src/option_l/ls_util_l.c
-    src/ls_debug.c
+        src/ls_debug.txt
     src/ls_error.c
     src/ls_cmp.c
     src/ls_get_data.c
+    src/ls_print_child.c
     src/ls_option.c
-    src/ls_print_folder.c
-    src/ls_foreach_entity.c
-    src/ls_stack_opt_r.c.c
+        src/ls_foreach_entity.c
     src/ls_set_data.c
     src/ls_sort.c
     src/ls_util_dir.c
-    src/main.c
-    test/a
-    test/b
-    test/c
-    test/d
-    test/e
-    test_ls/folder/a
-    test_ls/folder/aq
-    test_ls/folder/az
-    test_ls/folder/b
-    test_ls/folder/bflmlvsdklnxnjksh
-    test_ls/folder/bhn
-    test_ls/folder/c
-    test_ls/folder/d
-    test_ls/folder/dc
-    test_ls/folder/df
-    test_ls/folder/ds
-    test_ls/folder/dsf
-    test_ls/folder/dsfdjksfgjkdqshfhdsqfj
-    test_ls/folder/dsq
-    test_ls/folder/dv
-    test_ls/folder/e
-    test_ls/folder/eaz
-    test_ls/folder/ed
-    test_ls/folder/eq
-    test_ls/folder/er
-    test_ls/folder/ez
-    test_ls/folder/ezr
-    test_ls/folder/f
-    test_ls/folder/fd
-    test_ls/folder/fdsgf
-    test_ls/folder/ffdsj
-    test_ls/folder/fg
-    test_ls/folder/fh
-    test_ls/folder/fhdds
-    test_ls/folder/file
-    test_ls/folder/file2
-    test_ls/folder/file23
-    test_ls/folder/file24
-    test_ls/folder/file25
-    test_ls/folder/file26
-    test_ls/folder/file2sq
-    test_ls/folder/file2sqd
-    test_ls/folder/file2sqda
-    test_ls/folder/file3
-    test_ls/folder/filé
-    test_ls/folder/fq
-    test_ls/folder/fsd
-    test_ls/folder/fv
-    test_ls/folder/g
-    test_ls/folder/gb
-    test_ls/folder/ger
-    test_ls/folder/gfd
-    test_ls/folder/gh
-    test_ls/folder/gj
-    test_ls/folder/h
-    test_ls/folder/i
-    test_ls/folder/ik
-    test_ls/folder/io
-    test_ls/folder/j
-    test_ls/folder/jk
-    test_ls/folder/k
-    test_ls/folder/kfjdskfjq
-    test_ls/folder/kj
-    test_ls/folder/kl
-    test_ls/folder/l
-    test_ls/folder/lol
-    test_ls/folder/M
-    test_ls/folder/n
-    test_ls/folder/o
-    test_ls/folder/ol
-    test_ls/folder/op
-    test_ls/folder/p
-    test_ls/folder/pm
-    test_ls/folder/q
-    test_ls/folder/qioaeic
-    test_ls/folder/qs
-    test_ls/folder/qw
-    test_ls/folder/r
-    test_ls/folder/rf
-    test_ls/folder/rt
-    test_ls/folder/s
-    test_ls/folder/sd
-    test_ls/folder/sdf
-    test_ls/folder/sdjk
-    test_ls/folder/sf
-    test_ls/folder/sqd
-    test_ls/folder/sssdjkdhfkds
-    test_ls/folder/t
-    test_ls/folder/tg
-    test_ls/folder/ty
-    test_ls/folder/u
-    test_ls/folder/ui
-    test_ls/folder/uj
-    test_ls/folder/uy
-    test_ls/folder/v
-    test_ls/folder/vb
-    test_ls/folder/vc
-    test_ls/folder/w
-    test_ls/folder/wd
-    test_ls/folder/wx
-    test_ls/folder/x
-    test_ls/folder/xc
-    test_ls/folder/xw
-    test_ls/folder/xwc
-    test_ls/folder/y
-    test_ls/folder/yh
-    test_ls/folder/yu
-    test_ls/folder/z
-    test_ls/folder/ze
-    test_ls/folder/zq
-    test_ls/folder/zqe
-    test_ls/folder/zs
-    test_ls/sort/%lol
-    test_ls/sort/1file
-    test_ls/sort/@lol
-    test_ls/sort/_1a
-    test_ls/sort/_1b
-    test_ls/sort/_1c
-    test_ls/sort/_2a
-    test_ls/sort/a1
-    test_ls/sort/a2
-    test_ls/sort/afile
-    test_ls/special_mode/file1
-    test_ls/special_mode/file11
-    test_ls/special_mode/file12
-    test_ls/special_mode/file13
-    test_ls/special_mode/file14
-    test_ls/special_mode/file15
-    test_ls/special_mode/file16
-    test_ls/special_mode/file17
-    test_ls/special_mode/file18
-    test_ls/special_mode/file19
-    test_ls/special_mode/file2
-    test_ls/special_mode/file3
-    test_ls/special_mode/file4
-    test_ls/special_mode/file5
-    test_ls/special_mode/file6
-    test_ls/special_mode/file7
-    test_ls/special_mode/file8
-    test_ls/special_mode/file9
-    test_ls/fichier
-    test_ls/fichié
-    test_ls/link
-    test_ls/link_src
-    test_ls/link_src2
-    test_ls/no_access
-    test_ls/test_༄
-    test_ls/༠
-    test_ls/༠༡༢༣༤༥༦༧༨༩༪༫༬༭༮
-    auteur
-    Makefile
-    my_ls
-    true_ls libft/srcs/str/ft_nblen.c)
+    src/main.c)
 
 #add_library(mylib libsrc.cpp ${HEADER_FILES})
 add_executable(ft_ls ${SOURCE_FILES})

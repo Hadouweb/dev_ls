@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/30 18:26:47 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/10/30 18:26:49 by nle-bret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_LS_H
 # define FT_LS_H
 
@@ -85,7 +97,7 @@ t_listd			*ls_get_node_cmp(t_app *app, t_listd **lst, t_entity *path);
 t_listd			*ls_get_node_cmp_time(t_app *app, t_listd **lst, t_entity *path);
 
 void			ls_push_after_sort(t_listd **lst, t_entity *path, t_app *app);
-void			ls_sort_entity(t_app *app, t_listd **lst);
+void			ls_sort_entity(t_listd **lst);
 void			ls_sort(t_app *app, t_listd **lst);
 void			ls_sort_entity_param(t_app *app);
 
@@ -141,7 +153,7 @@ void 			ls_print_with_option_R(t_app *app);
 void			ls_print_line(t_app *app, t_entity *path);
 void			ls_set_stack(t_app *app, t_entity *path);
 void			ls_set_link(t_entity *e);
-void			ls_print_entity_if_exist(t_app *app, t_entity *e);
+void			ls_print_entity_if_exist(t_entity *e);
 void			ls_print_child(t_app *app, t_entity *e);
 
 void		ls_run_stack(t_app *app);
@@ -149,5 +161,6 @@ void		ls_set_entity_param(t_app *app, t_entity *e);
 void		ls_push_stack(t_app *app, t_entity *e);
 void		ls_print_entity_stack(t_app *app, t_entity *e);
 void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child);
+int			ls_swap(t_listd *a, t_listd *b);
 
 #endif

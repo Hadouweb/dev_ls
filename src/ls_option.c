@@ -18,7 +18,7 @@ static void	ls_check_option(char *opt)
 
 	i = 1;
 	if (ft_strcmp(opt, "--") == 0)
-		return;
+		return ;
 	while (opt[i])
 	{
 		if (opt[i] != 'l' && opt[i] != 'R' && opt[i] != 'a' && opt[i] != 't'
