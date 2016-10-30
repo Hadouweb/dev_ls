@@ -25,7 +25,7 @@ void		ls_set_user(t_entity *e, t_max_size *ms)
 	if (user == NULL)
 		e_full->user = ft_itoa(st_uid);
 	else
-		e_full->user = user->pw_name;
+		e_full->user = ft_strdup(user->pw_name);
 	if ((size = ft_strlen(e_full->user)) > ms->user)
 		ms->user = size;
 }
@@ -43,7 +43,7 @@ void		ls_set_group(t_entity *e, t_max_size *ms)
 	if (group == NULL)
 		e_full->group = ft_itoa(st_gid);
 	else
-		e_full->group = group->gr_name;
+		e_full->group = ft_strdup(group->gr_name);
 	if ((size = ft_strlen(e_full->group) + 1) > ms->group)
 		ms->group = size;
 }
@@ -52,12 +52,14 @@ char		*ls_format_hour_year(char *str)
 {
 	int		i;
 	char	*str_format;
+	char 	*tmp;
 
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	str_format = ft_strndup(str, i);
-	str_format = ft_strjoin(" ", str_format);
+	tmp = ft_strndup(str, i);
+	str_format = ft_strjoin(" ", tmp);
+	ft_strdel(&tmp);
 	return (str_format);
 }
 
@@ -79,7 +81,13 @@ void		ls_set_time(t_entity *e, t_max_size *ms)
 		e_full->hour_year = ls_format_hour_year(split[4]);
 	else
 		e_full->hour_year = ft_strndup(split[3], 5);
-	ft_free_tab(split);
+	//ft_free_tab(split);
+	free(split[0]);
+	free(split[1]);
+	free(split[2]);
+	free(split[3]);
+	free(split[4]);
+	free(split[5]);
 	if ((size = ft_strlen(e_full->month)) > ms->month)
 		ms->month = size;
 	if ((size = ft_strlen(e_full->day)) > ms->day)

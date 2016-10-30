@@ -17,6 +17,7 @@ SRC = 	$(SRCPATH)/main.c\
 		$(SRCPATH)/ls_error.c\
 		$(SRCPATH)/ls_get_data.c\
 		$(SRCPATH)/ls_print_child.c\
+		$(SRCPATH)/ls_clear_memory.c\
 		$(SRCPATH)/ls_option.c\
 		$(SRCPATH)/ls_sort.c\
 		$(SRCPATH)/ls_foreach_entity.c\

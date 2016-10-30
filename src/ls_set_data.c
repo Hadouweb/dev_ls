@@ -58,7 +58,7 @@ void		ls_push_entity(t_app *app, t_entity *parent,
 	if (parent == NULL)
 	{
 		e->e_parent = NULL;
-		e->rpath = e->name;
+		e->rpath = ft_strdup(e->name);
 	}
 	else
 	{

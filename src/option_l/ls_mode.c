@@ -54,6 +54,7 @@ void		ls_set_mode(t_entity *e)
 
 	st_mode = e->file.st_mode;
 	e_full = e->entity_full;
+	e_full->mode = ft_memalloc(12 * sizeof(char));
 	ft_memset(e_full->mode, '-', 11);
 	e_full->mode[11] = '\0';
 	e_full->mode[0] = ls_get_file_type(st_mode);

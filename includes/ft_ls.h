@@ -45,7 +45,7 @@ typedef struct 		s_max_size
 
 typedef struct  	s_entity_full
 {
-	char			mode[12];
+	char			*mode;
 	char			*nb_link;
 	char			*user;
 	char			*group;
@@ -162,5 +162,8 @@ void		ls_push_stack(t_app *app, t_entity *e);
 void		ls_print_entity_stack(t_app *app, t_entity *e);
 void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child);
 int			ls_swap(t_listd *a, t_listd *b);
+
+void		ls_free_entity_full(t_entity_full *e);
+void		ls_free_entity(t_entity *e);
 
 #endif

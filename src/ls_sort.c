@@ -87,7 +87,6 @@ void		ls_push_after_sort(t_listd **lst, t_entity *e, t_app *app)
 {
 	t_listd	*node;
 
-	node = NULL;
 	if (app->opt & OPT_t)
 		node = ls_get_node_cmp_time(app, lst, e);
 	else

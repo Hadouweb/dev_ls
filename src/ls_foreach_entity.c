@@ -65,14 +65,15 @@ void		ls_print_entity(t_app *app, t_entity *e)
 		else
 			ls_print_no_option(app, e);
 	}
-	free(e);
 	if (e->errno_code == 0)
 		app->token = 1;
+	ls_free_entity(e);
 }
 
 void		ls_foreach_entity(t_app *app)
 {
 	t_listd		*l;
+	//t_listd		*tmp;
 	t_entity	*e;
 
 	l = app->entity;
@@ -88,6 +89,8 @@ void		ls_foreach_entity(t_app *app)
 	{
 		e = (t_entity*)l->content;
 		ls_print_entity(app, e);
+		//tmp = l;
 		l = l->next;
+		//free(tmp);
 	}
 }
