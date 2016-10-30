@@ -46,6 +46,10 @@ static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 		return (1);
 	else if (path_a->errno_code == 0 && path_b->errno_code != 0)
 		return (1);
+	else if (path_a->errno_code != 0 && path_b->errno_code != 0) {
+		if (ft_strcmp(path_a->name, path_b->name) > 0)
+			return (1);
+	}
 	return (0);
 }
 
@@ -99,9 +103,9 @@ void	ls_push_after_sort(t_listd **lst, t_entity *e, t_app *app)
 	t_listd *node;
 
 	node = NULL;
-	if (app->opt & OPT_t)
-		node = ls_get_node_cmp_time(lst, e);
-	else
+	if (app->opt & OPT_t) {
+		node = ls_get_node_cmp_time(app, lst, e);
+	} else
 		node = ls_get_node_cmp(app, lst, e);
 	if (node != NULL)
 		ft_lstd_pushbefore_node(lst, node, ft_lstd_new((void *) e, sizeof(t_entity)));

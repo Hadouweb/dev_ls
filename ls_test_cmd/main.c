@@ -120,7 +120,7 @@ void	test5(void)
 	cmd("l", "file2 test/noexist fileanoexist error_dir file1 test link");
 	cmd("l", "test/futur");
 	cmd("l", "test");
-	cmd("t", "file2 test/noexist error_dir fileanoexist file1 test link");
+	//cmd("t", "file2 test/noexist error_dir fileanoexist file1 test link");
 	cmd("", "file2 test/noexist error_dir fileanoexist file1 test link");
 	cmd("l", "file2 test/noexist error_dir fileanoexist file1 test link");
 }
@@ -129,14 +129,14 @@ void	test6(void)
 {
 	printf("\033[035m****************** test6 ******************\033[0m\n");
 	cmd("alrt", "file2 test/noexist fileanoexist file1 test link error_dir");
-	//cmd("lrta", "fileFUTUR /etc/resolv.conf file1 test file2 fileOLD");
-	//cmd("rtal", "../ls_test_cmd/link/a file1 file2");
-	//cmd("talr", "test link");
+	cmd("lrta", "fileFUTUR /etc/resolv.conf file1 test file2 fileOLD");
+	cmd("rtal", "../ls_test_cmd/link/a file1 file2");
+	cmd("talr", "test link");
 	//cmd("alrt", "/etc");
 	//cmd("lrta", "/etc/");
-	//cmd("tlar", "/etc/resolv.conf");
-	//cmd("rtrl", "/dev");
-	//cmd("rtla", "/test/.lol");
+	cmd("tlar", "/etc/resolv.conf");
+	cmd("rtrl", "/dev");
+	cmd("rtla", "/test/.lol");
 }
 
 void	test7(void)
@@ -163,19 +163,20 @@ void	test8(void)
 	cmd("r", "fileFUTUR /etc/resolv.conf file1 test file2 fileOLD");
 	cmd("rR", "c test file1 c b");
 	cmd("rRat", "recu a c b b c a c a b recu");
+	cmd("lR", "/usr/bin");
 }
 
 int		main(void)
 {
 	system("make -C ../");
-	//test0();
-	//test1();
-	//test2();
-	//test3();
-	//test4();
-	//test5();
-	//test6();
-	//test7();
+	test0();
+	test1();
+	test2();
+	test3();
+	test4();
+	test5();
+	test6();
+	test7();
 	test8();
 	return (0);
 }

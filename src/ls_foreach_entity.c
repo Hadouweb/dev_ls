@@ -172,7 +172,10 @@ void		ls_foreach_entity(t_app *app)
 	}
 
 	l = app->entity;
+	//ft_lstd_print(app->entity, ls_debug_print_content, 0);
 	ls_sort_entity_param(app);
+	//printf("\n");
+	//ft_lstd_print(app->entity, ls_debug_print_content, 0);
 	while (l)
 	{
 		e = (t_entity*)l->content;
