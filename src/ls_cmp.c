@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-static __uint128_t	ls_get_untint128(t_entity *e)
+static __uint128_t	ls_get_uint128(t_entity *e)
 {
 	return ((__uint128_t)e->file.st_mtimespec.tv_sec
 					<< 64 | e->file.st_mtimespec.tv_nsec);
@@ -27,12 +27,13 @@ t_listd				*ls_get_node_cmp_time(t_app *app, t_listd **lst,
 	t_entity		*e_cmp;
 	int				cmp;
 
-	t1 = ls_get_untint128(e);
+	t1 = ls_get_uint128(e);
 	l = *lst;
+	cmp = 0;
 	while (l)
 	{
 		e_cmp = (t_entity*)l->content;
-		t2 = ls_get_untint128(e_cmp);
+		t2 = ls_get_uint128(e_cmp);
 		if (app->opt & OPT_r && t1 < t2)
 			return (l);
 		else if (!(app->opt & OPT_r) && t1 > t2)

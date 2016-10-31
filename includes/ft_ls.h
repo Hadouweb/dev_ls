@@ -71,17 +71,10 @@ typedef struct 		s_entity
 	int				errno_code;
 }					t_entity;
 
-typedef struct 		s_col
-{
-	int 			nbr_link;
-}					t_col;
-
 typedef struct  	s_app
 {
 	unsigned char	opt;
 	t_listd			*entity;
-	t_listd			*stack;
-	t_col			col;
 	int 			token;
 	int 			nb_param;
 	int 			nb_dir_param;

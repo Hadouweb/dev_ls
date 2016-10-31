@@ -43,6 +43,7 @@ t_listd			*ls_get_entity_child(t_app *app, char *name, t_entity *parent)
 		dir_path = ft_strdup(name);
 	errno = 0;
 	dir = opendir(dir_path);
+	ft_strdel(&dir_path);
 	if (errno != 0)
 	{
 		parent->errno_code = errno;
@@ -52,7 +53,6 @@ t_listd			*ls_get_entity_child(t_app *app, char *name, t_entity *parent)
 	{
 		ls_readdir(dir, &lst, app, parent);
 		ls_closedir(dir);
-		ft_strdel(&dir_path);
 	}
 	return (lst);
 }

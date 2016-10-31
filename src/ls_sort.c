@@ -95,5 +95,7 @@ void		ls_push_after_sort(t_listd **lst, t_entity *e, t_app *app)
 		ft_lstd_pushbefore_node(lst, node,
 		ft_lstd_new((void *)e, sizeof(t_entity)));
 	else
+	{
 		ft_lstd_pushback(lst, (void *)e, sizeof(t_entity));
+	}
 }

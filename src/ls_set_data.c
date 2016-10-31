@@ -119,6 +119,7 @@ int			ls_set_filestat(t_app *app, t_entity *e)
 	{
 		e->errno_code = errno;
 		e->name = path;
+		e->rpath = NULL;
 	}
 	if (e->e_parent != NULL)
 		e->e_parent->ms.total_folder += e->file.st_blocks;

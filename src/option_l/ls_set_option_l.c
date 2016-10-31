@@ -81,13 +81,7 @@ void		ls_set_time(t_entity *e, t_max_size *ms)
 		e_full->hour_year = ls_format_hour_year(split[4]);
 	else
 		e_full->hour_year = ft_strndup(split[3], 5);
-	//ft_free_tab(split);
-	free(split[0]);
-	free(split[1]);
-	free(split[2]);
-	free(split[3]);
-	free(split[4]);
-	free(split[5]);
+	ft_free_tab(split);
 	if ((size = ft_strlen(e_full->month)) > ms->month)
 		ms->month = size;
 	if ((size = ft_strlen(e_full->day)) > ms->day)

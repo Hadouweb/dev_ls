@@ -13,6 +13,8 @@ void		ls_free_entity_full(t_entity_full *e)
 	ft_strdel(&e->nb_link);
 	ft_strdel(&e->size);
 	ft_strdel(&e->user);
+	ft_strdel(&e->mode);
+	free(e);
 }
 
 void		ls_free_entity(t_entity *e)
@@ -25,4 +27,7 @@ void		ls_free_entity(t_entity *e)
 		ft_strdel(&e->link);
 	if (e->rpath)
 		ft_strdel(&e->rpath);
+	//if (e->child)
+	//	free(e->child);
+	free(e);
 }

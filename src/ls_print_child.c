@@ -72,7 +72,7 @@ static void	ls_print_entity_child(t_app *app, t_entity *e)
 void		ls_print_child(t_app *app, t_entity *e)
 {
 	t_listd		*l;
-	//t_listd		*tmp;
+	t_listd		*tmp;
 	t_entity	*e_child;
 
 	ls_print_folder_and_newline(app, e);
@@ -92,9 +92,9 @@ void		ls_print_child(t_app *app, t_entity *e)
 				ls_print_child(app, e_child);
 			}
 		}
-		//ls_free_entity(e_child);
-		//tmp = l;
+		ls_free_entity(e_child);
+		tmp = l;
 		l = l->next;
-		//free(tmp);
+		free(tmp);
 	}
 }
