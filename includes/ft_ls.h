@@ -21,7 +21,6 @@
 # include <pwd.h>
 # include <grp.h>
 # include <time.h>
-# include <stdio.h>
 # include "libft.h"
 
 # define OPT_l 0x01
