@@ -22,7 +22,7 @@ void		ls_set_child(t_app *app, t_entity *e, t_listd *lst_child)
 	while (l)
 	{
 		e_child = (t_entity*)l->content;
-		if (app->opt & OPT_l)
+		if (app->opt & OPT_L)
 			ls_set_option_l(e_child, &e->ms);
 		l = l->next;
 	}
@@ -37,7 +37,7 @@ void		ls_set_entity_param(t_app *app, t_entity *e)
 	}
 	else
 	{
-		if (app->opt & OPT_l)
+		if (app->opt & OPT_L)
 			ls_set_option_l(e, &app->root_ms);
 	}
 }
@@ -107,7 +107,7 @@ int			ls_set_filestat(t_app *app, t_entity *e)
 	errno = 0;
 	if (e->link != NULL)
 	{
-		if (!(app->opt & OPT_l) && (!(app->opt & OPT_R) ||
+		if (!(app->opt & OPT_L) && (!(app->opt & OPT_R) ||
 			app->param_mode == 1))
 			path = ls_update_link(e);
 		errno = 0;

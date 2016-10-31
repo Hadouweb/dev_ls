@@ -12,6 +12,23 @@
 
 #include "ft_ls.h"
 
+static void	ls_print_total_and_error(t_app *app, t_entity *e)
+{
+	if (e->errno_code != 0)
+	{
+		errno = e->errno_code;
+		ls_error_errno(e->name);
+		errno = 0;
+	}
+	if (app->opt & OPT_L && e->errno_code == 0 &&
+		ft_lstsize((t_list*)e->child) > 0)
+	{
+		ft_putstr("total ");
+		ft_putnbr(e->ms.total_folder);
+		ft_putchar('\n');
+	}
+}
+
 static void	ls_print_folder_and_newline(t_app *app, t_entity *e)
 {
 	if (app->nb_param > 1 || app->opt & OPT_R)
@@ -33,23 +50,7 @@ static void	ls_print_folder_and_newline(t_app *app, t_entity *e)
 			ft_putendl(":");
 		}
 	}
-}
-
-static void	ls_print_total_and_error(t_app *app, t_entity *e)
-{
-	if (e->errno_code != 0)
-	{
-		errno = e->errno_code;
-		ls_error_errno(e->name);
-		errno = 0;
-	}
-	if (app->opt & OPT_l && e->errno_code == 0 &&
-		ft_lstsize((t_list*)e->child) > 0)
-	{
-		ft_putstr("total ");
-		ft_putnbr(e->ms.total_folder);
-		ft_putchar('\n');
-	}
+	ls_print_total_and_error(app, e);
 }
 
 static void	ls_print_entity_child(t_app *app, t_entity *e)
@@ -61,7 +62,7 @@ static void	ls_print_entity_child(t_app *app, t_entity *e)
 	while (l)
 	{
 		e_child = (t_entity *)l->content;
-		if (app->opt & OPT_l)
+		if (app->opt & OPT_L)
 			ls_print_line_opt_l(e_child, e->ms);
 		else
 			ls_print_entity_if_exist(e_child);
@@ -76,7 +77,6 @@ void		ls_print_child(t_app *app, t_entity *e)
 	t_entity	*e_child;
 
 	ls_print_folder_and_newline(app, e);
-	ls_print_total_and_error(app, e);
 	ls_print_entity_child(app, e);
 	l = e->child;
 	while (l)

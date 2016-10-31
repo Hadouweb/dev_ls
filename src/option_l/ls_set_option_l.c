@@ -52,7 +52,7 @@ char		*ls_format_hour_year(char *str)
 {
 	int		i;
 	char	*str_format;
-	char 	*tmp;
+	char	*tmp;
 
 	i = 0;
 	while (str[i] && str[i] != '\n')

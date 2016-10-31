@@ -60,7 +60,7 @@ void		ls_print_entity(t_app *app, t_entity *e)
 		ls_print_child(app, e);
 	else
 	{
-		if (app->opt & OPT_l && e->errno_code == 0)
+		if (app->opt & OPT_L && e->errno_code == 0)
 			ls_print_opt_l(app, e);
 		else
 			ls_print_no_option(app, e);

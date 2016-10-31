@@ -21,7 +21,7 @@ void	ls_readdir(DIR *dir, t_listd **lst, t_app *app, t_entity *parent)
 	{
 		if (errno != 0)
 			ls_error_errno("Error in ls_readdir ");
-		if (dp->d_name[0] != '.' || app->opt & OPT_a)
+		if (dp->d_name[0] != '.' || app->opt & OPT_A)
 			ls_push_entity(app, parent, dp->d_name, lst);
 	}
 }

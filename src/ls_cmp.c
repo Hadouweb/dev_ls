@@ -18,6 +18,18 @@ static __uint128_t	ls_get_uint128(t_entity *e)
 					<< 64 | e->file.st_mtimespec.tv_nsec);
 }
 
+static int			ls_get_strcmp_time(t_app *app, t_entity *e, t_entity *e_cmp)
+{
+	int		cmp;
+
+	cmp = 0;
+	if (app->opt & OPT_RMIN)
+		cmp = ft_strcmp(e_cmp->name, e->name);
+	else
+		cmp = ft_strcmp(e->name, e_cmp->name);
+	return (cmp);
+}
+
 t_listd				*ls_get_node_cmp_time(t_app *app, t_listd **lst,
 	t_entity *e)
 {
@@ -34,15 +46,11 @@ t_listd				*ls_get_node_cmp_time(t_app *app, t_listd **lst,
 	{
 		e_cmp = (t_entity*)l->content;
 		t2 = ls_get_uint128(e_cmp);
-		if (app->opt & OPT_r && t1 < t2)
+		if (app->opt & OPT_RMIN && t1 < t2)
 			return (l);
-		else if (!(app->opt & OPT_r) && t1 > t2)
+		else if (!(app->opt & OPT_RMIN) && t1 > t2)
 			return (l);
-		if (t2 - t1 == 0 && app->opt & OPT_r)
-			cmp = ft_strcmp(e_cmp->name, e->name);
-		else if (t2 - t1 == 0)
-			cmp = ft_strcmp(e->name, e_cmp->name);
-		if (cmp < 0)
+		if (t2 - t1 == 0 && ls_get_strcmp_time(app, e, e_cmp) < 0)
 			return (l);
 		l = l->next;
 	}
@@ -59,7 +67,7 @@ t_listd				*ls_get_node_cmp(t_app *app, t_listd **lst, t_entity *e)
 	while (l)
 	{
 		e_cmp = (t_entity*)l->content;
-		if (app->opt & OPT_r)
+		if (app->opt & OPT_RMIN)
 			cmp = ft_strcmp(e_cmp->name, e->name);
 		else
 			cmp = ft_strcmp(e->name, e_cmp->name);

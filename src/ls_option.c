@@ -42,15 +42,15 @@ void		ls_option(char *opt, t_app *app)
 	while (opt[i])
 	{
 		if (opt[i] == 'l')
-			app->opt |= OPT_l;
+			app->opt |= OPT_L;
 		if (opt[i] == 'R')
 			app->opt |= OPT_R;
 		if (opt[i] == 'a')
-			app->opt |= OPT_a;
+			app->opt |= OPT_A;
 		if (opt[i] == 't')
-			app->opt |= OPT_t;
+			app->opt |= OPT_T;
 		if (opt[i] == 'r')
-			app->opt |= OPT_r;
+			app->opt |= OPT_RMIN;
 		i++;
 	}
 }

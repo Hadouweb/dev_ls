@@ -12,16 +12,6 @@
 
 #include "ft_ls.h"
 
-static int	ls_lstcmp(t_listd *a, t_listd *b)
-{
-	t_entity	*path_a;
-	t_entity	*path_b;
-
-	path_a = (t_entity*)a->content;
-	path_b = (t_entity*)b->content;
-	return (ft_strcmp(path_a->name, path_b->name));
-}
-
 static int	ls_cmp_file_type(t_listd *a, t_listd *b)
 {
 	t_entity	*path_a;
@@ -59,35 +49,11 @@ void		ls_sort_entity_param(t_app *app)
 	}
 }
 
-void		ls_sort_entity(t_listd **lst)
-{
-	t_listd	*l;
-	int		swap;
-	int		is_dir;
-
-	swap = 1;
-	while (swap)
-	{
-		swap = 0;
-		l = *lst;
-		is_dir = 0;
-		while (l && l->next)
-		{
-			is_dir = ls_cmp_file_type(l, l->next);
-			if (is_dir == 1)
-				swap = ls_swap(l, l->next);
-			else if (ls_lstcmp(l, l->next) > 0 && is_dir == -1)
-				swap = ls_swap(l, l->next);
-			l = l->next;
-		}
-	}
-}
-
 void		ls_push_after_sort(t_listd **lst, t_entity *e, t_app *app)
 {
 	t_listd	*node;
 
-	if (app->opt & OPT_t)
+	if (app->opt & OPT_T)
 		node = ls_get_node_cmp_time(app, lst, e);
 	else
 		node = ls_get_node_cmp(app, lst, e);

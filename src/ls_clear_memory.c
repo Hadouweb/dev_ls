@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls_clear_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/31 11:38:59 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/10/31 11:39:01 by nle-bret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 void		ls_free_entity_full(t_entity_full *e)
@@ -27,7 +39,5 @@ void		ls_free_entity(t_entity *e)
 		ft_strdel(&e->link);
 	if (e->rpath)
 		ft_strdel(&e->rpath);
-	//if (e->child)
-	//	free(e->child);
 	free(e);
 }
